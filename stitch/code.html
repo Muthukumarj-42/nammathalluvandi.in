@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THALLUVANDI | Premium Street Food Carts</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;500;700&amp;family=Dm+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-error-container": "#93000a", "on-background": "#181d15", "on-surface": "#181d15", "inverse-primary": "#82db6b", secondary: "#45673b", "on-tertiary-fixed": "#3d0025", background: "#f6fbee", "primary-fixed": "#9df984", outline: "#707a6a", "surface-bright": "#f6fbee", primary: "#085200", "secondary-fixed": "#c6eeb6", "inverse-surface": "#2d3229", "surface-container-lowest": "#ffffff", "primary-container": "#116d03", "on-surface-variant": "#404a3b", "on-primary-container": "#92ed7a", "surface-container-high": "#e5eadd", "on-tertiary-container": "#ffc8de", "on-primary-fixed": "#012200", "inverse-on-surface": "#edf3e5", "surface-tint": "#126e04", "tertiary-fixed-dim": "#ffafd1", "on-secondary": "#ffffff", "on-secondary-container": "#4b6d40", "on-secondary-fixed-variant": "#2e4e25", "surface-container": "#eaf0e3", "outline-variant": "#bfcab7", error: "#ba1a1a", "on-primary-fixed-variant": "#085300", "surface-container-low": "#f0f5e8", "primary-fixed-dim": "#82db6b", "secondary-fixed-dim": "#abd19b", "on-tertiary": "#ffffff", "surface-container-highest": "#dfe4d7", surface: "#f6fbee", "on-secondary-fixed": "#032101", "error-container": "#ffdad6", "tertiary-fixed": "#ffd8e6", "secondary-container": "#c6eeb6", "on-tertiary-fixed-variant": "#851557", "tertiary-container": "#a3306f", "surface-variant": "#dfe4d7", tertiary: "#841456", "surface-dim": "#d7dccf", "on-error": "#ffffff", "on-primary": "#ffffff"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {"max-width": "1200px", "margin-mobile": "16px", md: "24px", xs: "8px", "margin-desktop": "auto", lg: "40px", gutter: "20px", base: "4px", xl: "64px", sm: "16px"}, fontFamily: {"body-sm": ["DM Sans"], "label-caps": ["DM Sans"], "display-lg": ["Bebas Neue"], "headline-md": ["Bebas Neue"], "headline-lg": ["Bebas Neue"], "body-lg": ["DM Sans"], "body-md": ["DM Sans"], "tamil-body": ["Noto Sans Tamil"], "headline-lg-mobile": ["Bebas Neue"], headline: ["Bebas Neue"], display: ["Bebas Neue"], body: ["Dm Sans"], label: ["Dm Sans"]}, fontSize: {"body-sm": ["14px", {lineHeight: "1.5", fontWeight: "400"}], "label-caps": ["12px", {lineHeight: "1.2", letterSpacing: "0.1em", fontWeight: "700"}], "display-lg": ["64px", {lineHeight: "1.1", letterSpacing: "0.02em", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "1.2", fontWeight: "400"}], "headline-lg": ["40px", {lineHeight: "1.2", letterSpacing: "0.03em", fontWeight: "400"}], "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}], "tamil-body": ["16px", {lineHeight: "1.8", fontWeight: "400"}], "headline-lg-mobile": ["32px", {lineHeight: "1.2", fontWeight: "400"}]}}}};</script>
+<style>
+        body {
+            background-color: #fffdf7;
+            color: #251912;
+        }
+        .grid-pattern {
+            background-image: linear-gradient(rgba(155, 69, 0, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(155, 69, 0, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .marquee-content {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .service-badge-active {
+            box-shadow: inset 0 -2px 0 #9b4500;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 md:px-margin-desktop bg-surface/95 backdrop-blur-sm border-b border-outline-variant/20 max-w-full">
+<div class="font-headline-lg text-headline-lg text-primary tracking-widest">THALLUVANDI</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-caps text-label-caps" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Catalog</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">How it Works</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="font-label-caps text-label-caps text-on-surface-variant border border-outline-variant/40 px-3 py-1 rounded hover:bg-surface-variant transition-all">EN/தமிழ்</button>
+<button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-4 py-2 rounded-lg flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                WhatsApp
+            </button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 md:px-12 grid-pattern overflow-hidden">
+<div class="max-w-max-width mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<h1 class="font-display-lg text-[48px] md:text-display-lg leading-tight mb-4 text-on-background">
+                    ROLL YOUR BUSINESS <br/> <span class="text-primary">FORWARD</span>
+</h1>
+<p class="font-tamil-body text-tamil-body text-primary mb-6 font-bold">
+                    உயர்தரமான தள்ளுவண்டிகள் - உங்கள் வணிக வளர்ச்சிக்காக.
+                </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-lg">
+                    Elevate your street food business with premium, durable food carts designed for Tiruppur and Coimbatore vendors. Same-day booking available for multiple variants.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-8 py-4 rounded transition-all hover:brightness-110 active:scale-95">
+                        SEE OUR CARTS
+                    </button>
+<button class="border-2 border-primary-container text-primary-container font-label-caps text-label-caps px-8 py-4 rounded transition-all hover:bg-primary-container/5 active:scale-95">
+                        BOOK ON WHATSAPP
+                    </button>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="relative rounded-xl overflow-hidden border border-primary/10 shadow-sm">
+<img alt="Premium Thalluvandi Food Cart" class="w-full aspect-[4/3] object-cover" data-alt="A premium commercial street food cart with high-quality stainless steel finish and traditional wooden accents. The cart is parked on a clean sunlit pavement in a modern urban market setting in South India. The lighting is warm and golden, reflecting the elevated heritage style. The cart features professional branding spaces and organized shelving, looking clean, professional, and inviting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6RxJ13g2-V7mWh2CLagwYFfAf7lEpIjjMpJossSX89uk3b2VlyLsdBaRhctRBBn9CH6_Vo5iwWujtFDUGENCl6fmr56WUuHF1KMUHoUGLBcjhBQgzG5r3lF_MPLRjTIehWneL7_5dT55VF43XwMq4C7KDxxynJ_rlDCsiLyNONn6H5QntiNc7mspPkFe08UGb7pDXvOczPZv5a-1sULeGssBd64-jZ01yzLQNK8DvAGJ0ZSXsgJEhcXB0ScFpWJt7MfL8PUPHf0Y"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bar -->
+<div class="bg-surface-container-low border-y border-outline-variant/20 py-8 px-6">
+<div class="max-w-max-width mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-lg text-headline-lg text-primary">60+</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Active Carts</span>
+</div>
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-lg text-headline-lg text-primary">2</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Cities Served</span>
+</div>
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-lg text-headline-lg text-primary">4</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Cart Variants</span>
+</div>
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-lg text-headline-lg text-primary">SAME-DAY</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Fast Booking</span>
+</div>
+</div>
+</div>
+<!-- Marquee -->
+<div class="bg-primary py-4 overflow-hidden border-y border-on-primary/10">
+<div class="marquee-content whitespace-nowrap gap-12 flex items-center">
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">With Stove</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">Without Stove</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">With Top</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">Without Top</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">Tiruppur</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">Coimbatore</span>
+<!-- Duplicate for loop -->
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">With Stove</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">Without Stove</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">With Top</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">Without Top</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">Tiruppur</span>
+<span class="text-on-primary opacity-30">•</span>
+<span class="font-headline-md text-headline-md text-on-primary uppercase tracking-widest px-4">Coimbatore</span>
+</div>
+</div>
+<!-- Why Us Section -->
+<section class="py-24 px-6 md:px-12 bg-surface">
+<div class="max-w-max-width mx-auto">
+<div class="text-center mb-16">
+<span class="font-label-caps text-label-caps text-primary mb-2 block tracking-[0.2em]">OUR PROMISE</span>
+<h2 class="font-headline-lg text-headline-lg md:text-[56px] text-on-background">WHY CHOOSE THALLUVANDI?</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/15 p-8 relative overflow-hidden transition-all duration-300 hover:translate-y-[-4px]">
+<div class="text-primary mb-6">
+<span class="material-symbols-outlined text-[40px]">group</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 uppercase">Large Fleet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Access over 60+ ready-to-deploy carts instantly for any business size.</p>
+<div class="absolute bottom-0 left-0 w-0 h-1 bg-primary group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/15 p-8 relative overflow-hidden transition-all duration-300 hover:translate-y-[-4px]">
+<div class="text-primary mb-6">
+<span class="material-symbols-outlined text-[40px]">category</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 uppercase">Multiple Variants</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Customizable options including stove fittings, roofing, and sizing configurations.</p>
+<div class="absolute bottom-0 left-0 w-0 h-1 bg-primary group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/15 p-8 relative overflow-hidden transition-all duration-300 hover:translate-y-[-4px]">
+<div class="text-primary mb-6">
+<span class="material-symbols-outlined text-[40px]">send</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 uppercase">WhatsApp Booking</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">No complex paperwork. Book your cart directly through a simple chat interface.</p>
+<div class="absolute bottom-0 left-0 w-0 h-1 bg-primary group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-surface-container-lowest border border-outline-variant/15 p-8 relative overflow-hidden transition-all duration-300 hover:translate-y-[-4px]">
+<div class="text-primary mb-6">
+<span class="material-symbols-outlined text-[40px]">verified</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 uppercase">Trusted by Vendors</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The preferred choice for food entrepreneurs across Tiruppur &amp; Coimbatore.</p>
+<div class="absolute bottom-0 left-0 w-0 h-1 bg-primary group-hover:w-full transition-all duration-500"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Area band -->
+<section class="py-12 px-6 bg-surface-container text-center border-y border-outline-variant/20">
+<div class="max-w-max-width mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
+<span class="font-label-caps text-label-caps text-on-surface-variant">OPERATING IN:</span>
+<div class="flex flex-wrap justify-center gap-4">
+<span class="px-6 py-2 border border-primary text-primary font-bold service-badge-active rounded-full font-label-caps text-label-caps bg-white/50">TIRUPPUR</span>
+<span class="px-6 py-2 border border-primary text-primary font-bold service-badge-active rounded-full font-label-caps text-label-caps bg-white/50">COIMBATORE</span>
+<span class="px-6 py-2 border border-dashed border-on-surface-variant/40 text-on-surface-variant/60 rounded-full font-label-caps text-label-caps">ALL TAMIL NADU — COMING 2026</span>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-primary/20 pt-16 pb-8 px-6 md:px-margin-desktop">
+<div class="max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+<div class="max-w-sm">
+<div class="font-headline-md text-headline-md text-primary mb-4">THALLUVANDI</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Pioneering premium street food infrastructure in South India. We provide the tools, you provide the taste.
+                </p>
+<p class="font-tamil-body text-tamil-body text-primary mt-4">திருப்பூர் &amp; கோயம்புத்தூரின் முன்னணி தள்ளுவண்டி சேவை.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+<div>
+<h4 class="font-label-caps text-label-caps text-on-background mb-6">Quick Links</h4>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Home</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Catalog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">How it Works</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-on-background mb-6">Company</h4>
+<ul class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="col-span-2 sm:col-span-1">
+<h4 class="font-label-caps text-label-caps text-on-background mb-6">Location</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Serving Tiruppur &amp; Coimbatore districts, Tamil Nadu, India.</p>
+</div>
+</div>
+</div>
+<div class="max-w-max-width mx-auto border-t border-outline-variant/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant/60">© 2024 THALLUVANDI. SERVING TIRUPPUR &amp; COIMBATORE.</span>
+<div class="flex gap-6">
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">social_leaderboard</span>
+</a>
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">camera_alt</span>
+</a>
+<a class="text-on-surface-variant/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">call</span>
+</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll behavior for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-sm');
+                header.classList.remove('bg-surface/95');
+                header.classList.add('bg-white');
+            } else {
+                header.classList.remove('shadow-sm');
+                header.classList.add('bg-surface/95');
+                header.classList.remove('bg-white');
+            }
+        });
+    </script>
+</body></html>
