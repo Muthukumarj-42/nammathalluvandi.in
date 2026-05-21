@@ -9,11 +9,11 @@ import { WhatsAppFloat } from "@/components/sections/whatsapp-float";
 export const metadata: Metadata = {
   metadataBase: new URL("https://thalluvandi.in"),
   title: {
-    default: "Thalluvandi.in | Premium Food Cart Rentals in Tamil Nadu",
+    default: "Thalluvandi.in | Premium Food Cart Rentals in Coimbatore",
     template: "%s | Thalluvandi.in"
   },
   description:
-    "Premium food cart rentals and future marketplace platform for entrepreneurs across Tamil Nadu.",
+    "Premium food cart rentals for entrepreneurs in Coimbatore.",
   keywords: [
     "thalluvandi",
     "thalluvandi in coimbatore",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "push cart rental",
     "foodcart in coimbatore",
     "pushcart near me",
-    "food cart rental tamil nadu",
+    "food cart rental coimbatore",
     "food cart for rent",
     "street food cart rental",
     "food pushcart rental"
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-lang="en">
       <body className="font-sans antialiased">
         <Navbar />
         {children}

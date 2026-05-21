@@ -2,32 +2,39 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, MessageCircle, Search, Send, UserRound } from "lucide-react";
-import { rentalTamilMessage, whatsappUrl } from "@/lib/utils";
+import { Home, Phone, Search, Send, UserRound } from "lucide-react";
+import { LanguageToggle } from "@/components/sections/language-toggle";
 
 const items = [
-  ["Home", "/", Home],
-  ["Explore", "/explore", Search],
-  ["Publish", "/publish", Send],
-  ["About", "/about", UserRound]
+  ["Home", "முகப்பு", "/", Home],
+  ["Explore", "வண்டிகள்", "/explore", Search],
+  ["Publish", "List", "/publish", Send],
+  ["About", "பற்றி", "/about", UserRound],
+  ["Contact", "தொடர்பு", "/contact", Phone]
 ] as const;
 
 export function MobileBottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-3 left-3 right-3 z-50 rounded-2xl border border-black/10 bg-white/95 px-2 py-2 shadow-premium backdrop-blur-xl md:hidden" aria-label="Mobile navigation">
-      <div className="grid grid-cols-5 items-center gap-1">
-        {items.map(([label, href, Icon]) => (
-          <Link key={href} href={href} className={`grid min-h-14 place-items-center rounded-xl text-[11px] font-bold ${pathname === href ? "bg-primary text-white" : "text-muted"}`}>
-            <Icon size={20} />
-            <span>{label}</span>
-          </Link>
-        ))}
-        <a href={whatsappUrl(rentalTamilMessage)} target="_blank" className="grid min-h-14 place-items-center rounded-xl bg-accent text-[11px] font-bold text-white">
-          <MessageCircle size={20} />
-          <span>Book</span>
-        </a>
+    <nav
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-white/95 px-2 pb-[env(safe-area-inset-bottom)] shadow-premium backdrop-blur-xl md:hidden"
+      aria-label="Mobile navigation"
+    >
+      <div className="absolute -top-12 right-3">
+        <LanguageToggle compact />
+      </div>
+      <div className="flex h-16 items-stretch">
+        {items.map(([label, tamil, href, Icon]) => {
+          const active = pathname === href;
+          return (
+            <Link key={href} href={href} className={`flex flex-1 flex-col items-center justify-center gap-1 text-[11px] font-bold ${active ? "text-primary" : "text-muted"}`}>
+              <Icon size={20} />
+              <span className="en">{label}</span>
+              <span className="ta">{tamil}</span>
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );
