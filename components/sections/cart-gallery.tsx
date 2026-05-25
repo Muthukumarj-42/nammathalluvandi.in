@@ -10,26 +10,24 @@ function GalleryImage({ src, alt }: { src: string; alt: string }) {
     return (
       <div className="relative w-full h-full bg-[#1a1208] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/60 z-10" />
-        <Image
+        <img
           src="/brand/full-logo-with-background.png"
           alt="Thalluvandi fallback logo"
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-contain p-8 opacity-40 z-20"
+          className="object-contain p-8 opacity-40 z-20 absolute inset-0 w-full h-full"
         />
       </div>
     );
   }
 
   return (
-    <Image
+    <img
       src={src}
       alt={alt}
-      fill
-      priority
-      sizes="(max-width: 768px) 100vw, 50vw"
-      className="object-cover"
-      onError={() => setError(true)}
+      className="object-cover absolute inset-0 w-full h-full"
+      onError={(e) => {
+        e.currentTarget.onerror = null;
+        setError(true);
+      }}
     />
   );
 }

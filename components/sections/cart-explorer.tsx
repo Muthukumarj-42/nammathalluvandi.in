@@ -25,25 +25,24 @@ function CartImage({ src, alt }: { src: string; alt: string }) {
     return (
       <div className="relative w-full h-full bg-[#1a1208] flex items-center justify-center overflow-hidden z-0">
         <div className="absolute inset-0 bg-black/60 z-0" />
-        <Image
+        <img
           src="/brand/full-logo-with-background.png"
           alt="Thalluvandi fallback logo"
-          fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-contain p-6 opacity-40 z-0"
+          className="object-contain p-6 opacity-40 z-0 absolute inset-0 w-full h-full"
         />
       </div>
     );
   }
 
   return (
-    <Image
+    <img
       src={src}
       alt={alt}
-      fill
-      sizes="(max-width: 768px) 100vw, 33vw"
-      className="object-cover transition duration-500 group-hover:scale-[1.04] z-0"
-      onError={() => setError(true)}
+      className="object-cover transition duration-500 group-hover:scale-[1.04] z-0 absolute inset-0 w-full h-full"
+      onError={(e) => {
+        e.currentTarget.onerror = null;
+        setError(true);
+      }}
     />
   );
 }
