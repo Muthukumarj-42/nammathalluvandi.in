@@ -120,7 +120,7 @@ export default function Home() {
     name: "Thalluvandi",
     alternateName: ["Thallu Vandi", "தளவண்டி", "Thalluvandi Rental"],
     description:
-      "Premium food cart rentals in Tamil Nadu. 60+ carts with stove, roof cover, and premium variants. Serving Coimbatore with WhatsApp-first booking.",
+      "Premium food cart rentals in Coimbatore. 60+ carts with stove, roof cover, and premium variants. Serving Coimbatore with WhatsApp-first booking.",
     url: "https://thethalluvandi.in",
     telephone: "+918838292849",
     email: "hello@thalluvandi.in",
@@ -174,7 +174,7 @@ export default function Home() {
             </p>
             <h1 className="mt-5 max-w-4xl font-display text-5xl uppercase leading-none md:text-7xl lg:text-8xl">
               <Text
-                en="Food Cart Rentals in Tamil Nadu | Thalluvandi"
+                en="Food Cart Rentals in Coimbatore | Thalluvandi"
                 ta="உங்கள் தொழில் இனி தொடங்கட்டும் — வண்டி நாங்க தருவோம்!"
               />
             </h1>
