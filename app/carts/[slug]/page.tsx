@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CalendarDays, CreditCard, MessageCircle, Star, UserRound, Zap } from "lucide-react";
+import { MessageCircle, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { carts, getCart } from "@/lib/carts";
 import { cartBookingMessage } from "@/lib/utils";
@@ -169,25 +169,7 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
               </div>
             </section>
 
-            {/* Roadmap options */}
-            <section className="mt-12">
-              <h2 className="font-display text-4xl uppercase text-ink">
-                <Text en="Future-ready modules" ta="வரப்போகும் வசதிகள்" />
-              </h2>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
-                {[
-                  [CalendarDays, "Booking calendar", "முன்பதிவு காலண்டர்"],
-                  [CreditCard, "Payment gateway", "வாடகை கட்டணம் செலுத்துதல்"],
-                  [Star, "User reviews", "மதிப்பீடுகள் / விமர்சனங்கள்"],
-                  [UserRound, "Vendor profile", "உரிமையாளர் சுயவிவரம்"]
-                ].map(([Icon, label, tamil]) => (
-                  <div key={label as string} className="rounded-xl border border-dashed border-black/20 bg-white p-4 text-sm font-bold text-muted-foreground">
-                    <Icon className="mb-3 text-primary" size={18} /> 
-                    <Text en={label as string} ta={tamil as string} />
-                  </div>
-                ))}
-              </div>
-            </section>
+
 
             {/* Related carts */}
             <section className="mt-12">
