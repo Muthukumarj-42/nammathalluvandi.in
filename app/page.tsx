@@ -17,6 +17,7 @@ import { CartExplorer } from "@/components/sections/cart-explorer";
 import { Reveal } from "@/components/sections/reveal";
 import { rentalTamilMessage } from "@/lib/utils";
 import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
+import { CartCounter } from "@/components/sections/cart-counter";
 
 function Text({ en, ta }: { en: string; ta: string }) {
   return (
@@ -47,7 +48,7 @@ const featureCards = [
   [
     ShoppingCart,
     "Large cart fleet",
-    "பெரிய வண்டி fleet",
+    "வண்டிகளின் பெரிய தொகுப்பு",
     "60+ carts ready for tea, snacks, juice, and fast food businesses.",
     "60-க்கும் மேல் வண்டிகள் தயாராக உள்ளது",
   ],
@@ -208,7 +209,7 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <Reveal className="relative">
+          <Reveal className="relative hidden md:block">
             <div className="absolute inset-8 rounded-full bg-primary/15 blur-3xl" />
             <Image
               src="/brand/full-logo-with-background.png"
@@ -232,7 +233,7 @@ export default function Home() {
               className="border-black/10 px-4 py-5 text-center md:border-l first:md:border-l-0 odd:max-md:border-r max-md:border-b"
             >
               <p className="font-display text-4xl uppercase leading-none text-ink">
-                <Text en={en} ta={ta} />
+                {index === 0 ? <CartCounter /> : <Text en={en} ta={ta} />}
               </p>
             </div>
           ))}

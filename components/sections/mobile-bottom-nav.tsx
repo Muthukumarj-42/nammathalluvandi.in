@@ -21,7 +21,7 @@ export function MobileBottomNav() {
       className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-white/95 px-2 pb-[env(safe-area-inset-bottom)] shadow-premium backdrop-blur-xl md:hidden"
       aria-label="Mobile navigation"
     >
-      <div className="absolute -top-12 right-3">
+      <div className="absolute -top-12 left-3">
         <LanguageToggle compact />
       </div>
       <div className="flex h-16 items-stretch">
