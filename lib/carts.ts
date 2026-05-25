@@ -8,7 +8,8 @@ export interface Cart {
   available: boolean;
   availableCount: number;
   city: string[];
-  features: string[];
+  featuresEn: string[];
+  featuresTa: string[];
   images: string[];
   whatsappMessageTa: string;
 }
@@ -24,7 +25,8 @@ export const carts: Cart[] = [
     available: true,
     availableCount: 3,
     city: ["Coimbatore"],
-    features: ["அடுப்பு இருக்கு", "மேல் கவர் இருக்கு", "சேமிப்பு இடம் இருக்கு"],
+    featuresEn: ["Has Stove", "Has Roof Cover", "Storage Space"],
+    featuresTa: ["அடுப்பு இருக்கு", "மேல் கவர் இருக்கு", "சேமிப்பு இடம் இருக்கு"],
     images: [
       "/carts/premium-fast-food-cart-with-stove/photo-1.jpg",
       "/carts/premium-fast-food-cart-with-stove/photo-2.jpg",
@@ -43,7 +45,8 @@ export const carts: Cart[] = [
     available: true,
     availableCount: 3,
     city: ["Coimbatore"],
-    features: [
+    featuresEn: ["Fits in Small Spaces", "Serving Counter", "Water Can Holder"],
+    featuresTa: [
       "சின்ன இடத்துக்கும் பொருந்தும்",
       "சர்விங் கவுண்டர்",
       "தண்ணீர் கேன் இடம்",
@@ -66,7 +69,8 @@ export const carts: Cart[] = [
     available: true,
     availableCount: 0,
     city: ["Coimbatore"],
-    features: ["பழம் வைக்க இடம்", "மேல் கவர் இருக்கு", "சுத்தம் செய்ய சுலபம்"],
+    featuresEn: ["Fruit Display Space", "Has Roof Cover", "Easy to Clean"],
+    featuresTa: ["பழம் வைக்க இடம்", "மேல் கவர் இருக்கு", "சுத்தம் செய்ய சுலபம்"],
     images: [
       "/carts/juice-cart/photo-1.jpg",
       "/carts/juice-cart/photo-2.jpg",
@@ -85,7 +89,8 @@ export const carts: Cart[] = [
     available: true,
     availableCount: 3,
     city: ["Coimbatore"],
-    features: ["திறந்த கவுண்டர்", "சேமிப்பு இடம்", "நகர்த்த சுலபம்"],
+    featuresEn: ["Open Counter Layout", "Storage Shelf", "Easy to Move"],
+    featuresTa: ["திறந்த கவுண்டர்", "சேமிப்பு இடம்", "நகர்த்த சுலபம்"],
     images: [
       "/carts/starter-cart-without-stove/photo-1.jpg",
       "/carts/starter-cart-without-stove/photo-2.jpg",
@@ -104,7 +109,8 @@ export const carts: Cart[] = [
     available: true,
     availableCount: 3,
     city: ["Coimbatore"],
-    features: ["மேல் கவர் இருக்கு", "சர்விங் ஷெல்ஃப்", "சிலிண்டர் இடம்"],
+    featuresEn: ["Has Roof Cover", "Serving Shelf", "Gas Cylinder Storage"],
+    featuresTa: ["மேல் கவர் இருக்கு", "சர்விங் ஷெல்ஃப்", "சிலிண்டர் இடம்"],
     images: [
       "/carts/covered-premium-cart/photo-1.jpg",
       "/carts/covered-premium-cart/photo-2.jpg",
@@ -123,26 +129,8 @@ export const carts: Cart[] = [
     available: true,
     availableCount: 3,
     city: ["Coimbatore"],
-    features: ["ஸ்நாக்ஸ் வைக்க இடம்", "கேஷ் வைக்க இடம்", "நகர்த்த சுலபம்"],
-    images: [
-      "/carts/mobile-snack-cart/photo-1.jpg",
-      "/carts/mobile-snack-cart/photo-2.jpg",
-      "/carts/mobile-snack-cart/photo-3.jpg",
-    ],
-    whatsappMessageTa:
-      "வணக்கம், நான் சாதாரண வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
-  },
-  {
-    id: "Pudhu vandi da",
-    nameEn: "Mobile Snack Cart",
-    nameTa: "சாதாரண வண்டி",
-    type: ["Fast Food", "No Stove", "Compact"],
-    pricePerDay: 150,
-    depositAmount: 2000,
-    available: true,
-    availableCount: 3,
-    city: ["Coimbatore"],
-    features: ["ஸ்நாக்ஸ் வைக்க இடம்", "கேஷ் வைக்க இடம்", "நகர்த்த சுலபம்"],
+    featuresEn: ["Snack Display Box", "Cash Drawer Space", "Easy to Move"],
+    featuresTa: ["ஸ்நாக்ஸ் வைக்க இடம்", "கேஷ் வைக்க இடம்", "நகர்த்த சுலபம்"],
     images: [
       "/carts/mobile-snack-cart/photo-1.jpg",
       "/carts/mobile-snack-cart/photo-2.jpg",

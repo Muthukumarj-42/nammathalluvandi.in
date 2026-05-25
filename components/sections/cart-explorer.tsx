@@ -108,7 +108,8 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
         cart.nameEn,
         cart.nameTa,
         ...cart.type,
-        ...cart.features,
+        ...cart.featuresEn,
+        ...cart.featuresTa,
       ].some((field) => field.toLowerCase().includes(q));
 
       return matchesFilter && (priceMatch || textMatch);
@@ -480,10 +481,10 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                   </div>
 
                   <ul className="mt-5 space-y-2 text-sm text-muted flex-1">
-                    {cart.features.slice(0, 3).map((feature) => (
-                      <li key={feature} className="flex gap-2">
+                    {(lang === "ta" ? cart.featuresTa : cart.featuresEn).slice(0, 3).map((feature, idx) => (
+                      <li key={idx} className="flex gap-2">
                         <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                        <span className="tamil-text">{feature}</span>
+                        <span className={lang === "ta" ? "tamil-text" : ""}>{feature}</span>
                       </li>
                     ))}
                   </ul>

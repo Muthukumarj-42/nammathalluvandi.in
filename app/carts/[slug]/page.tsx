@@ -27,12 +27,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!cart) {
     return {
       title: "Cart Details | Thalluvandi",
-      description: "Premium food cart rentals in Tamil Nadu."
+      description: "Premium food cart rentals in Coimbatore."
     };
   }
 
   const titleText = `${cart.nameEn} for Rent in Coimbatore | Thalluvandi`;
-  const descText = `Rent the premium ${cart.nameEn} (தளவண்டி) in Coimbatore, Tamil Nadu. Features: ${cart.features.join(", ")}. Starting at ₹${cart.pricePerDay}/day with refundable deposit.`;
+  const descText = `Rent the premium ${cart.nameEn} (தளவண்டி) in Coimbatore, Tamil Nadu. Features: ${cart.featuresEn.join(", ")}. Starting at ₹${cart.pricePerDay}/day with refundable deposit.`;
 
   return { 
     title: titleText, 
@@ -127,12 +127,18 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
                 <Text en="Features" ta="வண்டி வசதிகள்" />
               </h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                {cart.features.map((feature) => (
-                  <div key={feature} className="rounded-xl border border-black/10 bg-white p-4 text-sm font-bold text-muted-foreground flex items-center gap-2">
-                    <Zap className="text-primary shrink-0" size={18} /> 
-                    <span className="tamil-text">{feature}</span>
-                  </div>
-                ))}
+                {cart.featuresEn.map((featEn, idx) => {
+                  const featTa = cart.featuresTa[idx];
+                  return (
+                    <div key={idx} className="rounded-xl border border-black/10 bg-white p-4 text-sm font-bold text-muted-foreground flex items-center gap-2">
+                      <Zap className="text-primary shrink-0" size={18} /> 
+                      <span>
+                        <span className="en">{featEn}</span>
+                        <span className="ta tamil-text">{featTa}</span>
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </section>
 
