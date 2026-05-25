@@ -148,8 +148,8 @@ export const carts: Cart[] = [
       "வணக்கம், நான் சாதாரண வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
   },
   {
-    id: "pudhu-vandi",
-    nameEn: "avalotha ",
+    id: "mobile-snack",
+    nameEn: "thallu vandi",
     nameTa: "சாதாரண வண்டி",
     type: ["Fast Food", "No Stove", "Compact"],
     pricePerDay: 150,

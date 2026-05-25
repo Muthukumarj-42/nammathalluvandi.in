@@ -90,31 +90,37 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
             </div>
 
             {/* Side-by-side Price & Deposit amount cards (CHANGE 4) */}
-            <div className="mt-8 grid grid-cols-2 gap-3">
+            <div className="mt-8 grid grid-cols-2 gap-3 items-stretch">
               {/* Daily Price Card */}
-              <div className="bg-orange-50 border border-orange-500/20 rounded-xl p-4 flex flex-col justify-between">
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
-                  <span className="en">DAILY PRICE</span>
-                  <span className="ta tamil-text">ஒரு நாள் வாடகை</span>
-                </p>
-                <div className="mt-2 flex items-baseline">
-                  <span className="font-display text-3xl font-bold text-foreground">₹{cart.pricePerDay}</span>
-                  <span className="text-sm text-muted ml-1">/DAY</span>
+              <div className="flex h-full flex-col justify-between rounded-xl border border-orange-500/20 bg-orange-50 p-4 shadow-sm">
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
+                    <span className="en">DAILY PRICE</span>
+                    <span className="ta tamil-text">ஒரு நாள் வாடகை</span>
+                  </p>
+                  <div className="mt-2 flex items-baseline">
+                    <span className="font-display text-4xl font-bold text-ink">₹{cart.pricePerDay}</span>
+                    <span className="text-xs text-muted-foreground ml-1 uppercase font-semibold">/ day</span>
+                  </div>
+                </div>
+                <div className="mt-4 text-xs text-primary font-semibold">
+                  <span className="en">Best Daily Rate</span>
+                  <span className="ta tamil-text">சிறந்த தினசரி வாடகை</span>
                 </div>
               </div>
 
               {/* Deposit Amount Card */}
-              <div className="bg-orange-50 border border-orange-500/20 rounded-xl p-4 flex flex-col justify-between">
+              <div className="flex h-full flex-col justify-between rounded-xl border border-orange-500/20 bg-orange-50 p-4 shadow-sm">
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
                     <span className="en">DEPOSIT AMOUNT</span>
                     <span className="ta tamil-text">முன்பணம்</span>
                   </p>
-                  <div className="mt-2">
-                    <span className="font-display text-3xl font-bold text-foreground">₹{cart.depositAmount}</span>
+                  <div className="mt-2 flex items-baseline">
+                    <span className="font-display text-4xl font-bold text-ink">₹{cart.depositAmount}</span>
                   </div>
                 </div>
-                <div className="mt-2 text-xs text-green-600 font-semibold">
+                <div className="mt-4 text-xs text-green-600 font-semibold">
                   <span className="en">Refundable</span>
                   <span className="ta tamil-text">திரும்ப பெறத்தக்கது</span>
                 </div>
