@@ -8,7 +8,7 @@ import { LanguageToggle } from "@/components/sections/language-toggle";
 const items = [
   ["Home", "முகப்பு", "/", Home],
   ["Explore", "வண்டிகள்", "/explore", Search],
-  ["Publish", "List", "/publish", Send],
+  ["Publish", "உங்கள் வண்டியை பதிவு செய்யுங்கள்", "/publish", Send],
   ["About", "பற்றி", "/about", UserRound],
   ["Contact", "தொடர்பு", "/contact", Phone]
 ] as const;
@@ -28,10 +28,10 @@ export function MobileBottomNav() {
         {items.map(([label, tamil, href, Icon]) => {
           const active = pathname === href;
           return (
-            <Link key={href} href={href} className={`flex flex-1 flex-col items-center justify-center gap-1 text-[11px] font-bold ${active ? "text-primary" : "text-muted"}`}>
-              <Icon size={20} />
+            <Link key={href} href={href} className={`flex flex-1 flex-col items-center justify-center gap-1 text-[10px] font-bold text-center px-1 ${active ? "text-primary" : "text-muted"}`}>
+              <Icon size={20} className="shrink-0" />
               <span className="en">{label}</span>
-              <span className="ta">{tamil}</span>
+              <span className="ta tamil-text leading-tight truncate max-w-full" title={tamil}>{tamil}</span>
             </Link>
           );
         })}

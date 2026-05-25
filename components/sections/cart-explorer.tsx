@@ -2,43 +2,196 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { MapPin, MessageCircle, Sparkles } from "lucide-react";
+import { useMemo, useState, useEffect, useRef, useCallback } from "react";
+import { MapPin, MessageCircle, Sparkles, Search as SearchIcon, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { carts, filters } from "@/lib/carts";
-import { cartBookingMessage, cn, whatsappUrl } from "@/lib/utils";
+import { carts, filters, type Cart } from "@/lib/carts";
+import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 
 function Text({ en, ta }: { en: string; ta: string }) {
   return (
     <>
       <span className="en">{en}</span>
-      <span className="ta">{ta}</span>
+      <span className="ta tamil-text">{ta}</span>
     </>
   );
 }
 
-export function CartExplorer({ compact = false }: { compact?: boolean }) {
-  const [active, setActive] = useState("All");
-  const visible = useMemo(
-    () =>
-      active === "All"
-        ? carts
-        : carts.filter((cart) => cart.tags.some((tag) => tag.en === active) || cart.category.en === active),
-    [active]
+function CartImage({ src, alt }: { src: string; alt: string }) {
+  const [error, setError] = useState(false);
+
+  if (error || !src) {
+    return (
+      <div className="relative w-full h-full bg-[#1a1208] flex items-center justify-center overflow-hidden z-0">
+        <div className="absolute inset-0 bg-black/60 z-0" />
+        <Image
+          src="/brand/full-logo-with-background.png"
+          alt="Thalluvandi fallback logo"
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-contain p-6 opacity-40 z-0"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes="(max-width: 768px) 100vw, 33vw"
+      className="object-cover transition duration-500 group-hover:scale-[1.04] z-0"
+      onError={() => setError(true)}
+    />
   );
+}
+
+export function CartExplorer({ compact = false }: { compact?: boolean }) {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [lang, setLang] = useState<"en" | "ta">("en");
+
+  // Sync React language state dynamically with DOM mutations (data-lang toggle) - FIX 4
+  useEffect(() => {
+    const currentLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+    setLang(currentLang);
+
+    const observer = new MutationObserver(() => {
+      const updatedLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+      setLang(updatedLang);
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-lang"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Sort carts:
+  // 1st: available && availableCount >= 2 (AVAILABLE)
+  // 2nd: available && availableCount === 1 (LIMITED)
+  // 3rd: available && availableCount === 0 (BOOKED)
+  // 4th: !available (completely hidden, pushed to end)
+  const sortedCarts = useMemo(() => {
+    return [...carts].sort((a, b) => {
+      if (!a.available && b.available) return 1;
+      if (a.available && !b.available) return -1;
+      if (!a.available && !b.available) return 0;
+
+      const getCat = (c: Cart) => {
+        if (c.availableCount >= 2) return 1;
+        if (c.availableCount === 1) return 2;
+        return 3;
+      };
+      return getCat(a) - getCat(b);
+    });
+  }, []);
+
+  // Filter carts in combination with search & filter pills
+  const filteredCarts = useMemo(() => {
+    return sortedCarts.filter((cart) => {
+      // 1. Filter pill match
+      const matchesFilter =
+        activeFilter === "All" ||
+        cart.type.some((t) => t.toLowerCase() === activeFilter.toLowerCase());
+
+      // 2. Search query match
+      const q = searchQuery.toLowerCase().trim();
+      if (!q) return matchesFilter;
+
+      const priceMatch = !isNaN(Number(q)) && cart.pricePerDay <= Number(q);
+      const textMatch = [
+        cart.nameEn,
+        cart.nameTa,
+        ...cart.type,
+        ...cart.features,
+      ].some((field) => field.toLowerCase().includes(q));
+
+      return matchesFilter && (priceMatch || textMatch);
+    });
+  }, [sortedCarts, activeFilter, searchQuery]);
+
+  // Mobile slideshow variables (only those with available === true)
+  const slideshowCarts = useMemo(() => {
+    return filteredCarts.filter((cart) => cart.available !== false);
+  }, [filteredCarts]);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartRef = useRef<number | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const lastActiveRef = useRef<number>(Date.now());
+
+  const startAutoplay = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+
+    timerRef.current = setInterval(() => {
+      const timeSinceLastAction = Date.now() - lastActiveRef.current;
+      if (timeSinceLastAction < 6000) return; // delay after manual swipes
+      
+      setCurrentIndex((prev) => 
+        slideshowCarts.length > 0 ? (prev + 1) % slideshowCarts.length : 0
+      );
+    }, 4000);
+  }, [slideshowCarts.length]);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [searchQuery, activeFilter]);
+
+  useEffect(() => {
+    startAutoplay();
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [startAutoplay, slideshowCarts]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartRef.current === null) return;
+    const diff = touchStartRef.current - e.changedTouches[0].clientX;
+    touchStartRef.current = null;
+
+    if (Math.abs(diff) > 50 && slideshowCarts.length > 0) {
+      lastActiveRef.current = Date.now();
+      if (diff > 0) {
+        // swipe left -> next
+        setCurrentIndex((prev) => (prev + 1) % slideshowCarts.length);
+      } else {
+        // swipe right -> prev
+        setCurrentIndex((prev) => (prev - 1 + slideshowCarts.length) % slideshowCarts.length);
+      }
+    }
+  };
+
+  const placeholderText = lang === "ta"
+    ? "வாடகை, வண்டி வகை தேடுங்கள்... (எ.கா: stove, 200, juice)"
+    : "Search by cart type, rent (eg: stove, 200, juice)...";
 
   return (
     <section id="explore" className="bg-[#F8F6F2] py-16 md:py-24">
       <div className="site-container">
+        {/* Title area */}
         <div className="grid gap-4 md:grid-cols-[1fr_420px] md:items-end">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
               <Text en="Explore Carts" ta="வண்டிகளை பாருங்க" />
             </p>
-            <h2 className="mt-3 font-display text-5xl uppercase leading-none text-ink md:text-7xl">
-              <Text en="Food carts ready for rent" ta="உங்கள் தொழிலுக்கு தயார் வண்டிகள்" />
-            </h2>
+            {compact ? (
+              <h2 className="mt-3 font-display text-5xl uppercase leading-none text-ink md:text-7xl">
+                <Text en="Our Cart Variants" ta="உணவு வண்டி வகைகள்" />
+              </h2>
+            ) : (
+              <h1 className="mt-3 font-display text-5xl uppercase leading-none text-ink md:text-7xl">
+                <Text en="Rent a Food Cart in Coimbatore" ta="கோயம்புத்தூரில் தள்ளுவண்டி வாடகை" />
+              </h1>
+            )}
           </div>
           <p className="text-sm leading-7 text-muted">
             <Text
@@ -48,102 +201,311 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
           </p>
         </div>
 
-        <div className="hide-scrollbar mt-8 flex gap-3 overflow-x-auto whitespace-nowrap pb-3">
+        {/* Real-time Search Bar (Explore page only) */}
+        {!compact && (
+          <div className="mt-8 relative w-full">
+            <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-muted">
+              <SearchIcon size={20} />
+            </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={placeholderText}
+              className="w-full h-12 pl-12 pr-10 border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/40 rounded-xl bg-white text-sm outline-none transition"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute inset-y-0 right-4 flex items-center text-muted hover:text-primary transition"
+                aria-label="Clear search query"
+              >
+                <X size={18} />
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Filter Pills */}
+        <div className="hide-scrollbar mt-6 flex gap-3 overflow-x-auto whitespace-nowrap pb-3">
           {filters.map((filter) => (
             <button
               key={filter.en}
-              onClick={() => setActive(filter.en)}
-              className={cn(
-                "min-h-11 shrink-0 rounded-full border px-5 text-xs font-bold uppercase tracking-[0.12em] transition",
-                active === filter.en ? "border-primary bg-primary text-white" : "border-outline bg-white text-muted hover:border-primary hover:text-primary"
-              )}
+              onClick={() => setActiveFilter(filter.en)}
+              className={`min-h-11 shrink-0 rounded-full border px-5 text-xs font-bold uppercase tracking-[0.12em] transition ${
+                activeFilter === filter.en
+                  ? "border-primary bg-primary text-white"
+                  : "border-outline bg-white text-muted hover:border-primary hover:text-primary"
+              }`}
             >
               <Text en={filter.en} ta={filter.ta} />
             </button>
           ))}
         </div>
 
-        <motion.div layout className="mt-8 grid items-stretch gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
-          {visible.slice(0, compact ? 3 : visible.length).map((cart, index) => (
-            <motion.article
-              layout
-              key={cart.slug}
-              initial={{ y: 24, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: index * 0.04, duration: 0.45 }}
-              className="grain group flex h-full flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium"
+        {/* Mobile Horizontal Slideshow (compact is false or slideshow rendered on mobile) */}
+        {!compact && slideshowCarts.length > 0 && (
+          <div className="mt-8 block md:hidden relative overflow-hidden w-full">
+            {/* Top right counter */}
+            <div className="absolute top-2 right-4 z-20 text-[10px] font-bold text-ink bg-white/80 px-2 py-0.5 rounded-full shadow-sm">
+              {currentIndex + 1} / {slideshowCarts.length}
+            </div>
+
+            <div 
+              className="flex transition-transform duration-350 ease-in-out" 
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
             >
-              <Link href={`/carts/${cart.slug}`} className="block">
-                <div className="relative h-[180px] overflow-hidden bg-[#fff7ed]">
-                  <Image src={cart.image} alt={cart.title.en} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-contain p-8 transition duration-500 group-hover:scale-[1.04]" />
-                  <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-ink">
-                    <Text en={`${cart.availability.en} — Coimbatore`} ta={`${cart.availability.ta} — கோவை`} />
-                  </span>
-                  <span className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-white/95 px-3 py-1 text-sm font-bold text-ink">
-                    <MapPin size={15} /> <Text en={cart.location.en} ta={cart.location.ta} />
-                  </span>
-                </div>
-              </Link>
-
-              <div className="flex flex-1 flex-col p-5">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="font-display text-3xl uppercase leading-none text-ink">
-                      <Text en={cart.title.en} ta={cart.title.ta} />
-                    </h3>
-                    <p className="mt-1 text-sm text-muted">
-                      <Text en={cart.category.en} ta={cart.category.ta} />
-                    </p>
-                  </div>
-                  <Sparkles className="shrink-0 text-primary" size={20} />
-                </div>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {cart.tags.map((tag) => (
-                    <span key={tag.en} className="rounded-full bg-[#F8F6F2] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.1em] text-muted">
-                      <Text en={tag.en} ta={tag.ta} />
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-5 rounded-lg border border-black/10 bg-[#F8F6F2] p-4">
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted">
-                    <Text en="Daily price" ta="ஒரு நாள் வாடகை" />
-                  </p>
-                  <p className="mt-1 font-display text-4xl text-ink">{cart.dailyPrice}</p>
-                  <p className="mt-2 text-xs font-bold text-muted">
-                    <Text en="Deposit: ₹2,000 – ₹5,000 (refundable)" ta="Deposit: ₹2,000 – ₹5,000 திரும்ப கொடுத்துடுவோம்" />
-                  </p>
-                </div>
-
-                <ul className="mt-5 space-y-2 text-sm text-muted">
-                  {cart.features.slice(0, 3).map((feature) => (
-                    <li key={feature.en} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      <span>
-                        <Text en={feature.en} ta={feature.ta} />
+              {slideshowCarts.map((cart) => (
+                <div key={cart.id} className="w-full shrink-0 px-4">
+                  <article className="overflow-hidden rounded-xl bg-white border border-black/10 shadow-lg">
+                    {/* Aspect Ratio 16:9 Image Area - FIX 8 */}
+                    <div className="relative aspect-video w-full overflow-hidden">
+                      <CartImage src={cart.images[0]} alt={cart.nameEn} />
+                      
+                      {/* Availability badge - z-10 */}
+                      <span className={`absolute top-2 left-2 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${
+                        cart.availableCount >= 2 ? "bg-green-500 text-white" :
+                        cart.availableCount === 1 ? "bg-amber-400 text-black" :
+                        "bg-red-500 text-white"
+                      }`}>
+                        {cart.availableCount >= 2 ? "AVAILABLE" :
+                         cart.availableCount === 1 ? "LIMITED" : "BOOKED"}
                       </span>
-                    </li>
-                  ))}
-                </ul>
 
-                <div className="mt-auto grid grid-cols-2 gap-3 pt-6">
-                  <Button asChild variant="dark">
-                    <Link href={`/carts/${cart.slug}`}>
-                      <Text en="Details" ta="விவரம்" />
-                    </Link>
-                  </Button>
-                  <Button asChild>
-                    <a href={whatsappUrl(cartBookingMessage(cart.title.en))} target="_blank">
-                      <MessageCircle size={16} /> <Text en="🛒 Book This Cart" ta="🛒 இந்த வண்டியை book பண்ணுங்க" />
-                    </a>
-                  </Button>
+                      {/* Count text below badge - z-10 top-9 */}
+                      <span className="absolute top-9 left-2 z-10 bg-white/95 px-2 py-0.5 rounded-full shadow-sm text-[10px] font-bold text-ink">
+                        {cart.availableCount >= 2 ? (
+                          <>
+                            <span className="en">{cart.availableCount} Carts</span>
+                            <span className="ta tamil-text">{cart.availableCount} வண்டிகள் உள்ளன</span>
+                          </>
+                        ) : cart.availableCount === 1 ? (
+                          <>
+                            <span className="en">Last 1 Cart</span>
+                            <span className="ta tamil-text">கடைசி 1 வண்டி</span>
+                          </>
+                        ) : (
+                          <>
+                            <span className="en">Sold Out</span>
+                            <span className="ta tamil-text">தற்போது இல்லை</span>
+                          </>
+                        )}
+                      </span>
+                    </div>
+
+                    <div className="p-5">
+                      <h3 className="font-display text-2xl uppercase leading-tight text-ink">
+                        <span className="en">{cart.nameEn}</span>
+                        <span className="ta tamil-text line-clamp-2 overflow-hidden text-ellipsis normal-case whitespace-normal leading-tight" title={cart.nameTa}>
+                          {cart.nameTa}
+                        </span>
+                      </h3>
+
+                      {/* Features wrapper truncation */}
+                      <div className="mt-2 flex flex-wrap gap-1 max-w-full">
+                        {cart.type.map((tag) => (
+                          <span 
+                            key={tag} 
+                            title={tag}
+                            className="truncate max-w-[140px] rounded-full bg-[#F8F6F2] px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-muted"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Price Grid */}
+                      <div className="mt-4 grid grid-cols-2 gap-2.5">
+                        <div className="bg-orange-50/50 border border-orange-500/10 rounded-lg p-2.5">
+                          <p className="text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">
+                            <span className="en">RENT</span>
+                            <span className="ta tamil-text">வாடகை</span>
+                          </p>
+                          <p className="font-display text-xl font-bold text-foreground">₹{cart.pricePerDay}/DAY</p>
+                        </div>
+                        <div className="bg-orange-50/50 border border-orange-500/10 rounded-lg p-2.5">
+                          <p className="text-[9px] uppercase tracking-widest text-muted-foreground font-semibold">
+                            <span className="en">DEPOSIT</span>
+                            <span className="ta tamil-text">முன்பணம்</span>
+                          </p>
+                          <p className="font-display text-xl font-bold text-foreground">₹{cart.depositAmount}</p>
+                        </div>
+                      </div>
+
+                      {/* Details & WhatsApp buttons */}
+                      <div className="mt-5 grid grid-cols-2 gap-3">
+                        <Button asChild variant="outline" className="border-black/20 text-ink text-xs h-10">
+                          <Link href={`/carts/${cart.id}`}>
+                            <span className="en">DETAILS</span>
+                            <span className="ta tamil-text">விவரம்</span>
+                          </Link>
+                        </Button>
+                        <Button asChild className="bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs h-10">
+                          <a href={buildWAUrl(WA_NUMBER, `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nதேவையான தேதி:\nஇடம் (கோவையில்):\nகால அவகாசம்:\nமேலும் விவரம்:`)} target="_blank">
+                            <span className="en">BOOK CART</span>
+                            <span className="ta tamil-text">புக் செய்ய</span>
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                  </article>
                 </div>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
+              ))}
+            </div>
+
+            {/* Dots navigation indicator */}
+            <div className="flex justify-center gap-1.5 mt-4">
+              {slideshowCarts.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    lastActiveRef.current = Date.now();
+                    setCurrentIndex(idx);
+                  }}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    idx === currentIndex ? "w-6 bg-primary" : "w-2 bg-black/20"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Desktop Grid Layout (768px+) & Mobile (if homepage teaser compact) */}
+        <div className={`mt-8 grid items-stretch gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 ${!compact ? "hidden md:grid" : "grid"}`}>
+          {filteredCarts.slice(0, compact ? 3 : filteredCarts.length).map((cart, index) => {
+            const isHidden = !cart.available;
+
+            return (
+              <motion.article
+                layout
+                key={cart.id}
+                initial={{ y: 24, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: index * 0.04, duration: 0.45 }}
+                className={`grain group flex flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium min-w-[280px] ${
+                  isHidden ? "hidden" : "flex"
+                }`}
+              >
+                {/* 16:9 Aspect Video Area - FIX 8 */}
+                <Link href={`/carts/${cart.id}`} className="block relative aspect-video overflow-hidden bg-[#fff7ed] z-0">
+                  <CartImage src={cart.images[0]} alt={cart.nameEn} />
+
+                  {/* Absolute badges - z-10 */}
+                  <span className={`absolute top-2 left-2 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${
+                    cart.availableCount >= 2 ? "bg-green-500 text-white" :
+                    cart.availableCount === 1 ? "bg-amber-400 text-black" :
+                    "bg-red-500 text-white"
+                  }`}>
+                    {cart.availableCount >= 2 ? "AVAILABLE" :
+                     cart.availableCount === 1 ? "LIMITED" : "BOOKED"}
+                  </span>
+
+                  {/* Count text absolute positioned below badge - z-10 top-9 */}
+                  <span className="absolute top-9 left-2 z-10 bg-white/95 px-2 py-0.5 rounded-full shadow-sm text-[10px] font-bold text-ink">
+                    {cart.availableCount >= 2 ? (
+                      <>
+                        <span className="en">{cart.availableCount} Carts</span>
+                        <span className="ta tamil-text">{cart.availableCount} வண்டிகள் உள்ளன</span>
+                      </>
+                    ) : cart.availableCount === 1 ? (
+                      <>
+                        <span className="en">Last 1 Cart</span>
+                        <span className="ta tamil-text">கடைசி 1 வண்டி</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="en">Sold Out</span>
+                        <span className="ta tamil-text">தற்போது இல்லை</span>
+                      </>
+                    )}
+                  </span>
+
+                  {/* Location badge bottom-2 left-2 - z-10 */}
+                  <span className="absolute bottom-2 left-2 z-10 flex items-center gap-1 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-ink shadow-sm">
+                    <MapPin size={13} /> <Text en="Coimbatore" ta="கோவை" />
+                  </span>
+                </Link>
+
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="font-display text-3xl uppercase leading-tight text-ink">
+                        <span className="en">{cart.nameEn}</span>
+                        <span className="ta tamil-text line-clamp-2 overflow-hidden text-ellipsis normal-case whitespace-normal leading-tight" title={cart.nameTa}>
+                          {cart.nameTa}
+                        </span>
+                      </h3>
+                      <p className="mt-1 text-sm text-muted">
+                        <span className="en">Rent Carts</span>
+                        <span className="ta tamil-text">வாடகை வண்டி</span>
+                      </p>
+                    </div>
+                    <Sparkles className="shrink-0 text-primary" size={20} />
+                  </div>
+
+                  {/* Tag wrapper constraints - flex-wrap gap-1 max-w-full - FIX 3 */}
+                  <div className="mt-4 flex flex-wrap gap-1 max-w-full">
+                    {cart.type.map((tag) => (
+                      <span 
+                        key={tag} 
+                        title={tag}
+                        className="truncate max-w-[140px] rounded-full bg-[#F8F6F2] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-muted"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Price info card container */}
+                  <div className="mt-5 rounded-lg border border-black/10 bg-[#F8F6F2] p-4 grid grid-cols-2 gap-2">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
+                        <span className="en">Daily Price</span>
+                        <span className="ta tamil-text">ஒரு நாள் வாடகை</span>
+                      </p>
+                      <p className="mt-1 font-display text-3xl text-ink">₹{cart.pricePerDay}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">
+                        <span className="en">Deposit</span>
+                        <span className="ta tamil-text">முன்பணம்</span>
+                      </p>
+                      <p className="mt-1 font-display text-3xl text-ink">₹{cart.depositAmount}</p>
+                    </div>
+                  </div>
+
+                  <ul className="mt-5 space-y-2 text-sm text-muted flex-1">
+                    {cart.features.slice(0, 3).map((feature) => (
+                      <li key={feature} className="flex gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        <span className="tamil-text">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-6 grid grid-cols-2 gap-3 pt-4 border-t border-black/5">
+                    <Button asChild variant="dark">
+                      <Link href={`/carts/${cart.id}`}>
+                        <span className="en">Details</span>
+                        <span className="ta tamil-text">விவரம்</span>
+                      </Link>
+                    </Button>
+                    <Button asChild className="bg-[#25D366] hover:bg-[#20ba5a] text-white">
+                      <a href={buildWAUrl(WA_NUMBER, `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nதேவையான தேதி:\nஇடம் (கோவையில்):\nகால அவகாசம்:\nமேலும் விவரம்:`)} target="_blank">
+                        <MessageCircle size={16} /> <span className="en">Book</span><span className="ta tamil-text">முன்பதிவு</span>
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
+        </div>
 
         {compact && (
           <div className="mt-8 text-left max-md:text-center">

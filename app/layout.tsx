@@ -7,36 +7,62 @@ import { Navbar } from "@/components/sections/navbar";
 import { WhatsAppFloat } from "@/components/sections/whatsapp-float";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thalluvandi.in"),
-  title: {
-    default: "Thalluvandi.in | Premium Food Cart Rentals in Coimbatore",
-    template: "%s | Thalluvandi.in"
-  },
+  metadataBase: new URL("https://thethalluvandi.in"),
+  title: "Thalluvandi | Food Cart Rental Tamil Nadu | தளவண்டி வாடகை",
   description:
-    "Premium food cart rentals for entrepreneurs in Coimbatore.",
+    "Tamil Nadu's trusted food cart rental service. 60+ carts in Coimbatore — with stove, roof, premium variants. WhatsApp booking. தளவண்டி வாடகை | ₹100/day onwards.",
   keywords: [
     "thalluvandi",
-    "thalluvandi in coimbatore",
-    "thalluvandi near me",
-    "best thalluvandi for rental",
-    "rental thallu vandi",
-    "food cart rental",
-    "push cart rental",
-    "foodcart in coimbatore",
-    "pushcart near me",
+    "thallu vandi",
+    "thalluvandi rental",
+    "thalluvandi.in",
+    "thallu vandi rent",
+    "food cart rental tamil nadu",
+    "food cart for rent tamil nadu",
+    "push cart rental tamil nadu",
+    "street food cart rental tamil nadu",
+    "thallu vandi rent tamil nadu",
+    "food cart rental near me",
     "food cart rental coimbatore",
-    "food cart for rent",
-    "street food cart rental",
-    "food pushcart rental"
+    "food cart rental chennai",
+    "food cart rental madurai",
+    "food cart rental salem",
+    "food cart rental erode",
+    "food cart rental trichy",
+    "food cart rental tirunelveli",
+    "food cart rental vellore",
+    "food cart rental dindigul",
+    "thallu vandi rent coimbatore",
+    "தளவண்டி வாடகை",
+    "உணவு வண்டி வாடகை தமிழ்நாடு",
+    "தளவண்டி வாடகை கோயம்புத்தூர்",
+    "தள்ளு வண்டி வாடகை"
   ],
+  alternates: {
+    canonical: "https://thethalluvandi.in"
+  },
   openGraph: {
-    title: "Thalluvandi.in",
-    description: "Start your food business without heavy investment.",
-    url: "https://thalluvandi.in",
-    siteName: "Thalluvandi.in",
-    images: ["/brand/full-logo-with-background.png"],
-    locale: "en_IN",
+    title: "Thalluvandi | Food Cart Rental Tamil Nadu | தளவண்டி வாடகை",
+    description: "Tamil Nadu's trusted food cart rental service. 60+ carts in Coimbatore — with stove, roof, premium variants. WhatsApp booking. தளவண்டி வாடகை | ₹100/day onwards.",
+    url: "https://thethalluvandi.in",
+    siteName: "Thalluvandi",
+    images: [
+      {
+        url: "/brand/full-logo-with-background.png",
+        width: 1200,
+        height: 630,
+        alt: "Thalluvandi food cart rental Tamil Nadu logo"
+      }
+    ],
+    locale: "ta_IN",
+    alternateLocale: ["en_IN"],
     type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Thalluvandi | Food Cart Rental Tamil Nadu | தளவண்டி வாடகை",
+    description: "Tamil Nadu's trusted food cart rental service. 60+ carts in Coimbatore — with stove, roof, premium variants.",
+    images: ["/brand/full-logo-with-background.png"]
   },
   icons: {
     icon: "/brand/text-logo.png",

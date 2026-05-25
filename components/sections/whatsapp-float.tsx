@@ -1,10 +1,11 @@
 import { MessageCircle } from "lucide-react";
-import { rentalTamilMessage, whatsappUrl } from "@/lib/utils";
+import { rentalTamilMessage } from "@/lib/utils";
+import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 
 export function WhatsAppFloat() {
   return (
     <a
-      href={whatsappUrl(rentalTamilMessage)}
+      href={buildWAUrl(WA_NUMBER, rentalTamilMessage)}
       target="_blank"
       className="fixed bottom-28 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-accent text-white shadow-glow transition hover:scale-105 md:bottom-5"
       aria-label="WhatsApp booking"
