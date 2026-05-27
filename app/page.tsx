@@ -488,7 +488,7 @@ export default function Home() {
             {faqs.map(([question, tamilQuestion, answer, tamilAnswer]) => (
               <details key={question} className="group p-6 open:bg-[#F8F6F2]">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-ink">
-                  <span>
+                  <span className="font-display text-xl uppercase tracking-[0.14em] text-ink">
                     <Text en={question} ta={tamilQuestion} />
                   </span>
                   <span className="text-xl text-primary group-open:hidden">

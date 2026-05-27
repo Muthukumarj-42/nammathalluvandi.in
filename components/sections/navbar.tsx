@@ -55,7 +55,7 @@ export function Navbar() {
               className="h-6 w-auto" 
               priority
             />
-            <span className="font-display text-lg font-normal uppercase tracking-[0.15em] text-ink">
+            <span className="font-display text-2xl font-black uppercase tracking-[0.12em] text-ink">
               THALLUVANDI
             </span>
           </Link>

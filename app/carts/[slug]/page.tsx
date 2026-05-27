@@ -20,26 +20,30 @@ export function generateStaticParams() {
   return carts.map((cart) => ({ slug: cart.id }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const cart = getCart(slug);
-  
+
   if (!cart) {
     return {
       title: "Cart Details | Thalluvandi",
-      description: "Premium food cart rentals in Coimbatore."
+      description: "Premium food cart rentals in Coimbatore.",
     };
   }
 
   const titleText = `${cart.nameEn} for Rent in Coimbatore | Thalluvandi`;
   const descText = `Rent the premium ${cart.nameEn} (தளவண்டி) in Coimbatore, Tamil Nadu. Features: ${cart.featuresEn.join(", ")}. Starting at ₹${cart.pricePerDay}/day with refundable deposit.`;
 
-  return { 
-    title: titleText, 
+  return {
+    title: titleText,
     description: descText,
     keywords: `food cart rental coimbatore, push cart rental tamil nadu, thalluvandi, thallu vandi, ${cart.nameEn} rent`,
     alternates: {
-      canonical: `https://thethalluvandi.in/carts/${cart.id}`
+      canonical: `https://thethalluvandi.in/carts/${cart.id}`,
     },
     openGraph: {
       title: titleText,
@@ -50,15 +54,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           url: cart.images[0],
           width: 1200,
           height: 630,
-          alt: `${cart.nameEn} for rent in Coimbatore`
-        }
+          alt: `${cart.nameEn} for rent in Coimbatore`,
+        },
       ],
-      type: "website"
-    }
+      type: "website",
+    },
   };
 }
 
-export default async function CartDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function CartDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const cart = getCart(slug);
   if (!cart) notFound();
@@ -79,9 +87,15 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
             <div className="mt-6 rounded-xl bg-white p-4 text-ink shadow-sm border border-black/10">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
                 {cart.available ? (
-                  <Text en="Available — Coimbatore" ta="இப்போது வாடகைக்கு கிடைக்கும் — கோவை" />
+                  <Text
+                    en="Available — Coimbatore"
+                    ta="இப்போது வாடகைக்கு கிடைக்கும் — கோவை"
+                  />
                 ) : (
-                  <Text en="Fully Booked — Coimbatore" ta="முன்பதிவு செய்யப்பட்டுள்ளது — கோவை" />
+                  <Text
+                    en="Fully Booked — Coimbatore"
+                    ta="முன்பதிவு செய்யப்பட்டுள்ளது — கோவை"
+                  />
                 )}
               </p>
               <h1 className="mt-2 font-display text-5xl uppercase leading-none md:text-6xl">
@@ -99,13 +113,17 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
                     <span className="ta tamil-text">ஒரு நாள் வாடகை</span>
                   </p>
                   <div className="mt-2 flex items-baseline">
-                    <span className="font-display text-4xl font-bold text-ink">₹{cart.pricePerDay}</span>
-                    <span className="text-xs text-muted-foreground ml-1 uppercase font-semibold">/ day</span>
+                    <span className="font-display text-4xl font-bold text-ink">
+                      ₹{cart.pricePerDay}
+                    </span>
+                    <span className="text-xs text-muted-foreground ml-1 uppercase font-semibold">
+                      / day
+                    </span>
                   </div>
                 </div>
                 <div className="mt-4 text-xs text-primary font-semibold">
-                  <span className="en">Best Daily Rate</span>
-                  <span className="ta tamil-text">சிறந்த தினசரி வாடகை</span>
+                  <span className="en">Daily Rate</span>
+                  <span className="ta tamil-text">ஒரு நாள் வாடகை</span>
                 </div>
               </div>
 
@@ -117,7 +135,9 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
                     <span className="ta tamil-text">முன்பணம்</span>
                   </p>
                   <div className="mt-2 flex items-baseline">
-                    <span className="font-display text-4xl font-bold text-ink">₹{cart.depositAmount}</span>
+                    <span className="font-display text-4xl font-bold text-ink">
+                      ₹{cart.depositAmount}
+                    </span>
                   </div>
                 </div>
                 <div className="mt-4 text-xs text-green-600 font-semibold">
@@ -136,8 +156,11 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
                 {cart.featuresEn.map((featEn, idx) => {
                   const featTa = cart.featuresTa[idx];
                   return (
-                    <div key={idx} className="rounded-xl border border-black/10 bg-white p-4 text-sm font-bold text-muted-foreground flex items-center gap-2">
-                      <Zap className="text-primary shrink-0" size={18} /> 
+                    <div
+                      key={idx}
+                      className="rounded-xl border border-black/10 bg-white p-4 text-sm font-bold text-muted-foreground flex items-center gap-2"
+                    >
+                      <Zap className="text-primary shrink-0" size={18} />
                       <span>
                         <span className="en">{featEn}</span>
                         <span className="ta tamil-text">{featTa}</span>
@@ -155,27 +178,47 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
               </h2>
               <div className="mt-5 divide-y divide-black/10 rounded-2xl border border-black/10 bg-white">
                 <div className="grid grid-cols-2 gap-4 p-4 text-sm">
-                  <span className="font-bold text-ink"><Text en="Supported Area" ta="சேவை பகுதி" /></span>
-                  <span className="text-muted-foreground tamil-text"><Text en="Coimbatore (Expanding across Tamil Nadu)" ta="கோயம்புத்தூர் (தமிழ்நாடு முழுவதும் விரிவடைகிறது)" /></span>
+                  <span className="font-bold text-ink">
+                    <Text en="Supported Area" ta="சேவை பகுதி" />
+                  </span>
+                  <span className="text-muted-foreground tamil-text">
+                    <Text
+                      en="Coimbatore (Expanding across Tamil Nadu)"
+                      ta="கோயம்புத்தூர் (தமிழ்நாடு முழுவதும் விரிவடைகிறது)"
+                    />
+                  </span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 p-4 text-sm">
-                  <span className="font-bold text-ink"><Text en="Cart Type" ta="வண்டி வகை" /></span>
+                  <span className="font-bold text-ink">
+                    <Text en="Cart Type" ta="வண்டி வகை" />
+                  </span>
                   <span className="text-muted-foreground flex flex-wrap gap-1">
                     {cart.type.map((t) => (
-                      <span key={t} className="bg-orange-50 border border-orange-200/50 text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider text-[#f97316]">
+                      <span
+                        key={t}
+                        className="bg-orange-50 border border-orange-200/50 text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider text-[#f97316]"
+                      >
                         {t}
                       </span>
                     ))}
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 p-4 text-sm">
-                  <span className="font-bold text-ink"><Text en="Availability Limit" ta="விருப்ப இருப்பு எண்ணிக்கை" /></span>
-                  <span className="text-muted-foreground font-semibold"><Text en={`${cart.availableCount} Carts ready`} ta={`${cart.availableCount} வண்டிகள் தயார்`} /></span>
+                  <span className="font-bold text-ink">
+                    <Text
+                      en="Availability Limit"
+                      ta="விருப்ப இருப்பு எண்ணிக்கை"
+                    />
+                  </span>
+                  <span className="text-muted-foreground font-semibold">
+                    <Text
+                      en={`${cart.availableCount} Carts ready`}
+                      ta={`${cart.availableCount} வண்டிகள் தயார்`}
+                    />
+                  </span>
                 </div>
               </div>
             </section>
-
-
 
             {/* Related carts */}
             <section className="mt-12">
@@ -184,7 +227,11 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
               </h2>
               <div className="mt-5 grid gap-4 md:grid-cols-3">
                 {related.map((item) => (
-                  <Link href={`/carts/${item.id}`} key={item.id} className="rounded-xl border border-black/10 bg-white p-4 transition hover:-translate-y-1 hover:shadow-premium">
+                  <Link
+                    href={`/carts/${item.id}`}
+                    key={item.id}
+                    className="rounded-xl border border-black/10 bg-white p-4 transition hover:-translate-y-1 hover:shadow-premium"
+                  >
                     <p className="font-bold text-ink">
                       <span className="en">{item.nameEn}</span>
                       <span className="ta tamil-text">{item.nameTa}</span>
@@ -207,20 +254,25 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
               <Text en="Reserve this cart" ta="இந்த வண்டியை புக் செய்ய" />
             </h2>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
-              <Text 
-                en="Confirm availability, rental period, location, delivery, and setup details on WhatsApp." 
-                ta="கோயம்புத்தூரில் தள்ளுவண்டி கிடைக்கும் தேதி, இடம் மற்றும் டெலிவரி விவரங்களை வாட்ஸ்அப்பில் பேசி உறுதி செய்து கொள்ளவும்." 
+              <Text
+                en="Confirm availability, rental period, location, delivery, and setup details on WhatsApp."
+                ta="கோயம்புத்தூரில் தள்ளுவண்டி கிடைக்கும் தேதி, இடம் மற்றும் டெலிவரி விவரங்களை வாட்ஸ்அப்பில் பேசி உறுதி செய்து கொள்ளவும்."
               />
             </p>
-            <Button asChild size="lg" className="mt-6 w-full bg-[#25D366] hover:bg-[#20ba5a] text-white">
+            <Button
+              asChild
+              size="lg"
+              className="mt-6 w-full bg-[#25D366] hover:bg-[#20ba5a] text-white"
+            >
               <a href={buildWAUrl(WA_NUMBER, bookingMsg)} target="_blank">
-                <MessageCircle size={18} /> <Text en="🛒 Book This Cart" ta="🛒 முன்பதிவு செய்ய" />
+                <MessageCircle size={18} />{" "}
+                <Text en="🛒 Book This Cart" ta="🛒 முன்பதிவு செய்ய" />
               </a>
             </Button>
             <div className="mt-6 rounded-xl border border-dashed border-black/18 bg-[#F8F6F2] p-4 text-xs leading-relaxed text-muted-foreground">
-              <Text 
-                en="Live availability is confirmed on WhatsApp before booking." 
-                ta="முன்பதிவு செய்வதற்கு முன்பாக வண்டியின் இருப்பு வாட்ஸ்அப்பில் உறுதிப்படுத்தப்படும்." 
+              <Text
+                en="Live availability is confirmed on WhatsApp before booking."
+                ta="முன்பதிவு செய்வதற்கு முன்பாக வண்டியின் இருப்பு வாட்ஸ்அப்பில் உறுதிப்படுத்தப்படும்."
               />
             </div>
           </aside>

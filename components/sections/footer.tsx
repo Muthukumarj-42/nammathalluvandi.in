@@ -55,12 +55,12 @@ export function Footer() {
                 Nadu.
               </span>
               <span className="ta tamil-text">
-                கோவையில் தொழில் தொடங்க வண்டி வேண்டுமா? நம்பிக்கையா பேசுங்க.
-                தமிழ்நாடு முழுக்க விரைவில் வரோம்.
+                கோவையில் தொழில் தொடங்க வண்டி வேண்டுமா? தமிழ்நாடு முழுக்க
+                விரைவில் வரோம்.
               </span>
             </p>
             <div className="mt-6 flex gap-3">
-              {[Instagram, Linkedin, Mail, Phone].map((Icon, index) => (
+              {[Mail, Phone].map((Icon, index) => (
                 <span
                   key={index}
                   className="grid h-11 w-11 place-items-center rounded border border-primary/15 text-[#1a1208]/74"
@@ -96,12 +96,8 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-3 border-t border-primary/15 pt-6 text-xs uppercase tracking-[0.14em] text-[#1a1208]/50 md:flex-row md:justify-between">
           <span>© 2026 Thalluvandi.in</span>
           <span>
-            <span className="en">
-              Legal, terms, privacy and vendor policy placeholders
-            </span>
-            <span className="ta tamil-text">
-              விதிமுறைகள், privacy, vendor policy
-            </span>
+            <span className="en"></span>
+            <span className="ta tamil-text"></span>
           </span>
         </div>
       </div>

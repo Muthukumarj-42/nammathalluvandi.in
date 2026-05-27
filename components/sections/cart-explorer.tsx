@@ -111,13 +111,25 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
       if (!q) return matchesFilter;
 
       const priceMatch = !isNaN(Number(q)) && cart.pricePerDay <= Number(q);
-      const textMatch = [
-        cart.nameEn,
-        cart.nameTa,
-        ...cart.type,
-        ...cart.featuresEn,
-        ...cart.featuresTa,
-      ].some((field) => field.toLowerCase().includes(q));
+      
+      // Split search query by space to match multiple keywords
+      const keywords = q.split(/\s+/);
+      
+      // Check if all keywords are matched in the cart's text fields
+      const textMatch = keywords.every((keyword) => {
+        const searchFields = [
+          cart.nameEn,
+          cart.nameTa,
+          cart.id,
+          ...(cart.type || []),
+          ...(cart.featuresEn || []),
+          ...(cart.featuresTa || []),
+        ];
+        
+        return searchFields.some((field) => 
+          field && String(field).toLowerCase().includes(keyword)
+        );
+      });
 
       return matchesFilter && (priceMatch || textMatch);
     });
@@ -225,7 +237,12 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                if (e.target.value.trim()) {
+                  setActiveFilter("All"); // Reset active filter pill to "All" when searching
+                }
+              }}
               placeholder={placeholderText}
               suppressHydrationWarning
               className="w-full h-12 pl-12 pr-10 border border-black/10 focus:border-primary focus:ring-2 focus:ring-primary/40 rounded-xl bg-white text-sm outline-none transition"
