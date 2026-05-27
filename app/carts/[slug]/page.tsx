@@ -156,7 +156,7 @@ export default async function CartDetailPage({ params }: { params: Promise<{ slu
               <div className="mt-5 divide-y divide-black/10 rounded-2xl border border-black/10 bg-white">
                 <div className="grid grid-cols-2 gap-4 p-4 text-sm">
                   <span className="font-bold text-ink"><Text en="Supported Area" ta="சேவை பகுதி" /></span>
-                  <span className="text-muted-foreground tamil-text"><Text en="Coimbatore" ta="கோயம்புத்தூர்" /></span>
+                  <span className="text-muted-foreground tamil-text"><Text en="Coimbatore (Expanding across Tamil Nadu)" ta="கோயம்புத்தூர் (தமிழ்நாடு முழுவதும் விரிவடைகிறது)" /></span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 p-4 text-sm">
                   <span className="font-bold text-ink"><Text en="Cart Type" ta="வண்டி வகை" /></span>

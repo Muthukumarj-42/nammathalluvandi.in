@@ -26,6 +26,7 @@ const benefits = [
   ["Reach more rental customers", "அதிக வாடகை வாடிக்கையாளர்களை அடையுங்கள்"],
   ["Earn from idle carts", "பயன்படாத வண்டிகள் மூலம் வருமானம் ஈட்டுங்கள்"],
   ["Get listed in a premium marketplace", "பிரீமியம் சந்தையில் உங்கள் வண்டியை பதிவு செய்யுங்கள்"],
+  ["Expanding network across Tamil Nadu", "தமிழ்நாடு முழுவதும் விரிவடையும் சேவை"],
   ["Agree platform fee before listing", "பதிவு செய்வதற்கு முன் கட்டணத்தை ஒப்புக்கொள்ளுங்கள்"]
 ];
 
@@ -44,7 +45,10 @@ export default function PublishPage() {
                 <Text en="Publish Your Cart on Thalluvandi" ta="என் வண்டி சேர்க்க" />
               </h1>
               <p className="mt-6 max-w-[680px] text-lg leading-8 text-muted">
-                <Text en="If you own a food cart and want more rental customers, publish it on Thalluvandi." ta="உங்களுக்கு தள்ளுவண்டி இருந்தால் தள்ளுவண்டி தளத்தில் உங்கள் வண்டியை பதிவு செய்யுங்கள் — வாடிக்கையாளர்களை நாங்க தர்றோம்!" />
+                <Text 
+                  en="If you own a food cart and want more rental customers, publish it on Thalluvandi. We are rapidly expanding our network across all Tamil Nadu districts!" 
+                  ta="உங்களுக்கு தள்ளுவண்டி இருந்தால் தள்ளுவண்டி தளத்தில் உங்கள் வண்டியை பதிவு செய்யுங்கள் — தமிழ்நாடு முழுவதும் நாங்கள் வேகமாக விரிவடைந்து வருகிறோம், வாடிக்கையாளர்களை நாங்க தர்றோம்!" 
+                />
               </p>
             </div>
             <Button asChild size="lg" className="mt-8 bg-[#25D366] hover:bg-[#20ba5a] text-white">

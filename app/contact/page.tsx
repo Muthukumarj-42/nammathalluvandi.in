@@ -99,8 +99,8 @@ export default function ContactPage() {
           </h1>
           <p className="mt-6 max-w-[680px] text-lg leading-8 text-muted">
             <Text
-              en="Reach out to us for premium food cart rentals and custom manufacturing in Coimbatore."
-              ta="கோயம்புத்தூரில் தள்ளுவண்டி வாடகை மற்றும் தனிப்பட்ட வண்டிகள் தயாரிக்க எங்களை தொடர்பு கொள்ளவும்."
+              en="Reach out to us for premium food cart rentals and custom manufacturing in Coimbatore and expanding across all districts of Tamil Nadu."
+              ta="கோயம்புத்தூர் மற்றும் தமிழ்நாடு முழுவதும் உள்ள அனைத்து மாவட்டங்களிலும் தள்ளுவண்டி வாடகை மற்றும் தனிப்பட்ட வண்டிகள் தயாரிக்க எங்களை தொடர்பு கொள்ளவும்."
             />
           </p>
         </div>
