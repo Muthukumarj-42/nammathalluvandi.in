@@ -110,25 +110,33 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
       const q = searchQuery.toLowerCase().trim();
       if (!q) return matchesFilter;
 
-      const priceMatch = !isNaN(Number(q)) && cart.pricePerDay <= Number(q);
-      
-      // Split search query by space to match multiple keywords
+      // Price match: if input is a number, show carts at or below that price
+      const priceMatch = !isNaN(Number(q)) && Number(q) > 0 && cart.pricePerDay <= Number(q);
+
+      // Split search into individual keywords (all must match)
       const keywords = q.split(/\s+/);
-      
-      // Check if all keywords are matched in the cart's text fields
+
       const textMatch = keywords.every((keyword) => {
-        const searchFields = [
+        // Exact type-tag match: e.g. "stove" matches "Has Stove" but NOT "No Stove"
+        // We check if any type tag's words include the keyword as a whole word
+        const typeTagMatch = cart.type.some((tag) => {
+          const tagWords = tag.toLowerCase().split(/\s+/);
+          return tagWords.includes(keyword);
+        });
+
+        // Substring match only on name, id, and feature fields (not type tags)
+        const nameAndFeatureFields = [
           cart.nameEn,
           cart.nameTa,
           cart.id,
-          ...(cart.type || []),
           ...(cart.featuresEn || []),
           ...(cart.featuresTa || []),
         ];
-        
-        return searchFields.some((field) => 
-          field && String(field).toLowerCase().includes(keyword)
+        const nameFeatureMatch = nameAndFeatureFields.some(
+          (field) => field && String(field).toLowerCase().includes(keyword)
         );
+
+        return typeTagMatch || nameFeatureMatch;
       });
 
       return matchesFilter && (priceMatch || textMatch);
