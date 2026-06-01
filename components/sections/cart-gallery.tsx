@@ -1,14 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
-function GalleryImage({ src, alt }: { src: string; alt: string }) {
+function GalleryImage({
+  src,
+  alt,
+  isThumbnail = false,
+}: {
+  src: string;
+  alt: string;
+  isThumbnail?: boolean;
+}) {
   const [error, setError] = useState(false);
 
   if (error || !src) {
     return (
-      <div className="relative w-full h-full bg-[#1a1208] flex items-center justify-center overflow-hidden">
+      <div
+        className={`relative bg-[#1a1208] flex items-center justify-center overflow-hidden rounded-2xl ${
+          isThumbnail ? "w-full h-full" : "w-full aspect-video min-h-[300px]"
+        }`}
+      >
         <div className="absolute inset-0 bg-black/60 z-10" />
         <img
           src="/brand/full-logo-with-background.png"
@@ -19,11 +30,25 @@ function GalleryImage({ src, alt }: { src: string; alt: string }) {
     );
   }
 
+  if (isThumbnail) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className="object-cover absolute inset-0 w-full h-full"
+        onError={(e) => {
+          e.currentTarget.onerror = null;
+          setError(true);
+        }}
+      />
+    );
+  }
+
   return (
     <img
       src={src}
       alt={alt}
-      className="object-cover absolute inset-0 w-full h-full"
+      className="object-contain max-h-[550px] w-auto h-auto max-w-full mx-auto rounded-2xl"
       onError={(e) => {
         e.currentTarget.onerror = null;
         setError(true);
@@ -47,31 +72,35 @@ export function CartGallery({ images, nameEn }: { images: string[]; nameEn: stri
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Main Large Image Container (16:9, aspect-video) */}
-      <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-black/10 bg-[#fff7ed]">
-        <div 
-          className={`w-full h-full transition-opacity duration-300 ${
-            fade ? "opacity-0" : "opacity-100"
+      {/* Main Dynamic Large Image Container */}
+      <div className="w-full flex justify-center">
+        <div
+          className={`relative overflow-hidden rounded-2xl border border-black/10 bg-[#fff7ed] w-fit max-w-full transition-all duration-300 ${
+            fade ? "opacity-0 scale-95" : "opacity-100 scale-100"
           }`}
         >
-          <GalleryImage src={images[activeIndex]} alt={`${nameEn} - view ${activeIndex + 1}`} />
+          <GalleryImage
+            src={images[activeIndex]}
+            alt={`${nameEn} - view ${activeIndex + 1}`}
+            isThumbnail={false}
+          />
         </div>
       </div>
 
       {/* Thumbnail row below */}
-      <div className="flex gap-3">
+      <div className="flex gap-3 justify-center md:justify-start">
         {images.map((img, idx) => (
           <button
             key={idx}
             onClick={() => handleThumbnailClick(idx)}
             className={`relative aspect-square w-20 overflow-hidden rounded-xl border-2 transition ${
-              idx === activeIndex 
-                ? "border-primary scale-95 shadow-md" 
+              idx === activeIndex
+                ? "border-primary scale-95 shadow-md"
                 : "border-black/10 hover:border-primary/40"
             }`}
             aria-label={`View image ${idx + 1}`}
           >
-            <GalleryImage src={img} alt={`${nameEn} thumbnail ${idx + 1}`} />
+            <GalleryImage src={img} alt={`${nameEn} thumbnail ${idx + 1}`} isThumbnail={true} />
           </button>
         ))}
       </div>
