@@ -102,7 +102,6 @@ export const carts: Cart[] = [
     images: [
       "/carts/starter-cart-without-stove/photo-1.jpg",
       "/carts/starter-cart-without-stove/photo-2.jpg",
-      "/carts/starter-cart-without-stove/photo-3.jpg",
     ],
     whatsappMessageTa:
       "வணக்கம், நான் சாதாரண வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
@@ -122,7 +121,6 @@ export const carts: Cart[] = [
     images: [
       "/carts/covered-premium-cart/photo-1.jpg",
       "/carts/covered-premium-cart/photo-2.jpg",
-      "/carts/covered-premium-cart/photo-3.jpg",
     ],
     whatsappMessageTa:
       "வணக்கம், நான் மேல் கவர் பிரீமியம் வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
