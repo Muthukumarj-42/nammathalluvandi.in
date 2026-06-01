@@ -301,7 +301,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
             >
               {slideshowCarts.map((cart) => (
                 <div key={cart.id} className="w-full shrink-0 px-4">
-                  <article className="overflow-hidden rounded-xl bg-white border border-black/10 shadow-lg">
+                  <article className="relative overflow-hidden rounded-xl bg-white border border-black/10 shadow-lg">
                     {/* Aspect Ratio 16:9 Image Area - FIX 8 */}
                     <div className="relative aspect-video w-full overflow-hidden">
                       <CartImage src={cart.images[0]} alt={cart.nameEn} />
@@ -401,14 +401,14 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                           variant="outline"
                           className="border-black/20 text-ink text-xs h-10"
                         >
-                          <Link href={`/carts/${cart.id}`}>
+                          <Link href={`/carts/${cart.id}`} className="after:absolute after:inset-0 after:z-10">
                             <span className="en">DETAILS</span>
                             <span className="ta tamil-text">விவரம்</span>
                           </Link>
                         </Button>
                         <Button
                           asChild
-                          className="bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs h-10"
+                          className="bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs h-10 relative z-20"
                         >
                           <a
                             href={buildWAUrl(
@@ -462,7 +462,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ delay: index * 0.04, duration: 0.45 }}
-                  className={`grain group flex flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium min-w-[280px] ${
+                  className={`relative grain group flex flex-col overflow-hidden rounded-xl border border-black/10 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-premium min-w-[280px] ${
                     isHidden ? "hidden" : "flex"
                   }`}
                 >
@@ -590,14 +590,14 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
 
                     <div className="mt-6 grid grid-cols-2 gap-3 pt-4 border-t border-black/5">
                       <Button asChild variant="dark">
-                        <Link href={`/carts/${cart.id}`}>
+                        <Link href={`/carts/${cart.id}`} className="after:absolute after:inset-0 after:z-10">
                           <span className="en">Details</span>
                           <span className="ta tamil-text">விவரம்</span>
                         </Link>
                       </Button>
                       <Button
                         asChild
-                        className="bg-[#25D366] hover:bg-[#20ba5a] text-white"
+                        className="bg-[#25D366] hover:bg-[#20ba5a] text-white relative z-20"
                       >
                         <a
                           href={buildWAUrl(
