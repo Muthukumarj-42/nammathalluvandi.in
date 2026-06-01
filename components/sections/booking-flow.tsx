@@ -458,10 +458,16 @@ function RentalRules({ lang }: { lang: "en" | "ta" }) {
       </div>
 
       {/* Docs Note */}
-      <p className="text-xs text-muted-foreground italic mt-2">
-        <span className="en">Bring with you: Aadhaar Card, Ration Card, PAN Card, 1 Passport Photo</span>
-        <span className="ta tamil-text block text-[11px] not-italic">கொண்டு வர வேண்டியது: ஆதார் கார்டு, ரேசன் கார்டு, பான் கார்டு, போட்டோ 1</span>
-      </p>
+      <div className="mt-4 p-3.5 bg-amber-50/80 border border-amber-500/20 rounded-xl text-xs text-amber-900 flex flex-col gap-1 shadow-sm">
+        <span className="font-bold uppercase tracking-wider text-[10px] text-amber-700 block">
+          <span className="en">Required Documents (Any One Proof is Enough)</span>
+          <span className="ta tamil-text">தேவையான ஆவணங்கள் (ஏதேனும் ஒன்று மட்டும் போதுமானது)</span>
+        </span>
+        <p className="leading-relaxed">
+          <span className="en">Please bring: Aadhaar Card, Ration Card, or PAN Card (any one of these) + 1 Passport Photo</span>
+          <span className="ta tamil-text block text-[11px] mt-0.5">கொண்டு வர வேண்டியது: ஆதார் கார்டு, ரேஷன் கார்டு, அல்லது பான் கார்டு (இதில் ஏதேனும் ஒரு ஆதாரம்) + 1 பாஸ்போர்ட் போட்டோ</span>
+        </p>
+      </div>
     </div>
   );
 }
