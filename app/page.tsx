@@ -18,6 +18,7 @@ import { Reveal } from "@/components/sections/reveal";
 import { rentalTamilMessage } from "@/lib/utils";
 import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 import { CartCounter } from "@/components/sections/cart-counter";
+import { HeroWhatsappButton } from "@/components/sections/hero-whatsapp-button";
 
 function Text({ en, ta }: { en: string; ta: string }) {
   return (
@@ -186,20 +187,7 @@ export default function Home() {
                   <ArrowRight size={18} />
                 </Link>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-primary/45 text-ink"
-              >
-                <a
-                  href={buildWAUrl(WA_NUMBER, rentalTamilMessage)}
-                  target="_blank"
-                >
-                  <MessageCircle size={18} />{" "}
-                  <Text en="💬 Chat on WhatsApp" ta="💬 WhatsApp-ல பேசலாம்" />
-                </a>
-              </Button>
+              <HeroWhatsappButton rentalTamilMessage={rentalTamilMessage} />
             </div>
           </Reveal>
 
