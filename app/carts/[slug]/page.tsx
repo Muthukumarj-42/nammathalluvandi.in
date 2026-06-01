@@ -16,6 +16,41 @@ function Text({ en, ta }: { en: string; ta: string }) {
   );
 }
 
+function BookingCard({ bookingMsg }: { bookingMsg: string }) {
+  return (
+    <>
+      <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
+        <Text en="Booking inquiry" ta="முன்பதிவு விசாரணை" />
+      </p>
+      <h2 className="mt-3 font-display text-4xl uppercase text-ink">
+        <Text en="Reserve this cart" ta="இந்த வண்டியை புக் செய்ய" />
+      </h2>
+      <p className="mt-3 text-sm leading-7 text-muted-foreground">
+        <Text
+          en="Confirm availability, rental period, location, delivery, and setup details on WhatsApp."
+          ta="கோயம்புத்தூரில் தள்ளுவண்டி கிடைக்கும் தேதி, இடம் மற்றும் டெலிவரி விவரங்களை வாட்ஸ்அப்பில் பேசி உறுதி செய்து கொள்ளவும்."
+        />
+      </p>
+      <Button
+        asChild
+        size="lg"
+        className="mt-6 w-full bg-[#25D366] hover:bg-[#20ba5a] text-white"
+      >
+        <a href={buildWAUrl(WA_NUMBER, bookingMsg)} target="_blank">
+          <MessageCircle size={18} />{" "}
+          <Text en="🛒 Book This Cart" ta="🛒 முன்பதிவு செய்ய" />
+        </a>
+      </Button>
+      <div className="mt-6 rounded-xl border border-dashed border-black/18 bg-[#F8F6F2] p-4 text-xs leading-relaxed text-muted-foreground">
+        <Text
+          en="Live availability is confirmed on WhatsApp before booking."
+          ta="முன்பதிவு செய்வதற்கு முன்பாக வண்டியின் இருப்பு வாட்ஸ்அப்பில் உறுதிப்படுத்தப்படும்."
+        />
+      </div>
+    </>
+  );
+}
+
 export function generateStaticParams() {
   return carts.map((cart) => ({ slug: cart.id }));
 }
@@ -147,6 +182,11 @@ export default async function CartDetailPage({
               </div>
             </div>
 
+            {/* Mobile Booking Inquiry (Visible on mobile only, before features) */}
+            <div className="mt-8 block md:hidden rounded-2xl border border-black/10 bg-white p-5 shadow-premium">
+              <BookingCard bookingMsg={bookingMsg} />
+            </div>
+
             {/* Features list */}
             <section className="mt-12">
               <h2 className="font-display text-4xl uppercase text-ink">
@@ -245,36 +285,9 @@ export default async function CartDetailPage({
             </section>
           </div>
 
-          {/* Sticky Inquiry card panel */}
-          <aside className="h-fit rounded-2xl border border-black/10 bg-white p-5 shadow-premium md:sticky md:top-28">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
-              <Text en="Booking inquiry" ta="முன்பதிவு விசாரணை" />
-            </p>
-            <h2 className="mt-3 font-display text-4xl uppercase text-ink">
-              <Text en="Reserve this cart" ta="இந்த வண்டியை புக் செய்ய" />
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-muted-foreground">
-              <Text
-                en="Confirm availability, rental period, location, delivery, and setup details on WhatsApp."
-                ta="கோயம்புத்தூரில் தள்ளுவண்டி கிடைக்கும் தேதி, இடம் மற்றும் டெலிவரி விவரங்களை வாட்ஸ்அப்பில் பேசி உறுதி செய்து கொள்ளவும்."
-              />
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="mt-6 w-full bg-[#25D366] hover:bg-[#20ba5a] text-white"
-            >
-              <a href={buildWAUrl(WA_NUMBER, bookingMsg)} target="_blank">
-                <MessageCircle size={18} />{" "}
-                <Text en="🛒 Book This Cart" ta="🛒 முன்பதிவு செய்ய" />
-              </a>
-            </Button>
-            <div className="mt-6 rounded-xl border border-dashed border-black/18 bg-[#F8F6F2] p-4 text-xs leading-relaxed text-muted-foreground">
-              <Text
-                en="Live availability is confirmed on WhatsApp before booking."
-                ta="முன்பதிவு செய்வதற்கு முன்பாக வண்டியின் இருப்பு வாட்ஸ்அப்பில் உறுதிப்படுத்தப்படும்."
-              />
-            </div>
+          {/* Sticky Inquiry card panel (Desktop only) */}
+          <aside className="h-fit rounded-2xl border border-black/10 bg-white p-5 shadow-premium md:sticky md:top-28 hidden md:block">
+            <BookingCard bookingMsg={bookingMsg} />
           </aside>
         </div>
       </section>
