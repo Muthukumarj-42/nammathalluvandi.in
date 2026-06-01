@@ -21,7 +21,6 @@ export function BookingFlow() {
     phone: "",
     date: "",
     location: "",
-    duration: "",
     details: "",
   });
 
@@ -91,7 +90,6 @@ export function BookingFlow() {
     formData.phone.replace(/\D/g, "").length === 10 &&
     formData.date !== "" &&
     formData.location.trim() !== "" &&
-    formData.duration.trim() !== "" &&
     agreed &&
     phoneError === "";
 
@@ -108,7 +106,6 @@ export function BookingFlow() {
 தொலைபேசி: ${formData.phone.trim()}
 தேவையான தேதி: ${formData.date}
 இடம் (கோவையில்): ${formData.location.trim()}
-கால அவகாசம்: ${formData.duration.trim()}
 மேலும் விவரம்: ${extraDetails}
 
 அனைத்து வாடகை விதிகளையும் படித்து ஒப்புக்கொண்டேன். ✓`;
@@ -122,7 +119,6 @@ export function BookingFlow() {
     name: lang === "ta" ? "உங்கள் பெயர் உள்ளிடுங்கள்" : "Enter your full name",
     phone: lang === "ta" ? "உங்கள் கைபேசி எண்" : "Enter your mobile number",
     location: lang === "ta" ? "உங்கள் கடை / இடம்" : "Your shop/stall location",
-    duration: lang === "ta" ? "எத்தனை மாதம்? (குறைந்தபட்சம் 1 மாதம்)" : "How many months? (minimum 1 month)",
     details: lang === "ta" ? "கூடுதல் தேவைகள் அல்லது கேள்விகள்?" : "Any special requirements or questions?",
   };
 
@@ -305,26 +301,7 @@ export function BookingFlow() {
                 />
               </div>
 
-              {/* Field 5: Duration */}
-              <div className="flex flex-col">
-                <label htmlFor="duration" className="text-sm font-semibold mb-1 block">
-                  <span className="en">Rental Duration *</span>
-                  <span className="ta tamil-text">கால அவகாசம் *</span>
-                </label>
-                <input
-                  type="text"
-                  id="duration"
-                  required
-                  value={formData.duration}
-                  onChange={handleInputChange}
-                  placeholder={placeholders.duration}
-                  className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-base outline-none transition"
-                />
-                <span className="text-xs text-amber-600 font-semibold mt-1">
-                  <span className="en">Minimum rental period is 1 month</span>
-                  <span className="ta tamil-text block text-[10px]">குறைந்தபட்சம் 1 மாதம் வாடகை கட்டாயம்</span>
-                </span>
-              </div>
+
 
               {/* Field 6: Details */}
               <div className="flex flex-col">
