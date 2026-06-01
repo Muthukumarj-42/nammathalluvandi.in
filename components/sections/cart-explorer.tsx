@@ -13,8 +13,6 @@ import {
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { carts, filters, type Cart } from "@/lib/carts";
-import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
-import { BookingRulesModal } from "@/components/ui/booking-rules-modal";
 
 function Text({ en, ta }: { en: string; ta: string }) {
   return (
@@ -59,20 +57,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [lang, setLang] = useState<"en" | "ta">("en");
   
-  const [modalOpen, setModalOpen] = useState(false);
-  const [pendingUrl, setPendingUrl] = useState("");
-  const [pendingCartName, setPendingCartName] = useState("");
 
-  const handleBookClick = (waUrl: string, cartName: string) => {
-    setPendingUrl(waUrl);
-    setPendingCartName(cartName);
-    setModalOpen(true);
-  };
-
-  const handleConfirm = () => {
-    window.open(pendingUrl, "_blank");
-    setModalOpen(false);
-  };
 
   // Sync React language state dynamically with DOM mutations (data-lang toggle) - FIX 4
   useEffect(() => {
@@ -426,22 +411,10 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                           asChild
                           className="bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs h-10 relative z-20"
                         >
-                          <a
-                            href="#"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              handleBookClick(
-                                buildWAUrl(
-                                  WA_NUMBER,
-                                  `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nதேவையான தேதி:\nஇடம் (கோவையில்):\nகால அவகாசம்:\nமேலும் விவரம்:`,
-                                ),
-                                lang === "ta" ? cart.nameTa : cart.nameEn
-                              );
-                            }}
-                          >
+                          <Link href={`/book?cart=${cart.id}`}>
                             <span className="en">BOOK CART</span>
                             <span className="ta tamil-text">புக் செய்ய</span>
-                          </a>
+                          </Link>
                         </Button>
                       </div>
                     </div>
@@ -621,23 +594,11 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                         asChild
                         className="bg-[#25D366] hover:bg-[#20ba5a] text-white relative z-20"
                       >
-                        <a
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleBookClick(
-                              buildWAUrl(
-                                WA_NUMBER,
-                                `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nதேவையான தேதி:\nஇடம் (கோவையில்):\nகால அவகாசம்:\nமேலும் விவரம்:`,
-                              ),
-                              lang === "ta" ? cart.nameTa : cart.nameEn
-                            );
-                          }}
-                        >
+                        <Link href={`/book?cart=${cart.id}`}>
                           <MessageCircle size={16} />{" "}
                           <span className="en">Book</span>
                           <span className="ta tamil-text">முன்பதிவு</span>
-                        </a>
+                        </Link>
                       </Button>
                     </div>
                   </div>
@@ -656,13 +617,6 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
           </div>
         )}
       </div>
-      
-      <BookingRulesModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onConfirm={handleConfirm}
-        cartName={pendingCartName}
-      />
     </section>
   );
 }

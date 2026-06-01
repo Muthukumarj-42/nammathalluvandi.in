@@ -1,16 +1,50 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Zap } from "lucide-react";
+import { MessageCircle, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { carts, getCart } from "@/lib/carts";
-import { cartBookingMessage } from "@/lib/utils";
 import { CartGallery } from "@/components/sections/cart-gallery";
-import { BookingCardClient } from "@/components/sections/booking-card-client";
 
 function Text({ en, ta }: { en: string; ta: string }) {
   return (
     <>
       <span className="en">{en}</span>
       <span className="ta tamil-text">{ta}</span>
+    </>
+  );
+}
+
+function BookingCard({ cart }: { cart: any }) {
+  return (
+    <>
+      <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
+        <Text en="Booking inquiry" ta="முன்பதிவு விசாரணை" />
+      </p>
+      <h2 className="mt-3 font-display text-4xl uppercase text-ink">
+        <Text en="Reserve this cart" ta="இந்த வண்டியை புக் செய்ய" />
+      </h2>
+      <p className="mt-3 text-sm leading-7 text-muted-foreground">
+        <Text
+          en="Confirm availability, rental period, location, delivery, and setup details on WhatsApp."
+          ta="கோயம்புத்தூரில் தள்ளுவண்டி கிடைக்கும் தேதி, இடம் மற்றும் டெலிவரி விவரங்களை வாட்ஸ்அப்பில் பேசி உறுதி செய்து கொள்ளவும்."
+        />
+      </p>
+      <Button
+        asChild
+        size="lg"
+        className="mt-6 w-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold"
+      >
+        <Link href={`/book?cart=${cart.id}`}>
+          <MessageCircle size={18} />{" "}
+          <Text en="🛒 Book This Cart" ta="🛒 முன்பதிவு செய்ய" />
+        </Link>
+      </Button>
+      <div className="mt-6 rounded-xl border border-dashed border-black/18 bg-[#F8F6F2] p-4 text-xs leading-relaxed text-muted-foreground">
+        <Text
+          en="Live availability is confirmed on WhatsApp before booking."
+          ta="முன்பதிவு செய்வதற்கு முன்பாக வண்டியின் இருப்பு வாட்ஸ்அப்பில் உறுதிப்படுத்தப்படும்."
+        />
+      </div>
     </>
   );
 }
@@ -72,8 +106,6 @@ export default async function CartDetailPage({
 
   const related = carts.filter((item) => item.id !== cart.id).slice(0, 3);
 
-  // Formatting Tamil booking message
-  const bookingMsg = cartBookingMessage(cart.nameTa);
 
   return (
     <main className="bg-[#F8F6F2] pt-14 md:pt-24">
@@ -148,11 +180,7 @@ export default async function CartDetailPage({
 
             {/* Mobile Booking Inquiry (Visible on mobile only, before features) */}
             <div className="mt-8 block md:hidden rounded-2xl border border-black/10 bg-white p-5 shadow-premium">
-              <BookingCardClient
-                bookingMsg={bookingMsg}
-                cartNameEn={cart.nameEn}
-                cartNameTa={cart.nameTa}
-              />
+              <BookingCard cart={cart} />
             </div>
 
             {/* Features list */}
@@ -255,11 +283,7 @@ export default async function CartDetailPage({
 
           {/* Sticky Inquiry card panel (Desktop only) */}
           <aside className="h-fit rounded-2xl border border-black/10 bg-white p-5 shadow-premium md:sticky md:top-28 hidden md:block">
-            <BookingCardClient
-              bookingMsg={bookingMsg}
-              cartNameEn={cart.nameEn}
-              cartNameTa={cart.nameTa}
-            />
+            <BookingCard cart={cart} />
           </aside>
         </div>
       </section>
