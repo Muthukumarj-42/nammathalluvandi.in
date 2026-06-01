@@ -79,8 +79,8 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
   }, []);
 
   // Sort carts:
-  // 1st: available && availableCount >= 2 (AVAILABLE)
-  // 2nd: available && availableCount === 1 (LIMITED)
+  // 1st: available && availableCount === 1 (LIMITED)
+  // 2nd: available && availableCount >= 2 (AVAILABLE)
   // 3rd: available && availableCount === 0 (BOOKED)
   // 4th: !available (completely hidden, pushed to end)
   const sortedCarts = useMemo(() => {
@@ -90,9 +90,9 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
       if (!a.available && !b.available) return 0;
 
       const getCat = (c: Cart) => {
-        if (c.availableCount >= 2) return 1;
-        if (c.availableCount === 1) return 2;
-        return 3;
+        if (c.availableCount === 1) return 1; // LIMITED first
+        if (c.availableCount >= 2) return 2;  // AVAILABLE second
+        return 3;                              // BOOKED last
       };
       return getCat(a) - getCat(b);
     });

@@ -197,6 +197,40 @@ export const carts: Cart[] = [
     whatsappMessageTa:
       "வணக்கம், நான் சிறிய பச்சை மூடிய வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
   },
+  {
+    id: "glass-front-display-cart",
+    nameEn: "Glass Front Display Cart",
+    nameTa: "கண்ணாடி முன் டிஸ்பிளே வண்டி",
+    type: ["Has Roof", "No Stove", "Open Counter"],
+    pricePerDay: 120,
+    depositAmount: 2000,
+    available: true,
+    availableCount: 1,
+    city: ["Coimbatore"],
+    featuresEn: [
+      "Metal Roof Cover",
+      "Glass Front Display Panel",
+      "Diamond-Plate Steel Floor",
+      "Pneumatic Rubber Wheels",
+      "Spacious Open Counter",
+      "Ideal for Snacks & Display Items",
+    ],
+    featuresTa: [
+      "உலோக மேல் கவர்",
+      "கண்ணாடி முன் டிஸ்பிளே பேனல்",
+      "டைமண்ட் பிளேட் ஸ்டீல் தரை",
+      "ரப்பர் டயர் சக்கரம்",
+      "அகலமான திறந்த கவுண்டர்",
+      "ஸ்நாக்ஸ் & டிஸ்பிளே பொருட்களுக்கு ஏற்றது",
+    ],
+    images: [
+      "/carts/glass-front-display-cart/photo-1.jpg",
+      "/carts/glass-front-display-cart/photo-2.jpg",
+      "/carts/glass-front-display-cart/photo-3.jpg",
+    ],
+    whatsappMessageTa:
+      "வணக்கம், நான் கண்ணாடி முன் டிஸ்பிளே வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
+  },
 ];
 
 export const filters = [
