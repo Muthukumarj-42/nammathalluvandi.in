@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://thethalluvandi.in"),
   title: "Thalluvandi | Food Cart Rental Tamil Nadu | தளவண்டி வாடகை",
   description:
-    "Tamil Nadu's trusted food cart rental service. 60+ carts in Coimbatore — with stove, roof, premium variants. WhatsApp booking. தளவண்டி வாடகை | ₹100/day onwards.",
+    "Tamil Nadu's trusted food cart rental service. 66+ carts in Coimbatore — with stove, roof, premium variants. WhatsApp booking. தளவண்டி வாடகை | ₹100/day onwards.",
   keywords: [
     "thalluvandi",
     "thallu vandi",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Thalluvandi | Food Cart Rental Tamil Nadu | தளவண்டி வாடகை",
-    description: "Tamil Nadu's trusted food cart rental service. 60+ carts in Coimbatore — with stove, roof, premium variants. WhatsApp booking. தளவண்டி வாடகை | ₹100/day onwards.",
+    description: "Tamil Nadu's trusted food cart rental service. 66+ carts in Coimbatore — with stove, roof, premium variants. WhatsApp booking. தளவண்டி வாடகை | ₹100/day onwards.",
     url: "https://thethalluvandi.in",
     siteName: "Thalluvandi",
     images: [
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Thalluvandi | Food Cart Rental Tamil Nadu | தளவண்டி வாடகை",
-    description: "Tamil Nadu's trusted food cart rental service. 60+ carts in Coimbatore — with stove, roof, premium variants.",
+    description: "Tamil Nadu's trusted food cart rental service. 66+ carts in Coimbatore — with stove, roof, premium variants.",
     images: ["/brand/full-logo-with-background.png"]
   },
   icons: {

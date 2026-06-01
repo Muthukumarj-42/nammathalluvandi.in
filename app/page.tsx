@@ -31,7 +31,7 @@ function Text({ en, ta }: { en: string; ta: string }) {
 const stats: any[] = [];
 
 const marquee = [
-  ["60+ Carts", "60+ வண்டிகள்"],
+  ["66+ Carts", "66+ வண்டிகள்"],
   ["Coimbatore", "கோவை"],
   ["PREMIUM CARTS", "பிரீமியம் வண்டி"],
   ["SAME DAY BOOKING", "அன்றே புக்கிங்"],
@@ -43,8 +43,8 @@ const featureCards = [
     ShoppingCart,
     "Large cart fleet",
     "வண்டிகளின் பெரிய தொகுப்பு",
-    "60+ carts ready for tea, snacks, juice, and fast food businesses.",
-    "60-க்கும் மேல் வண்டிகள் தயாராக உள்ளது",
+    "66+ carts ready for tea, snacks, juice, and fast food businesses.",
+    "66-க்கும் மேல் வண்டிகள் தயாராக உள்ளது",
   ],
   [
     PanelsTopLeft,
@@ -115,7 +115,7 @@ export default function Home() {
     name: "Thalluvandi",
     alternateName: ["Thallu Vandi", "தளவண்டி", "Thalluvandi Rental"],
     description:
-      "Premium food cart rentals in Coimbatore. 60+ carts with stove, roof cover, and premium variants. Serving Coimbatore with WhatsApp-first booking.",
+      "Premium food cart rentals in Coimbatore. 66+ carts with stove, roof cover, and premium variants. Serving Coimbatore with WhatsApp-first booking.",
     url: "https://thethalluvandi.in",
     telephone: "+918838292849",
     email: "hello@thalluvandi.in",

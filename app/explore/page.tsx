@@ -7,7 +7,7 @@ import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 
 export const metadata: Metadata = {
   title: "Food Carts for Rent | Thalluvandi | Coimbatore",
-  description: "Browse 60+ rental food carts — stove carts, juice carts, tea carts, premium covered carts. Starting ₹100/day. Serving Coimbatore."
+  description: "Browse 66+ rental food carts — stove carts, juice carts, tea carts, premium covered carts. Starting ₹100/day. Serving Coimbatore."
 };
 
 function Text({ en, ta }: { en: string; ta: string }) {
