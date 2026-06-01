@@ -168,9 +168,9 @@ export const carts: Cart[] = [
   },
   {
     id: "starter-cart-without-stove",
-    nameEn: "Compact Green Closed Cart",
-    nameTa: "சிறிய பச்சை மூடிய வண்டி",
-    type: ["No Stove", "Full Covered", "Compact", "Budget"],
+    nameEn: "Compact Closed Cart",
+    nameTa: "சிறிய மூடிய வண்டி",
+    type: ["No Stove", "Full Covered", "Compact"],
     pricePerDay: 90,
     depositAmount: 5000,
     available: true,
