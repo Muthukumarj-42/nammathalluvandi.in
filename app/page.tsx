@@ -106,15 +106,21 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Thalluvandi",
-    alternateName: ["Thallu Vandi", "தளவண்டி", "Thalluvandi Rental"],
-    description:
-      "Premium food cart rentals in Coimbatore. 66+ carts with stove, roof cover, and premium variants. Serving Coimbatore with WhatsApp-first booking.",
-    url: "https://thethalluvandi.in",
-    telephone: "+918838292849",
-    email: "hello@thalluvandi.in",
+    name: "Namma Thalluvandi",
+    alternateName: [
+      "Thalluvandi",
+      "நம்ம தளவண்டி",
+      "தளவண்டி",
+      "Thallu Vandi Coimbatore",
+      "Namma Thallu Vandi"
+    ],
+    description: "Premium thallu vandi food cart rentals in Coimbatore and Tiruppur Tamil Nadu. 60 plus carts with stove roof cover and premium variants available for daily and monthly rental.",
+    url: "https://nammathalluvandi.in",
+    telephone: "+919442763940",
+    email: "hello@nammathalluvandi.in",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "6A Aruljothipuram Jallimedu Ondipudur",
       addressLocality: "Coimbatore",
       addressRegion: "Tamil Nadu",
       postalCode: "641016",
@@ -126,19 +132,15 @@ export default function Home() {
       longitude: 76.9558,
     },
     openingHours: "Mo-Sa 08:00-20:00",
-    priceRange: "₹100-₹200 per day",
-    areaServed: [
-      "Coimbatore",
-      "Salem",
-      "Erode",
-      "Madurai",
-      "Chennai",
-      "Trichy",
-      "Tamil Nadu",
+    priceRange: "₹100 to ₹200 per day",
+    areaServed: ["Coimbatore", "Tiruppur", "Tamil Nadu"],
+    serviceType: [
+      "Food Cart Rental",
+      "Thallu Vandi Rental",
+      "Push Cart Rental",
+      "Street Food Cart Rental"
     ],
-    serviceType: "Food Cart Rental",
-    hasMap: "https://maps.app.goo.gl/udfX5YSDCpLHArc49",
-    sameAs: ["https://thalluvandi.vercel.app"],
+    hasMap: "https://maps.app.goo.gl/DmC3SGgNqnovtL6m8"
   };
 
   return (
@@ -163,8 +165,8 @@ export default function Home() {
             </p>
             <h1 className="mt-5 max-w-4xl font-display text-5xl uppercase leading-none md:text-7xl lg:text-8xl">
               <Text
-                en="Food Cart Rentals in Coimbatore | Thalluvandi"
-                ta="உங்கள் தொழில் இனி தொடங்கட்டும் — வாடகை வண்டி நாங்க தருவோம்!"
+                en="Thallu Vandi Rental in Coimbatore"
+                ta="கோவையில் தளவண்டி வாடகை"
               />
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-muted md:mx-0 md:text-lg md:leading-8">
@@ -501,17 +503,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hidden but crawlable SEO text section (CHANGE 8) */}
-      <section className="sr-only">
+      {/* Visually minimal but crawlable SEO text section */}
+      <section className="py-6 border-t border-black/5">
         <div className="site-container">
           <p className="text-xs text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
-            Thalluvandi offers food cart rentals in Coimbatore. Our push
-            carts (thallu vandi) are available for daily and weekly rental in
-            Coimbatore. We serve street food vendors, tea stall owners, juice
-            cart businesses, and fast food entrepreneurs. Rent a food cart with
-            stove, without stove, with roof cover, or our premium all-inclusive
-            cart. WhatsApp booking available. தளவண்டி வாடகை | உணவு வண்டி வாடகை
-            கோயம்புத்தூர் | தள்ளு வண்டி
+            Namma Thalluvandi provides thallu vandi vadagai in Coimbatore and Tiruppur Tamil Nadu. Our push carts are available for rent in Coimbatore for tea stalls, juice carts, fast food businesses and street food vendors. Thallu vandi rental Coimbatore starting ₹100 per day. Also serving Tiruppur. WhatsApp booking available. நம்ம தளவண்டி வாடகை கோவை | தள்ளு வண்டி வாடகை திருப்பூர் | உணவு வண்டி வாடகை கோயம்புத்தூர்
           </p>
         </div>
       </section>

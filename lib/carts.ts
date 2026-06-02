@@ -197,7 +197,7 @@ export const carts: Cart[] = [
   },
   {
     id: "arched-roof-open-cart",
-    nameEn: "compact Cart",
+    nameEn: "Compact Cart",
     nameTa: "சிறிய வண்டி",
     type: ["Has Roof", "No Stove", "Open Counter"],
     pricePerDay: 120,

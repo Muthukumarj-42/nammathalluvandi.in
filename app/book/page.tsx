@@ -3,8 +3,16 @@ import type { Metadata } from "next";
 import { BookingFlow } from "@/components/sections/booking-flow";
 
 export const metadata: Metadata = {
-  title: "Book a Food Cart | Thalluvandi",
+  title: "Book a Food Cart | Namma Thalluvandi",
   description: "Securely rent your food cart in Coimbatore, Tamil Nadu. Select your cart, review rental terms, and continue to WhatsApp.",
+  alternates: {
+    canonical: "https://nammathalluvandi.in/book",
+  },
+  openGraph: {
+    title: "Book a Food Cart | Namma Thalluvandi",
+    description: "Securely rent your food cart in Coimbatore, Tamil Nadu. Select your cart, review rental terms, and continue to WhatsApp.",
+    url: "https://nammathalluvandi.in/book",
+  }
 };
 
 export default function BookPage() {

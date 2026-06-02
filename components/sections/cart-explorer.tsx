@@ -223,8 +223,8 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
             ) : (
               <h1 className="mt-3 font-display text-5xl uppercase leading-none text-ink md:text-7xl">
                 <Text
-                  en="Rent a Food Cart in Coimbatore"
-                  ta="கோயம்புத்தூரில் தள்ளுவண்டி வாடகை"
+                  en="Food Carts for Rent in Coimbatore"
+                  ta="கோவையில் உணவு வண்டி வாடகை"
                 />
               </h1>
             )}

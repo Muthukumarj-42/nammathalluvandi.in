@@ -1,5 +1,37 @@
+import type { Metadata } from "next";
 import { MessageCircle, WalletCards } from "lucide-react";
 import { Reveal } from "@/components/sections/reveal";
+
+export const metadata: Metadata = {
+  title: "How It Works | Namma Thalluvandi | Coimbatore Food Cart Rental",
+  description:
+    "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore and Tiruppur.",
+  alternates: {
+    canonical: "https://nammathalluvandi.in/how-it-works"
+  },
+  openGraph: {
+    title: "How It Works | Namma Thalluvandi | Coimbatore Food Cart Rental",
+    description: "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore and Tiruppur.",
+    url: "https://nammathalluvandi.in/how-it-works",
+    siteName: "Namma Thalluvandi",
+    images: [
+      {
+        url: "https://nammathalluvandi.in/brand/full-logo-with-background.png",
+        width: 1200,
+        height: 630,
+        alt: "Namma Thalluvandi logo"
+      }
+    ],
+    locale: "ta_IN",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How It Works | Namma Thalluvandi | Coimbatore Food Cart Rental",
+    description: "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore and Tiruppur.",
+    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.png"]
+  }
+};
 
 function Text({ en, ta }: { en: string; ta: string }) {
   return (

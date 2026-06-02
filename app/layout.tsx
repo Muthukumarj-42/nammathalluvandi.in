@@ -28,51 +28,46 @@ const notoTamil = Noto_Sans_Tamil({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thethalluvandi.in"),
-  title: "Thalluvandi | Food Cart Rental Tamil Nadu | தளவண்டி வாடகை",
+  metadataBase: new URL("https://nammathalluvandi.in"),
+  title: "Namma Thalluvandi | Thallu Vandi Rental Coimbatore & Tiruppur | நம்ம தளவண்டி வாடகை",
   description:
-    "Tamil Nadu's trusted food cart rental service. 66+ carts in Coimbatore — with stove, roof, premium variants. WhatsApp booking. தளவண்டி வாடகை | ₹100/day onwards.",
+    "Coimbatore's trusted thallu vandi rental. 60+ carts with stove, roof and premium variants. Thallu vandi vadagai from ₹100/day. Serving Coimbatore and Tiruppur. WhatsApp booking — same day response.",
   keywords: [
-    "thalluvandi",
-    "thallu vandi",
-    "thalluvandi rental",
-    "thalluvandi.in",
-    "thallu vandi rent",
-    "food cart rental tamil nadu",
-    "food cart for rent tamil nadu",
-    "push cart rental tamil nadu",
-    "street food cart rental tamil nadu",
-    "thallu vandi rent tamil nadu",
-    "food cart rental near me",
+    "namma thalluvandi",
+    "நம்ம தளவண்டி",
+    "nammathalluvandi.in",
+    "thallu vandi rental coimbatore",
+    "thallu vandi rental tiruppur",
+    "thallu vandi vadagai coimbatore",
+    "thallu vandi vadagai tiruppur",
     "food cart rental coimbatore",
-    "food cart rental chennai",
-    "food cart rental madurai",
-    "food cart rental salem",
-    "food cart rental erode",
-    "food cart rental trichy",
-    "food cart rental tirunelveli",
-    "food cart rental vellore",
-    "food cart rental dindigul",
-    "thallu vandi rent coimbatore",
-    "தளவண்டி வாடகை",
-    "உணவு வண்டி வாடகை தமிழ்நாடு",
-    "தளவண்டி வாடகை கோயம்புத்தூர்",
-    "தள்ளு வண்டி வாடகை"
+    "food cart rental tiruppur",
+    "thalluvandi rent coimbatore",
+    "thalluvandi rent tiruppur",
+    "push cart rental coimbatore",
+    "street food cart coimbatore",
+    "உணவு வண்டி வாடகை கோயம்புத்தூர்",
+    "தளவண்டி வாடகை திருப்பூர்",
+    "தள்ளு வண்டி வாடகை கோவை",
+    "தள்ளு வண்டி வாடகை திருப்பூர்",
+    "நம்ம தளவண்டி கோவை",
+    "food cart rental near me coimbatore",
+    "push cart vadagai coimbatore"
   ],
   alternates: {
-    canonical: "https://thethalluvandi.in"
+    canonical: "https://nammathalluvandi.in"
   },
   openGraph: {
-    title: "Thalluvandi | Food Cart Rental Tamil Nadu | தளவண்டி வாடகை",
-    description: "Tamil Nadu's trusted food cart rental service. 66+ carts in Coimbatore — with stove, roof, premium variants. WhatsApp booking. தளவண்டி வாடகை | ₹100/day onwards.",
-    url: "https://thethalluvandi.in",
-    siteName: "Thalluvandi",
+    title: "Namma Thalluvandi | Thallu Vandi Rental Coimbatore & Tiruppur | நம்ம தளவண்டி வாடகை",
+    description: "Coimbatore's trusted thallu vandi rental. 60+ carts with stove, roof and premium variants. Thallu vandi vadagai from ₹100/day. Serving Coimbatore and Tiruppur. WhatsApp booking — same day response.",
+    url: "https://nammathalluvandi.in",
+    siteName: "Namma Thalluvandi",
     images: [
       {
-        url: "/brand/full-logo-with-background.png",
+        url: "https://nammathalluvandi.in/brand/full-logo-with-background.png",
         width: 1200,
         height: 630,
-        alt: "Thalluvandi food cart rental Tamil Nadu logo"
+        alt: "Namma Thalluvandi food cart rental logo"
       }
     ],
     locale: "ta_IN",
@@ -81,9 +76,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thalluvandi | Food Cart Rental Tamil Nadu | தளவண்டி வாடகை",
-    description: "Tamil Nadu's trusted food cart rental service. 66+ carts in Coimbatore — with stove, roof, premium variants.",
-    images: ["/brand/full-logo-with-background.png"]
+    title: "Namma Thalluvandi | Thallu Vandi Rental Coimbatore & Tiruppur | நம்ம தளவண்டி வாடகை",
+    description: "Coimbatore's trusted thallu vandi rental. 60+ carts with stove, roof and premium variants.",
+    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.png"]
   },
   icons: {
     icon: "/brand/text-logo.png",

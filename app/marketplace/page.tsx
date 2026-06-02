@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import { BarChart3, CalendarDays, CreditCard, Database, Lock, Newspaper, PackageSearch, UsersRound } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Food Cart Marketplace Phase | Namma Thalluvandi",
+  description: "Next-gen street food cart ecosystem features and payment gateway roadmap for vendors and custom thallu vandi manufacturing.",
+  alternates: {
+    canonical: "https://nammathalluvandi.in/marketplace"
+  }
+};
 
 function Text({ en, ta }: { en: string; ta: string }) {
   return (

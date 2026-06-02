@@ -28,9 +28,9 @@ const groups = {
       buildWAUrl(WA_NUMBER, rentalTamilMessage),
     ],
     [
-      "hello@thalluvandi.in",
-      "hello@thalluvandi.in",
-      "mailto:hello@thalluvandi.in",
+      "hello@nammathalluvandi.in",
+      "hello@nammathalluvandi.in",
+      "mailto:hello@nammathalluvandi.in",
     ],
   ],
 };
@@ -91,7 +91,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-14 flex flex-col gap-3 border-t border-primary/15 pt-6 text-xs uppercase tracking-[0.14em] text-[#1a1208]/50 md:flex-row md:justify-between">
-          <span>© 2026 Thalluvandi.in</span>
+          <span>© 2026 NammaThalluvandi.in</span>
           <span>
             <span className="en"></span>
             <span className="ta tamil-text"></span>

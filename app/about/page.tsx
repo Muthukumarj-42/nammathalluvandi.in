@@ -32,7 +32,7 @@ export default function AboutPage() {
               <Text en="Serving entrepreneurs in Coimbatore" ta="கோவை வியாபாரிகளுக்காக உருவான சேவை" />
             </h1>
             <p className="mt-6 max-w-[680px] text-lg leading-8 text-muted">
-              <Text en="Thalluvandi.in helps people begin food businesses with less risk, better presentation, and practical local support." ta="குறைந்த முதலீட்டில் உணவு தொழில் தொடங்க விரும்பும் அனைவருக்கும் தள்ளுவண்டி வாடகை மூலம் எளிய முறையில் வழிகாட்டுகிறோம்." />
+              <Text en="NammaThalluvandi.in helps people begin food businesses with less risk, better presentation, and practical local support." ta="குறைந்த முதலீட்டில் உணவு தொழில் தொடங்க விரும்பும் அனைவருக்கும் தள்ளுவண்டி வாடகை மூலம் எளிய முறையில் வழிகாட்டுகிறோம்." />
             </p>
           </div>
           <div className="relative rounded-2xl border border-black/10 bg-white p-6 shadow-premium">

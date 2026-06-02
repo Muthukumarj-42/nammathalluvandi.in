@@ -76,12 +76,12 @@ export async function generateMetadata({
     description: descText,
     keywords: `food cart rental coimbatore, push cart rental tamil nadu, thalluvandi, thallu vandi, ${cart.nameEn} rent`,
     alternates: {
-      canonical: `https://thethalluvandi.in/carts/${cart.id}`,
+      canonical: `https://nammathalluvandi.in/carts/${cart.id}`,
     },
     openGraph: {
       title: titleText,
       description: descText,
-      url: `https://thethalluvandi.in/carts/${cart.id}`,
+      url: `https://nammathalluvandi.in/carts/${cart.id}`,
       images: [
         {
           url: cart.images[0],

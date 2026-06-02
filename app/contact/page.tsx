@@ -553,8 +553,8 @@ export default function ContactPage() {
           </p>
           <h1 className="mt-3 max-w-4xl font-display text-5xl uppercase leading-none text-ink md:text-7xl">
             <Text
-              en="Contact Thalluvandi"
-              ta="தொடர்பு கொள்ள — ஒண்டிப்புதூர், கோயம்புத்தூர்"
+              en="Contact Us — Coimbatore Tamil Nadu"
+              ta="தொடர்பு கொள்ளுங்கள் — கோயம்புத்தூர்"
             />
           </h1>
           <p className="mt-6 max-w-[680px] text-lg leading-8 text-muted">
@@ -620,7 +620,7 @@ export default function ContactPage() {
                 className="border-primary text-primary hover:bg-orange-50 w-full text-xs font-bold uppercase tracking-wider h-10"
               >
                 <a
-                  href="https://maps.app.goo.gl/PXkph8mPx1ZwyMb26"
+                  href="https://maps.app.goo.gl/DmC3SGgNqnovtL6m8"
                   target="_blank"
                 >
                   <span className="en">Get Directions →</span>
@@ -804,7 +804,7 @@ export default function ContactPage() {
           <div className="relative w-full overflow-hidden rounded-2xl border border-[rgba(249,115,22,0.3)] bg-white h-[260px] md:h-[420px]">
             <iframe
               title="Thalluvandi location - Ondipudur Coimbatore"
-              src="https://maps.google.com/maps?q=2345%2BW4+Coimbatore,+Tamil+Nadu&z=17&output=embed"
+              src="https://maps.google.com/maps?q=11.0168,76.9558&z=17&output=embed"
               className="absolute inset-0 h-full w-full"
               loading="lazy"
               style={{ borderRadius: "8px" }}

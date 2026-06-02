@@ -131,7 +131,7 @@ Equipment & Description: ${extraDetails}`;
                 <Text en="Vendor Network" ta="வண்டி உரிமையாளர் நெட்வொர்க்" />
               </p>
               <h1 className="mt-3 font-display text-5xl uppercase leading-none text-ink md:text-7xl">
-                <Text en="Publish Your Cart on Thalluvandi" ta="என் வண்டி சேர்க்க" />
+                <Text en="List Your Thallu Vandi Across Tamil Nadu" ta="தமிழ்நாடு முழுவதும் உங்கள் வண்டியை பதிவு செய்யுங்கள்" />
               </h1>
               <p className="mt-6 max-w-[680px] text-lg leading-8 text-muted">
                 <Text 
@@ -394,6 +394,14 @@ Equipment & Description: ${extraDetails}`;
               </details>
             ))}
           </div>
+        </div>
+      </section>
+      {/* Visually minimal but crawlable SEO text section */}
+      <section className="py-6 border-t border-black/5">
+        <div className="site-container">
+          <p className="text-xs text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
+            Namma Thalluvandi accepts thallu vandi listings from all Tamil Nadu districts. List your food cart in Chennai, Madurai, Salem, Trichy, Tiruppur, Coimbatore, Erode, Vellore, Tirunelveli, Dindigul, Karur, Namakkal, Dharmapuri, Krishnagiri, Cuddalore, Villupuram, Thanjavur, Kumbakonam, Nagapattinam, Ramanathapuram, Virudhunagar and all other districts. வண்டி பதிவு தமிழ்நாடு முழுவதும்.
+          </p>
         </div>
       </section>
     </main>
