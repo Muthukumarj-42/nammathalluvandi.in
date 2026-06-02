@@ -71,40 +71,34 @@ const featureCards = [
 
 const faqs = [
   [
-    "Deposit amount?",
-    "Deposit எவ்வளவு?",
-    "Refundable security deposit is ₹2,000 – ₹5,000 depending on the cart type and rental duration. Confirmed on WhatsApp before booking.",
-    "வண்டி வகையைப் பொறுத்து ₹2,000 – ₹5,000 முன்பணம் வாங்குவோம். வண்டியைத் திரும்பக் கொடுக்கும் போது இது முழுமையாகத் திருப்பித் தரப்படும்.",
+    "What is Thalluvandi?",
+    "தள்ளுவண்டி என்றால் என்ன?",
+    "Thalluvandi is Coimbatore's premier food cart rental marketplace. We help aspiring entrepreneurs and street vendors easily start small food businesses by offering food carts on a flexible daily rental plan with minimal investment.",
+    "தள்ளுவண்டி என்பது கோவையில் எளிய முறையில் உணவுத் தொழில் தொடங்க தள்ளுவண்டிகளை வாடகைக்கு வழங்கும் ஒரு தளமாகும். பெரிய முதலீடு இன்றி சுலபமாக தொழிலைத் தொடங்க நாங்கள் உதவுகிறோம்.",
   ],
   [
-    "Delivery area?",
-    "எங்கெல்லாம் கிடைக்கும்?",
-    "Carts are available in Coimbatore. We will confirm your exact spot on WhatsApp.",
-    "இப்போது கோவை மாவட்டங்களில் சேவை உள்ளது. உங்கள் இடத்தை வாட்ஸ்அப்பில் பகிருங்கள், முன்பதிவு செய்வோம்.",
+    "Where is your branch located?",
+    "உங்கள் கிளை எங்குள்ளது?",
+    "Our physical hub is based at Ondipudur, Coimbatore. Renter pickup, returns, and physical inspection of carts take place here.",
+    "எங்கள் கிளை ஒண்டிப்புதூர், கோயம்புத்தூரில் அமைந்துள்ளது. இங்கிருந்து நீங்கள் வண்டிகளை நேரடியாகப் பெற்றுக்கொள்ளலாம் அல்லது திரும்ப ஒப்படைக்கலாம்.",
   ],
   [
-    "What is the commission if I list my cart on Thalluvandi?",
-    "என் வண்டி list பண்ணினா commission என்ன?",
-    "Thalluvandi charges a small platform fee when your cart gets booked through us. The exact percentage is discussed before listing.",
-    "உங்கள் வண்டியை எங்கள் தளத்தில் பதிவு செய்து வாடிக்கையாளர்கள் புக் செய்யும் போது மட்டுமே ஒரு சிறிய கட்டணம் வசூலிப்போம். இதை தெளிவாகப் பேசிக்கொள்ளலாம்.",
+    "How do I book a food cart?",
+    "வண்டியை புக் செய்வது எப்படி?",
+    "Browse through our premium food cart variants on the Explore page, fill out your booking details on our dedicated `/book` page, and continue to WhatsApp to finalize your booking with our team.",
+    "எங்கள் வண்டி வகைகள் பக்கத்தில் உங்களுக்கு தேவையான வண்டியைத் தேர்ந்தெடுத்து, உங்கள் விவரங்களை முன்பதிவு பக்கத்தில் பூர்த்தி செய்து, வாட்ஸ்அப் வழியாக எங்களுடன் தொடர்புகொண்டு முன்பதிவை உறுதி செய்யலாம்.",
   ],
   [
-    "Damage policy?",
-    "Damage ஆனா என்ன?",
-    "Damage is checked during return. If needed, it is adjusted from the deposit.",
-    "வண்டியைத் திரும்பக் கொடுக்கும் போது சரிபார்ப்போம். ஏதேனும் சேதம் இருந்தால் முன்பணத்திலிருந்து கழிக்கப்படும்.",
+    "What documents are required for booking?",
+    "என்னென்ன ஆவணங்கள் தேவை?",
+    "Please bring any one of Aadhaar Card, Ration Card, or PAN Card along with 1 Passport Size Photo. Any one of these primary proofs is sufficient.",
+    "கொண்டுவர வேண்டியது: ஆதார் கார்டு, ரேஷன் கார்டு அல்லது பான் கார்டு (இதில் ஏதேனும் ஒரு ஆதாரம்) மற்றும் 1 பாஸ்போர்ட் அளவு போட்டோ போதுமானது.",
   ],
   [
-    "Minimum rental period?",
-    "குறைந்தது எத்தனை நாள்?",
-    "You can rent from one day. Longer rentals may get a better rate.",
-    "குறைந்தது ஒரு நாள் முதல் வாடகைக்கு எடுக்கலாம். நீண்ட நாட்கள் எடுக்கும் போது சலுகை விலை வழங்கப்படும்.",
-  ],
-  [
-    "Payment methods?",
-    "Payment எப்படி?",
-    "Cash and UPI are supported. Final payment details are confirmed before booking.",
-    "UPI அல்லது ரொக்கப் பணம் (Cash) — இரண்டிலும் செலுத்தலாம். முன்பணம் செலுத்தியதும் வண்டி டெலிவரிக்கு தயாராகும்.",
+    "What are the key rental rules?",
+    "முக்கிய வாடகை விதிகள் என்னென்ன?",
+    "Key terms include: 1. Cart must be rented in the active operator's name. 2. Renter handles transport (pickup/return). 3. Damages are checked and charged. 4. Minimum rental period is 1 month; early returns are still billed for 1 full month.",
+    "முக்கிய விதிகள்: 1. தொழில் செய்பவர் பெயரிலேயே வண்டி எடுக்க வேண்டும். 2. போக்குவரத்து தங்கள் பொறுப்பு. 3. சேதங்களுக்கு தகுந்த கட்டணம் வசூலிக்கப்படும். 4. குறைந்தபட்ச வாடகை காலம் 1 மாதம் (ஒரு மாதத்திற்குள் வண்டியைத் திரும்பக் கொடுத்தாலும் 1 மாத வாடகை வசூலிக்கப்படும்).",
   ],
 ];
 
@@ -511,13 +505,13 @@ export default function Home() {
       <section className="sr-only">
         <div className="site-container">
           <p className="text-xs text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
-            Thalluvandi offers food cart rentals across Tamil Nadu. Our push
+            Thalluvandi offers food cart rentals in Coimbatore. Our push
             carts (thallu vandi) are available for daily and weekly rental in
             Coimbatore. We serve street food vendors, tea stall owners, juice
             cart businesses, and fast food entrepreneurs. Rent a food cart with
             stove, without stove, with roof cover, or our premium all-inclusive
             cart. WhatsApp booking available. தளவண்டி வாடகை | உணவு வண்டி வாடகை
-            தமிழ்நாடு | தள்ளு வண்டி
+            கோயம்புத்தூர் | தள்ளு வண்டி
           </p>
         </div>
       </section>

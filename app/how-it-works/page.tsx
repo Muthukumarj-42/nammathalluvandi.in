@@ -19,9 +19,9 @@ const steps = [
 ];
 
 const faqs = [
-  ["Deposit amount?", "Deposit எவ்வளவு?", "Refundable security deposit is ₹2,000 – ₹5,000 depending on the cart type and rental duration. Confirmed on WhatsApp before booking.", "வண்டி வகையைப் பொறுத்து ₹2,000 – ₹5,000 முன்பணம் வாங்குவோம். வண்டியைத் திரும்பக் கொடுக்கும் போது இது முழுமையாகத் திருப்பித் தரப்படும்."],
-  ["Damage policy?", "Damage ஆனா என்ன?", "Damage is checked during return. If needed, it is adjusted from the deposit.", "வண்டியைத் திரும்பக் கொடுக்கும் போது சரிபார்ப்போம். ஏதேனும் சேதம் இருந்தால் முன்பணத்திலிருந்து கழிக்கப்படும்."],
-  ["Minimum rental period?", "குறைந்தது எத்தனை நாள்?", "You can rent from one day. Longer rentals may get a better rate.", "குறைந்தது ஒரு நாள் முதல் வாடகைக்கு எடுக்கலாம். நீண்ட நாட்கள் எடுக்கும் போது சலுகை விலை வழங்கப்படும்."],
+  ["Deposit amount?", "Deposit எவ்வளவு?", "Refundable security deposit is ₹2,000 – ₹10,000 depending on the cart type and features. Confirmed on WhatsApp before booking.", "வண்டி வகையைப் பொறுத்து ₹2,000 – ₹10,000 முன்பணம் வாங்குவோம். வண்டியைத் திரும்பக் கொடுக்கும் போது இது முழுமையாகத் திருப்பித் தரப்படும்."],
+  ["Damage policy?", "Damage ஆனா என்ன?", "Damage is checked during return. If needed, the repair cost is paid for by the renter or adjusted from the deposit as per Rule 3.", "வண்டியைத் திரும்பக் கொடுக்கும் போது சரிபார்ப்போம். ஏதேனும் சேதம் இருந்தால் பழுதுபார்ப்பு கட்டணம் வாடிக்கையாளர் செலுத்த வேண்டும் அல்லது முன்பணத்திலிருந்து கழிக்கப்படும்."],
+  ["Minimum rental period?", "குறைந்தது எத்தனை நாள்?", "The minimum rental period is 1 month. Early return before 1 month will still be charged for the full month as per Rule 7.", "குறைந்தபட்ச வாடகை காலம் 1 மாதம் ஆகும். ஒரு மாதத்திற்கு முன்பாக வண்டியைத் திரும்பிக் கொடுத்தாலும் 1 மாத வாடகை முழுமையாக வசூலிக்கப்படும் (விதி 7)."],
   ["Payment methods?", "Payment எப்படி?", "Cash and UPI are supported. Final payment details are confirmed before booking.", "UPI அல்லது ரொக்கப் பணம் (Cash) — இரண்டிலும் செலுத்தலாம். முன்பணம் செலுத்தியதும் வண்டி டெலிவரிக்கு தயாராகும்."],
   ["What is the commission if I list my cart on Thalluvandi?", "என் வண்டி list பண்ணினா commission என்ன?", "Thalluvandi charges a small platform fee when your cart gets booked through us. The percentage is discussed before listing.", "உங்கள் வண்டியை எங்கள் தளத்தில் பதிவு செய்து வாடிக்கையாளர்கள் புக் செய்யும் போது மட்டுமே ஒரு சிறிய கட்டணம் வசூலிப்போம். இதை பதிவு செய்வதற்கு முன் தெளிவாகப் பேசிக்கொள்ளலாம்."]
 ];

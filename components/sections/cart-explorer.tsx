@@ -231,8 +231,8 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
           </div>
           <p className="text-sm leading-7 text-muted">
             <Text
-              en="Daily rental food carts for tea, juice, snacks, and fast food businesses in Coimbatore and expanding across all Tamil Nadu districts."
-              ta="டீ, ஜூஸ், ஸ்நாக்ஸ், ஃபாஸ்ட் ஃபுட் — கோவை மற்றும் தமிழ்நாடு முழுவதும் விரிவடையும் எங்கள் நெட்வொர்க்கில் தொழில் ஆரம்பிக்க தினசரி வாடகை வண்டிகள்."
+              en="Daily rental food carts for tea, juice, snacks, and fast food businesses in Coimbatore."
+              ta="டீ, ஜூஸ், ஸ்நாக்ஸ், ஃபாஸ்ட் ஃபுட் — கோவையில் தொழில் ஆரம்பிக்க சிறந்த தினசரி வாடகை வண்டிகள்."
             />
           </p>
         </div>
@@ -608,7 +608,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
         </div>
 
         {compact && (
-          <div className="mt-8 text-left max-md:text-center">
+          <div className="mt-8 text-center">
             <Button asChild size="lg" variant="outline" className="text-ink">
               <Link href="/explore">
                 <Text en="Explore Carts" ta="🔍 வண்டிகளை பாருங்க" />

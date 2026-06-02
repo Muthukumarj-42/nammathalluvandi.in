@@ -93,6 +93,79 @@ export default function PublishPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section className="pb-24">
+        <div className="site-container max-w-4xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary text-center">
+            <Text en="FAQ" ta="கேள்வி பதில்" />
+          </p>
+          <h2 className="mt-3 font-display text-4xl uppercase leading-none text-ink text-center md:text-5xl">
+            <Text en="Publishing Carts FAQ" ta="வண்டிகள் பதிவு கேள்வி பதில்" />
+          </h2>
+
+          <div className="mt-12 space-y-4">
+            {publishFaqs.map(([question, tamilQuestion, answer, tamilAnswer]) => (
+              <details
+                key={question}
+                className="group rounded-2xl border border-black/10 bg-white p-6 [&_summary::-webkit-details-marker]:hidden"
+              >
+                <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-ink font-bold">
+                  <h3 className="font-display text-xl uppercase tracking-wide leading-tight">
+                    <Text en={question} ta={tamilQuestion} />
+                  </h3>
+                  <span className="shrink-0 rounded-full bg-orange-50 border border-orange-200/50 p-1.5 text-primary group-open:-rotate-180 transition duration-300">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <p className="mt-3 text-[0.95rem] leading-7 text-muted border-t border-black/5 pt-3">
+                  <Text en={answer} ta={tamilAnswer} />
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
+
+const publishFaqs = [
+  [
+    "How can I publish my cart on Thalluvandi?",
+    "என் வண்டியை தள்ளுவண்டி தளத்தில் எப்படி சேர்ப்பது?",
+    "Simply click the 'List My Cart' button to start a WhatsApp chat with our team. Share your name, phone number, location, cart type, expected daily rent, and clear photos. Once verified, we will list it on our premium platform for customers to book.",
+    "எங்கள் 'என் வண்டி சேர்க்க' பட்டனைக் கிளிக் செய்து எங்களை வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும். உங்கள் பெயர், வண்டியின் படங்கள், இருப்பிடம், எதிர்பார்க்கும் வாடகை விலை மற்றும் வண்டியின் விவரங்களை அனுப்புங்கள். சரிபார்க்கப்பட்ட பின் எங்கள் தளத்தில் பதிவு செய்யப்படும்.",
+  ],
+  [
+    "What is the commission/platform fee?",
+    "தள்ளுவண்டி தளத்தின் கமிஷன் / சேவை கட்டணம் எவ்வளவு?",
+    "Listing your cart is completely free. We only charge a small platform fee or commission when a customer successfully books your cart through our marketplace. The exact fee is discussed and agreed upon before listing.",
+    "வண்டியைப் பதிவு செய்வது முற்றிலும் இலவசம். உங்கள் வண்டியை வாடிக்கையாளர்கள் எங்கள் தளம் வழியாக புக் செய்யும் போது மட்டுமே ஒரு சிறிய சேவை கட்டணம் (Platform fee) வசூலிக்கப்படும். இதன் விவரங்களை முன்பே பேசி உறுதி செய்துகொள்ளலாம்.",
+  ],
+  [
+    "Who handles the delivery and return of published carts?",
+    "வண்டியை டெலிவரி செய்வதும் திரும்பப் பெறுவதும் யார் பொறுப்பு?",
+    "Logistics and transport are typically handled by the renter. However, as the vendor/owner, you must ensure the cart is in a clean, fully functional condition at your specified location for pickup.",
+    "போக்குவரத்து மற்றும் டெலிவரி பொதுவாக வாடகைக்கு எடுக்கும் நபரின் பொறுப்பாகும். ஆனால் வண்டி நல்ல முறையில் இயங்கும் நிலையிலும், சுத்தமாகவும் இருப்பதை வண்டியின் உரிமையாளரான நீங்கள் உறுதி செய்ய வேண்டும்.",
+  ],
+  [
+    "How do I get paid for rentals?",
+    "என் வண்டிக்கான வாடகை எனக்கு எப்படி கிடைக்கும்?",
+    "Rental payouts are transferred directly to you via UPI or Cash weekly, or as per the custom payout frequency we establish with you upon listing.",
+    "வண்டிக்கான வாடகை வாராந்திர அடிப்படையில் UPI அல்லது ரொக்கமாக (Cash) நேரடியாக உங்களிடம் ஒப்படைக்கப்படும். அல்லது பதிவு செய்யும் போது பேசப்படும் ஒப்பந்தத்தின்படி வழங்கப்படும்.",
+  ],
+];

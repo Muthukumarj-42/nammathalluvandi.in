@@ -169,6 +169,85 @@ export default function ExplorePage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 md:py-24 bg-[#F8F6F2] border-t border-black/10">
+        <div className="site-container max-w-4xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#f97316] text-center font-semibold">
+            <Text en="FAQ" ta="கேள்வி பதில்" />
+          </p>
+          <h2 className="mt-3 font-display text-4xl uppercase leading-none text-ink text-center md:text-5xl">
+            <Text en="Cart Rentals FAQ" ta="வண்டி வாடகை கேள்வி பதில்" />
+          </h2>
+
+          <div className="mt-12 space-y-4">
+            {exploreFaqs.map(([question, tamilQuestion, answer, tamilAnswer]) => (
+              <details
+                key={question}
+                className="group rounded-2xl border border-black/10 bg-white p-6 [&_summary::-webkit-details-marker]:hidden"
+              >
+                <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-ink font-bold">
+                  <h3 className="font-display text-xl uppercase tracking-wide leading-tight">
+                    <Text en={question} ta={tamilQuestion} />
+                  </h3>
+                  <span className="shrink-0 rounded-full bg-orange-50 border border-orange-200/50 p-1.5 text-primary group-open:-rotate-180 transition duration-300">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <p className="mt-3 text-[0.95rem] leading-7 text-muted border-t border-black/5 pt-3">
+                  <Text en={answer} ta={tamilAnswer} />
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
+
+const exploreFaqs = [
+  [
+    "Deposit amount?",
+    "முன்பணம் எவ்வளவு?",
+    "Refundable security deposit is ₹2,000 – ₹10,000 depending on the cart type, model features, and built-in equipment. This amount is completely refunded within 1 week of cart return.",
+    "வண்டி வகை, மாடல் மற்றும் வசதிகளைப் பொறுத்து ₹2,000 முதல் ₹10,000 வரை முன்பணம் (Deposit) பெறப்படும். வண்டியை பத்திரமாகத் திரும்பக் கொடுக்கும் போது இது 1 வாரத்திற்குள் முழுமையாகத் திருப்பித் தரப்படும்.",
+  ],
+  [
+    "How and when is the daily rent collected?",
+    "வாடகை எப்போது, எப்படி வசூலிக்கப்படும்?",
+    "The daily rent is accumulated and collected weekly, mostly on Saturdays. Alternatively, we will discuss and inform you of the exact rent collection schedule during booking.",
+    "தினசரி வாடகை வாரந்தோறும் கணக்கிடப்பட்டு, பெரும்பாலும் சனிக்கிழமைகளில் வசூலிக்கப்படும். அல்லது வண்டி முன்பதிவு செய்யும் போது எப்போது வசூலிக்கப்படும் என்ற விவரம் உங்களுக்குத் தெளிவுபடுத்தப்படும்.",
+  ],
+  [
+    "Are there different cart prices?",
+    "வண்டி வாடகை விலைகள் வெவ்வேறா?",
+    "Yes. Daily rentals range from ₹50/day up to ₹100/day depending on the size of the cart, built-in stove burners, roof covers, and premium materials used.",
+    "ஆம். வண்டியின் அளவு, அடுப்பு வசதி, மேல் கவர் மற்றும் பயன்படுத்தப்படும் ஸ்டீல் தரத்தைப் பொறுத்து ஒரு நாள் வாடகை ₹50 முதல் ₹100 வரை மாறுபடும்.",
+  ],
+  [
+    "Is transport included in the daily rent?",
+    "போக்குவரத்து வாடகையில் அடங்குமா?",
+    "No. Transporting (picking up from Ondipudur and returning) the cart is entirely the renter's responsibility. You can easily rent a local tempo for transport.",
+    "இல்லை. வண்டியை ஒண்டிப்புதூரிலிருந்து எடுத்துச் செல்வதும், திரும்பக் கொண்டு வந்து ஒப்படைப்பதும் வாடிக்கையாளரின் பொறுப்பாகும். இதற்கு உள்ளூர் டெம்போக்களை வாடகைக்கு எடுத்துப் பயன்படுத்திக் கொள்ளலாம்.",
+  ],
+  [
+    "What is the minimum rental period?",
+    "குறைந்தபட்ச வாடகை காலம் எவ்வளவு?",
+    "The minimum rental period is 1 month as per our standard terms. Early return before 1 month will still be charged for the full month's rental.",
+    "எங்கள் விதிகளின்படி குறைந்தபட்ச வாடகை காலம் 1 மாதம் ஆகும். ஒரு மாதத்திற்கு முன்பாக வண்டியைத் திரும்பிக் கொடுத்தாலும் 1 மாத வாடகை முழுமையாக வசூலிக்கப்படும்.",
+  ],
+];

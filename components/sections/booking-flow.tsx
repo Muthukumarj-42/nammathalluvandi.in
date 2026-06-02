@@ -31,12 +31,14 @@ export function BookingFlow() {
   // Sync language toggle
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const currentLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+    const currentLang =
+      document.documentElement.dataset.lang === "ta" ? "ta" : "en";
     setLang(currentLang);
     setTodayDate(new Date().toISOString().split("T")[0]);
 
     const observer = new MutationObserver(() => {
-      const updatedLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+      const updatedLang =
+        document.documentElement.dataset.lang === "ta" ? "ta" : "en";
       setLang(updatedLang);
     });
 
@@ -52,11 +54,18 @@ export function BookingFlow() {
     return (
       <main className="bg-[#fffdf7] min-h-screen py-16 flex items-center justify-center px-4">
         <div className="text-center max-w-md bg-white border border-[#f97316]/20 p-8 rounded-2xl shadow-sm">
-          <h2 className="font-display text-4xl text-ink uppercase mb-2">Cart Not Found</h2>
+          <h2 className="font-display text-4xl text-ink uppercase mb-2">
+            Cart Not Found
+          </h2>
           <p className="text-muted text-sm mb-6">
-            The food cart you are trying to book could not be found or has been removed.
+            The food cart you are trying to book could not be found or has been
+            removed.
           </p>
-          <Button onClick={() => router.push("/explore")} size="lg" className="w-full">
+          <Button
+            onClick={() => router.push("/explore")}
+            size="lg"
+            className="w-full"
+          >
             <ArrowLeft size={16} className="mr-2" /> Explore Carts
           </Button>
         </div>
@@ -65,7 +74,7 @@ export function BookingFlow() {
   }
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
@@ -77,7 +86,7 @@ export function BookingFlow() {
         setPhoneError(
           lang === "ta"
             ? "தொலைபேசி எண் 10 இலக்கங்களாக இருக்க வேண்டும்"
-            : "Phone number must be exactly 10 digits"
+            : "Phone number must be exactly 10 digits",
         );
       } else {
         setPhoneError("");
@@ -97,7 +106,8 @@ export function BookingFlow() {
     e.preventDefault();
     if (!isFormValid) return;
 
-    const extraDetails = formData.details.trim() !== "" ? formData.details.trim() : "இல்லை";
+    const extraDetails =
+      formData.details.trim() !== "" ? formData.details.trim() : "இல்லை";
 
     // Build message dynamically strictly in Tamil as required
     const message = `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.
@@ -119,18 +129,18 @@ export function BookingFlow() {
     name: lang === "ta" ? "உங்கள் பெயர் உள்ளிடுங்கள்" : "Enter your full name",
     phone: lang === "ta" ? "உங்கள் கைபேசி எண்" : "Enter your mobile number",
     location: lang === "ta" ? "உங்கள் கடை / இடம்" : "Your shop/stall location",
-    details: lang === "ta" ? "கூடுதல் தேவைகள் அல்லது கேள்விகள்?" : "Any special requirements or questions?",
+    details:
+      lang === "ta"
+        ? "கூடுதல் தேவைகள் அல்லது கேள்விகள்?"
+        : "Any special requirements or questions?",
   };
 
   return (
     <main className="bg-[#fffdf7] min-h-screen text-[#1a1208] pb-16 pt-6 md:pt-24">
       <div className="max-w-lg md:max-w-6xl mx-auto px-4">
-        
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          
           {/* Left Column (Navigation, Cart Card, Rules) */}
           <div className="md:col-span-5 flex flex-col gap-6 md:sticky md:top-24">
-            
             {/* Navigation & Header */}
             <div className="flex flex-col gap-3">
               <button
@@ -145,11 +155,15 @@ export function BookingFlow() {
               <div>
                 <h1 className="font-display text-4xl uppercase leading-none tracking-wide text-ink">
                   <span className="en">Book This Cart</span>
-                  <span className="ta tamil-text text-3xl">வண்டி முன்பதிவு செய்யுங்கள்</span>
+                  <span className="ta tamil-text text-3xl">
+                    வண்டி முன்பதிவு செய்யுங்கள்
+                  </span>
                 </h1>
                 <p className="mt-1 text-sm font-bold text-[#f97316] uppercase tracking-widest">
                   <span className="en">{cart.nameEn}</span>
-                  <span className="ta tamil-text text-xs tracking-normal normal-case">{cart.nameTa}</span>
+                  <span className="ta tamil-text text-xs tracking-normal normal-case">
+                    {cart.nameTa}
+                  </span>
                 </p>
               </div>
             </div>
@@ -183,9 +197,11 @@ export function BookingFlow() {
               <div className="flex flex-col gap-1">
                 <h3 className="font-display text-2xl uppercase leading-tight text-ink">
                   <span className="en">{cart.nameEn}</span>
-                  <span className="ta tamil-text leading-tight">{cart.nameTa}</span>
+                  <span className="ta tamil-text leading-tight">
+                    {cart.nameTa}
+                  </span>
                 </h3>
-                
+
                 <div className="grid grid-cols-2 gap-4 mt-2 border-t border-[#e5e0d8] pt-3">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-widest text-[#78716c]">
@@ -202,7 +218,10 @@ export function BookingFlow() {
                       <span className="ta tamil-text">முன்பணம்</span>
                     </p>
                     <p className="font-display text-2xl font-bold text-ink mt-0.5">
-                      ₹{cart.depositAmount} <span className="text-[10px] font-sans font-semibold text-[#78716c] uppercase tracking-normal">({lang === "ta" ? "திரும்பப் பெறலாம்" : "Refundable"})</span>
+                      ₹{cart.depositAmount}{" "}
+                      <span className="text-[10px] font-sans font-semibold text-[#78716c] uppercase tracking-normal">
+                        ({lang === "ta" ? "திரும்பப் பெறலாம்" : "Refundable"})
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -213,12 +232,14 @@ export function BookingFlow() {
             <div className="hidden md:block">
               <RentalRules lang={lang} />
             </div>
-
           </div>
 
           {/* Right Column (Form Details) */}
           <div className="md:col-span-7">
-            <form onSubmit={handleSubmit} className="bg-white p-6 md:p-8 rounded-2xl border border-[#f97316]/10 shadow-premium-dark space-y-5">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white p-6 md:p-8 rounded-2xl border border-[#f97316]/10 shadow-premium-dark space-y-5"
+            >
               <h2 className="font-display text-3xl uppercase tracking-wide text-ink border-b border-[#e5e0d8] pb-2">
                 <span className="en">Your Details</span>
                 <span className="ta tamil-text text-2xl">உங்கள் விவரங்கள்</span>
@@ -226,7 +247,10 @@ export function BookingFlow() {
 
               {/* Field 1: Name */}
               <div className="flex flex-col">
-                <label htmlFor="name" className="text-sm font-semibold mb-1 block">
+                <label
+                  htmlFor="name"
+                  className="text-sm font-semibold mb-1 block"
+                >
                   <span className="en">Full Name *</span>
                   <span className="ta tamil-text">பெயர் *</span>
                 </label>
@@ -243,7 +267,10 @@ export function BookingFlow() {
 
               {/* Field 2: Phone */}
               <div className="flex flex-col">
-                <label htmlFor="phone" className="text-sm font-semibold mb-1 block">
+                <label
+                  htmlFor="phone"
+                  className="text-sm font-semibold mb-1 block"
+                >
                   <span className="en">Phone Number *</span>
                   <span className="ta tamil-text">தொலைபேசி எண் *</span>
                 </label>
@@ -269,7 +296,10 @@ export function BookingFlow() {
 
               {/* Field 3: Date */}
               <div className="flex flex-col">
-                <label htmlFor="date" className="text-sm font-semibold mb-1 block">
+                <label
+                  htmlFor="date"
+                  className="text-sm font-semibold mb-1 block"
+                >
                   <span className="en">Required Date *</span>
                   <span className="ta tamil-text">தேவையான தேதி *</span>
                 </label>
@@ -286,7 +316,10 @@ export function BookingFlow() {
 
               {/* Field 4: Location */}
               <div className="flex flex-col">
-                <label htmlFor="location" className="text-sm font-semibold mb-1 block">
+                <label
+                  htmlFor="location"
+                  className="text-sm font-semibold mb-1 block"
+                >
                   <span className="en">Location in Coimbatore *</span>
                   <span className="ta tamil-text">இடம் (கோவையில்) *</span>
                 </label>
@@ -301,13 +334,16 @@ export function BookingFlow() {
                 />
               </div>
 
-
-
               {/* Field 6: Details */}
               <div className="flex flex-col">
-                <label htmlFor="details" className="text-sm font-semibold mb-1 block">
+                <label
+                  htmlFor="details"
+                  className="text-sm font-semibold mb-1 block"
+                >
                   <span className="en">Additional Details (Optional)</span>
-                  <span className="ta tamil-text">மேலும் விவரம் (விருப்பம்)</span>
+                  <span className="ta tamil-text">
+                    மேலும் விவரம் (விருப்பம்)
+                  </span>
                 </label>
                 <textarea
                   id="details"
@@ -334,8 +370,12 @@ export function BookingFlow() {
                     className="mt-1 h-4 w-4 rounded border-[#e5e0d8] bg-white text-[#f97316] focus:ring-[#f97316] focus:ring-offset-white transition"
                   />
                   <span className="text-sm text-[#78716c] font-semibold group-hover:text-[#1a1208] transition">
-                    <span className="en">I have read and agree to all rental terms</span>
-                    <span className="ta tamil-text text-[11px]">அனைத்து வாடகை விதிகளையும் படித்து ஒப்புக்கொள்கிறேன்</span>
+                    <span className="en">
+                      I have read and agree to all rental terms
+                    </span>
+                    <span className="ta tamil-text text-[11px]">
+                      அனைத்து வாடகை விதிகளையும் படித்து ஒப்புக்கொள்கிறேன்
+                    </span>
                   </span>
                 </label>
 
@@ -348,15 +388,14 @@ export function BookingFlow() {
                 >
                   <MessageCircle size={20} className="shrink-0" />
                   <span className="en">Continue to WhatsApp →</span>
-                  <span className="ta tamil-text text-sm tracking-normal normal-case">WhatsApp-ல் தொடரவும் →</span>
+                  <span className="ta tamil-text text-sm tracking-normal normal-case">
+                    WhatsApp-ல் தொடரவும் →
+                  </span>
                 </Button>
               </div>
-
             </form>
           </div>
-
         </div>
-
       </div>
     </main>
   );
@@ -372,16 +411,21 @@ function RentalRules({ lang }: { lang: "en" | "ta" }) {
 
       {/* Rules Box */}
       <div className="bg-orange-50 rounded-xl p-4 border border-orange-200 space-y-1.5">
-        
         {/* EN Rules List */}
         <div className="en space-y-3">
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">1.</span>
-            <span>Cart must be rented in the name of the person running the business.</span>
+            <span>
+              Cart must be rented in the name of the person running the
+              business.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">2.</span>
-            <span>Picking up and returning the cart is entirely the renter's responsibility.</span>
+            <span>
+              Picking up and returning the cart is entirely the renter's
+              responsibility.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">3.</span>
@@ -389,11 +433,16 @@ function RentalRules({ lang }: { lang: "en" | "ta" }) {
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">4.</span>
-            <span>Return the cart clean. ₹500 will be deducted for cleaning if returned dirty.</span>
+            <span>
+              Return the cart clean. ₹500 will be deducted for cleaning if
+              returned dirty.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">5.</span>
-            <span>Documents will be returned only after the cart is safely returned.</span>
+            <span>
+              Documents will be returned only after the cart is safely returned.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">6.</span>
@@ -401,16 +450,27 @@ function RentalRules({ lang }: { lang: "en" | "ta" }) {
           </div>
           {/* Rule 7 Highlighted */}
           <div className="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-xl font-medium text-sm leading-relaxed border-y border-r border-[#f97316]/10">
-            <span className="text-[#f97316] font-bold mr-1 block text-xs uppercase tracking-wider mb-0.5">Rule 7 - Important</span>
-            <span>Minimum rental period is 1 month. Early return will still be charged for the full month.</span>
+            <span className="text-[#f97316] font-bold mr-1 block text-xs uppercase tracking-wider mb-0.5">
+              Rule 7 - Important
+            </span>
+            <span>
+              Minimum rental period is 1 month. Early return will still be
+              charged for the full month.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">8.</span>
-            <span>The renter is responsible for transport while picking up and returning the cart.</span>
+            <span>
+              The renter is responsible for transport while picking up and
+              returning the cart.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed">
             <span className="text-[#f97316] font-bold mr-2">9.</span>
-            <span>Advance amount will be refunded within 1 week of returning the cart.</span>
+            <span>
+              Advance amount will be refunded within 1 week of returning the
+              cart.
+            </span>
           </div>
         </div>
 
@@ -418,7 +478,9 @@ function RentalRules({ lang }: { lang: "en" | "ta" }) {
         <div className="ta tamil-text space-y-3">
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">1.</span>
-            <span>வண்டியில் வியாபாரம் செய்பவர் பேரில் தான் வண்டி எடுக்க வேண்டும்.</span>
+            <span>
+              வண்டியில் வியாபாரம் செய்பவர் பேரில் தான் வண்டி எடுக்க வேண்டும்.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">2.</span>
@@ -426,15 +488,22 @@ function RentalRules({ lang }: { lang: "en" | "ta" }) {
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">3.</span>
-            <span>வண்டி சேதம் அடைந்தால் அதற்குண்டான பணம் செலுத்த வேண்டும்.</span>
+            <span>
+              வண்டி சேதம் அடைந்தால் அதற்குண்டான பணம் செலுத்த வேண்டும்.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">4.</span>
-            <span>வண்டியை சுத்தமாக கழுவி கொண்டு வர வேண்டும். இல்லையெனில் ரூ.500 பிடித்தம் செய்யப்படும்.</span>
+            <span>
+              வண்டியை சுத்தமாக கழுவி கொண்டு வர வேண்டும். இல்லையெனில் ரூ.500
+              பிடித்தம் செய்யப்படும்.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">5.</span>
-            <span>வண்டியை பத்திரமாக ஒப்படைத்த பின்பே ஆவணங்கள் திரும்ப தரப்படும்.</span>
+            <span>
+              வண்டியை பத்திரமாக ஒப்படைத்த பின்பே ஆவணங்கள் திரும்ப தரப்படும்.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">6.</span>
@@ -442,30 +511,49 @@ function RentalRules({ lang }: { lang: "en" | "ta" }) {
           </div>
           {/* Rule 7 Highlighted */}
           <div className="bg-amber-50 border-l-4 border-amber-400 p-3 rounded-r-xl font-medium text-sm leading-relaxed border-y border-r border-[#f97316]/10">
-            <span className="text-[#f97316] font-bold mr-1 block text-xs uppercase tracking-wider mb-0.5">விதி 7 - முக்கிய குறிப்பு</span>
-            <span>குறைந்தபட்சம் 1 மாதம் வாடகை வைத்துக்கொள்ள வேண்டும். முன்னதாக திரும்பினாலும் 1 மாத வாடகை வசூலிக்கப்படும்.</span>
+            <span className="text-[#f97316] font-bold mr-1 block text-xs uppercase tracking-wider mb-0.5">
+              விதி 7 - முக்கிய குறிப்பு
+            </span>
+            <span>
+              குறைந்தபட்சம் 1 மாதம் வாடகை வைத்துக்கொள்ள வேண்டும். முன்னதாக
+              திரும்பினாலும் 1 மாத வாடகை வசூலிக்கப்படும்.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed pb-2 border-b border-orange-100">
             <span className="text-[#f97316] font-bold mr-2">8.</span>
-            <span>வண்டி எடுத்துச் செல்லும் போதும் திரும்பி தரும் போதும் டெம்போ வாடகை தங்கள் பொறுப்பு.</span>
+            <span>
+              வண்டி எடுத்துச் செல்லும் போதும் திரும்பி தரும் போதும் டெம்போ வாடகை
+              தங்கள் பொறுப்பு.
+            </span>
           </div>
           <div className="flex items-start text-sm leading-relaxed">
             <span className="text-[#f97316] font-bold mr-2">9.</span>
-            <span>அட்வான்ஸ் தொகை வண்டி திரும்பிய 1 வாரத்திற்குள் தரப்படும்.</span>
+            <span>
+              அட்வான்ஸ் தொகை வண்டி திரும்பிய 1 வாரத்திற்குள் தரப்படும்.
+            </span>
           </div>
         </div>
-
       </div>
 
       {/* Docs Note */}
       <div className="mt-4 p-3.5 bg-amber-50/80 border border-amber-500/20 rounded-xl text-xs text-amber-900 flex flex-col gap-1 shadow-sm">
         <span className="font-bold uppercase tracking-wider text-[10px] text-amber-700 block">
-          <span className="en">Required Documents (Any One Proof is Enough)</span>
-          <span className="ta tamil-text">தேவையான ஆவணங்கள் (ஏதேனும் ஒன்று மட்டும் போதுமானது)</span>
+          <span className="en">
+            Required Documents (Any One Proof is Enough)
+          </span>
+          <span className="ta tamil-text">
+            தேவையான ஆவணங்கள் (ஏதேனும் ஒன்று மட்டும் போதுமானது)
+          </span>
         </span>
         <p className="leading-relaxed">
-          <span className="en">Please bring: Aadhaar Card, Ration Card, or PAN Card (any one of these) + 1 Passport Photo</span>
-          <span className="ta tamil-text block text-[11px] mt-0.5">கொண்டு வர வேண்டியது: ஆதார் கார்டு, ரேஷன் கார்டு, அல்லது பான் கார்டு (இதில் ஏதேனும் ஒரு ஆதாரம்) + 1 பாஸ்போர்ட் போட்டோ</span>
+          <span className="en">
+            Please bring: Aadhaar Card, Ration Card, or PAN Card (any one of
+            these) + 1 Passport size Photo
+          </span>
+          <span className="ta tamil-text block text-[11px] mt-0.5">
+            கொண்டு வர வேண்டியது: ஆதார் கார்டு, ரேஷன் கார்டு, அல்லது பான் கார்டு
+            (இதில் ஏதேனும் ஒரு ஆதாரம்) + 1 பாஸ்போர்ட் போட்டோ
+          </span>
         </p>
       </div>
     </div>

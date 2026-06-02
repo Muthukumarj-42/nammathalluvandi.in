@@ -16,7 +16,7 @@ export interface Cart {
 
 export const carts: Cart[] = [
   {
-    id: "premium-fast-food-cart-with-stove",
+    id: "premium-fast-food-cart",
     nameEn: "Wooden Fast Food Cart",
     nameTa: "மரத்தாலான வண்டி",
     type: ["Has Roof", "Fast Food", "No Stove", "Large"],
@@ -108,7 +108,7 @@ export const carts: Cart[] = [
     id: "juice-cart",
     nameEn: "Large Steel Cart with Stove",
     nameTa: "பெரிய அடுப்புடன் கூடிய வண்டி",
-    type: ["with Stove", "Open Counter", "Fast food", "premium"],
+    type: ["has Stove", "has roof", "Fast food", "premium"],
     pricePerDay: 130,
     depositAmount: 10000,
     available: true,
@@ -140,7 +140,7 @@ export const carts: Cart[] = [
     id: "tea-coffee-cart",
     nameEn: "Full Covered Lockable Cart",
     nameTa: "முழு மூடிய பூட்டு வண்டி",
-    type: ["No Stove", "Full Covered"],
+    type: ["No Stove", "Full Covered", "has roof"],
     pricePerDay: 90,
     depositAmount: 5000,
     available: true,
@@ -170,7 +170,7 @@ export const carts: Cart[] = [
     id: "starter-cart-without-stove",
     nameEn: "Compact Closed Cart",
     nameTa: "சிறிய மூடிய வண்டி",
-    type: ["No Stove", "Full Covered", "Compact"],
+    type: ["No Stove", "Full Covered", "has roof"],
     pricePerDay: 90,
     depositAmount: 5000,
     available: true,
@@ -197,8 +197,8 @@ export const carts: Cart[] = [
   },
   {
     id: "arched-roof-open-cart",
-    nameEn: "Arched Roof Open Cart",
-    nameTa: "வளைவு கூரை திறந்த வண்டி",
+    nameEn: "compact Cart",
+    nameTa: "சிறிய வண்டி",
     type: ["Has Roof", "No Stove", "Open Counter"],
     pricePerDay: 120,
     depositAmount: 2000,
@@ -239,8 +239,6 @@ export const filters = [
   { en: "Full Covered", ta: "முழு மூடியது" },
   { en: "Premium", ta: "பிரீமியம்" },
   { en: "Fast Food", ta: "ஃபாஸ்ட் ஃபுட்" },
-  { en: "Juice Cart", ta: "ஜூஸ் வண்டி" },
-  { en: "Tea Cart", ta: "டீ வண்டி" },
 ];
 
 export function getCart(id: string) {

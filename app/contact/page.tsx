@@ -1,14 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { MapPin, MessageCircle, PhoneCall, Clock } from "lucide-react";
+import { useMemo, useState, useEffect } from "react";
+import Link from "next/link";
+import { MapPin, MessageCircle, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   CALL_PHONE,
   DISPLAY_CALL_PHONE,
   DISPLAY_RENTAL_WHATSAPP,
 } from "@/lib/utils";
-import { WA_NUMBER, WA_PUBLISH, buildWAUrl } from "@/config/whatsapp";
+import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 
 function Text({ en, ta }: { en: string; ta: string }) {
   return (
@@ -19,41 +20,123 @@ function Text({ en, ta }: { en: string; ta: string }) {
   );
 }
 
-const inquiryOptions = {
-  rent: {
-    label: "I want to rent a cart",
-    tamil: "வண்டி வாடகைக்கு எடுக்க வேண்டும்",
-    message:
-      "வணக்கம், நான் தள்ளுவண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nதேவையான தேதி:\nஇடம் (கோவையில்):\nகால அவகாசம்:\nமேலும் விவரம்:",
-    phone: WA_NUMBER,
-  },
-  list: {
-    label: "I want to list my cart in thallu vandi",
-    tamil: "என் வண்டியை தளவண்டியில் பதிவு செய்ய வேண்டும்",
-    message:
-      "Hi, I want to list my food cart on Thalluvandi.\n\nName:\nPhone:\nNumber of carts:\nCart type:\nRental price expectation:\nLocation (Tamil nadu):",
-    phone: WA_PUBLISH,
-  },
-  buy: {
-    label: "I want to buy/order a cart",
-    tamil: "தனிப்பயன் வண்டி வாங்க வேண்டும்",
-    message:
-      "வணக்கம், நான் தனிப்பட்ட உணவு வண்டி வாங்க விரும்புகிறேன்.\n\nபெயர்:\nதொலைபேசி:\nவண்டி அளவு:\nவடிவமைப்பு விருப்பம்:\nபட்ஜெட்:",
-    phone: WA_NUMBER,
-  },
-  other: {
-    label: "Other inquiry",
-    tamil: "மற்ற கேள்விகள்",
-    message: "வணக்கம், தள்ளுவண்டி தளம் மூலம் தொடர்பு கொள்கிறேன். என் கேள்வி:",
-    phone: WA_NUMBER,
-  },
-};
-
-type InquiryKey = keyof typeof inquiryOptions;
-
 export default function ContactPage() {
-  const [selection, setSelection] = useState<InquiryKey>("rent");
-  const selected = useMemo(() => inquiryOptions[selection], [selection]);
+  const [lang, setLang] = useState<"en" | "ta">("en");
+
+  // Sync language toggle dynamically
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const currentLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+    setLang(currentLang);
+
+    const observer = new MutationObserver(() => {
+      const updatedLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+      setLang(updatedLang);
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-lang"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Form State
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    businessType: "Tea", // Tea, Juice, FastFood, Snacks, Other
+    need: "rent", // rent, publish, custom, other
+    location: "",
+    details: "",
+  });
+
+  const [phoneError, setPhoneError] = useState("");
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+
+    if (id === "phone") {
+      const digits = value.replace(/\D/g, "");
+      if (value && digits.length !== 10) {
+        setPhoneError(
+          lang === "ta"
+            ? "தொலைபேசி எண் 10 இலக்கங்களாக இருக்க வேண்டும்"
+            : "Phone number must be exactly 10 digits"
+        );
+      } else {
+        setPhoneError("");
+      }
+    }
+  };
+
+  const isFormValid =
+    formData.name.trim() !== "" &&
+    formData.phone.replace(/\D/g, "").length === 10 &&
+    formData.location.trim() !== "" &&
+    phoneError === "";
+
+  const compiledMessage = useMemo(() => {
+    const extraDetails = formData.details.trim() !== "" ? formData.details.trim() : (lang === "ta" ? "இல்லை" : "None");
+    
+    if (lang === "ta") {
+      const needText = 
+        formData.need === "rent" ? "வண்டி வாடகைக்கு எடுக்க" :
+        formData.need === "publish" ? "என் வண்டியை வாடகைக்கு விட (Publish)" :
+        formData.need === "custom" ? "பிரத்யேக வண்டி தயாரிக்க/வாங்க" : "பொதுவான கேள்விகள்";
+        
+      const businessText =
+        formData.businessType === "Tea" ? "டீ / காபி கடை" :
+        formData.businessType === "Juice" ? "ஜூஸ் / மில்க்ஷேக் வண்டி" :
+        formData.businessType === "FastFood" ? "ஃபாஸ்ட் ஃபுட் / காரசார கடை" :
+        formData.businessType === "Snacks" ? "ஸ்நாக்ஸ் / சாட் வண்டி" : "மற்ற உணவு தொழில்";
+
+      return `வணக்கம் தள்ளுவண்டி குழுவினரே,
+
+நான் ஒரு புதிய விசாரணை செய்ய விரும்புகிறேன்:
+
+பெயர்: ${formData.name.trim() || "[உங்கள் பெயர்]"}
+கைபேசி எண்: ${formData.phone.trim() || "[உங்கள் கைபேசி எண்]"}
+தொழில் வகை: ${businessText}
+தேவை: ${needText}
+இடம் (கோவையில்): ${formData.location.trim() || "[உங்கள் பகுதி]"}
+கூடுதல் விவரம் / கேள்வி: ${extraDetails}`;
+    } else {
+      const needText = 
+        formData.need === "rent" ? "Rent a Food Cart" :
+        formData.need === "publish" ? "Publish/List my Cart" :
+        formData.need === "custom" ? "Custom Cart Design/Order" : "General Question";
+        
+      const businessText =
+        formData.businessType === "Tea" ? "Tea / Coffee Stall" :
+        formData.businessType === "Juice" ? "Juice / Milkshake Cart" :
+        formData.businessType === "FastFood" ? "Fast Food / Chinese Stall" :
+        formData.businessType === "Snacks" ? "Snacks / Chaat Cart" : "Other Business";
+
+      return `Hello Thalluvandi team,
+
+I have a new enquiry:
+
+Name: ${formData.name.trim() || "[Your Name]"}
+Phone: ${formData.phone.trim() || "[Your Phone Number]"}
+Business Type: ${businessText}
+Purpose: ${needText}
+Location: ${formData.location.trim() || "[Your Location in Coimbatore]"}
+Details/Message: ${extraDetails}`;
+    }
+  }, [formData, lang]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isFormValid) return;
+    
+    const waUrl = buildWAUrl(WA_NUMBER, compiledMessage);
+    window.open(waUrl, "_blank");
+  };
 
   const infoCards = [
     [
@@ -93,20 +176,20 @@ export default function ContactPage() {
           </p>
           <h1 className="mt-3 max-w-4xl font-display text-5xl uppercase leading-none text-ink md:text-7xl">
             <Text
-              en="Contact Thalluvandi — Coimbatore, Tamil Nadu"
+              en="Contact Thalluvandi"
               ta="தொடர்பு கொள்ள — ஒண்டிப்புதூர், கோயம்புத்தூர்"
             />
           </h1>
           <p className="mt-6 max-w-[680px] text-lg leading-8 text-muted">
             <Text
-              en="Reach out to us for premium food cart rentals and custom manufacturing in Coimbatore and expanding across all districts of Tamil Nadu."
-              ta="கோயம்புத்தூர் மற்றும் தமிழ்நாடு முழுவதும் உள்ள அனைத்து மாவட்டங்களிலும் தள்ளுவண்டி வாடகை மற்றும் தனிப்பட்ட வண்டிகள் தயாரிக்க எங்களை தொடர்பு கொள்ளவும்."
+              en="Reach out to us for premium food cart rentals and custom manufacturing in Coimbatore."
+              ta="கோயம்புத்தூரில் தள்ளுவண்டி வாடகை மற்றும் பிரத்யேக வண்டிகள் தயாரிக்க எங்களை தொடர்பு கொள்ளவும்."
             />
           </p>
         </div>
       </section>
 
-      {/* Main Info Cards - FIX 7 */}
+      {/* Main Info Cards */}
       <section className="pb-10">
         <div className="site-container grid items-stretch gap-4 md:grid-cols-3 md:gap-6">
           {infoCards.map(([Icon, title, tamilTitle, renderContent]) => (
@@ -172,90 +255,197 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* WhatsApp Booking Interactive Area - FIX 2 & FIX 5 */}
+      {/* WhatsApp Booking Interactive Form */}
       <section className="py-12 bg-white border-t border-black/5">
-        <div className="site-container">
-          <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
-            <h2 className="font-display text-4xl uppercase leading-none text-ink mb-6">
-              <Text en="Message us on WhatsApp" ta="வாட்ஸ்அப்பில் தொடர்புகொள்ள" />
-            </h2>
-
-            {/* Form row containing 2 dropdowns + desktop CTA button */}
-            <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
-              <div className="grid grid-cols-2 gap-4">
-                <label className="grid gap-2 text-sm font-bold text-ink">
-                  <span>
-                    <Text en="User type" ta="உங்களுக்கு என்ன தேவை?" />
-                  </span>
-                  <select
-                    value={selection}
-                    onChange={(event) =>
-                      setSelection(event.target.value as InquiryKey)
-                    }
-                    className="min-h-11 w-full rounded border border-black/10 bg-[#F8F6F2] px-3 text-xs outline-none focus:border-primary"
-                  >
-                    {Object.entries(inquiryOptions).map(([value, option]) => (
-                      <option key={value} value={value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label className="grid gap-2 text-sm font-bold text-ink">
-                  <span>
-                    <Text en="Inquiry type" ta="விசாரணை வகை" />
-                  </span>
-                  <select
-                    value={selection}
-                    onChange={(event) =>
-                      setSelection(event.target.value as InquiryKey)
-                    }
-                    className="min-h-11 w-full rounded border border-black/10 bg-[#F8F6F2] px-3 text-xs outline-none focus:border-primary"
-                  >
-                    {Object.entries(inquiryOptions).map(([value, option]) => (
-                      <option key={value} value={value}>
-                        {option.tamil}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+        <div className="site-container max-w-5xl">
+          <div className="rounded-2xl border border-black/10 bg-[#fffdf7] p-6 md:p-10 shadow-premium grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            
+            {/* Form Column (Col Span 7) */}
+            <div className="md:col-span-7 flex flex-col gap-6">
+              <div>
+                <h2 className="font-display text-4xl uppercase leading-none text-ink">
+                  <Text en="Enquiry Form" ta="உங்களின் விவரங்கள்" />
+                </h2>
+                <p className="mt-1 text-sm text-[#f97316] font-bold uppercase tracking-wider">
+                  <Text en="Interactive WhatsApp Flow" ta="வாட்ஸ்அப் நேரடி முன்பதிவு" />
+                </p>
               </div>
 
-              <Button
-                asChild
-                size="lg"
-                className="w-full md:w-auto bg-[#25D366] hover:bg-[#20ba5a] text-white h-11 flex items-center justify-center text-xs tracking-wider"
-              >
-                <a
-                  href={buildWAUrl(selected.phone, selected.message)}
-                  target="_blank"
+              <form onSubmit={handleSubmit} className="space-y-4">
+                
+                {/* Field 1: Name */}
+                <div className="flex flex-col">
+                  <label htmlFor="name" className="text-sm font-semibold mb-1 block">
+                    <Text en="Full Name *" ta="பெயர் *" />
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder={lang === "ta" ? "உங்கள் முழு பெயர்" : "Enter your full name"}
+                    className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-base outline-none transition"
+                  />
+                </div>
+
+                {/* Field 2: Phone */}
+                <div className="flex flex-col">
+                  <label htmlFor="phone" className="text-sm font-semibold mb-1 block">
+                    <Text en="Phone Number *" ta="கைபேசி எண் *" />
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder={lang === "ta" ? "கைபேசி எண் (10 இலக்கங்கள்)" : "Enter your mobile number"}
+                    className={`w-full h-12 border focus:ring-2 rounded-xl px-4 bg-white text-base outline-none transition ${
+                      phoneError
+                        ? "border-red-500 focus:border-red-500 focus:ring-red-500/40"
+                        : "border-[#e5e0d8] focus:border-[#f97316] focus:ring-[#f97316]/40"
+                    }`}
+                  />
+                  {phoneError && (
+                    <span className="text-xs text-red-500 mt-1 font-semibold">
+                      {phoneError}
+                    </span>
+                  )}
+                </div>
+
+                {/* Field 3: Business Type Dropdown */}
+                <div className="flex flex-col">
+                  <label htmlFor="businessType" className="text-sm font-semibold mb-1 block">
+                    <Text en="Business Type *" ta="தொழில் வகை *" />
+                  </label>
+                  <select
+                    id="businessType"
+                    value={formData.businessType}
+                    onChange={handleInputChange}
+                    className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-sm outline-none transition cursor-pointer"
+                  >
+                    {lang === "ta" ? (
+                      <>
+                        <option value="Tea">டீ / காபி கடை</option>
+                        <option value="Juice">ஜூஸ் / மில்க்ஷேக் வண்டி</option>
+                        <option value="FastFood">ஃபாஸ்ட் ஃபுட் / காரசார கடை</option>
+                        <option value="Snacks">ஸ்நாக்ஸ் / சாட் வண்டி</option>
+                        <option value="Other">மற்ற உணவு தொழில்</option>
+                      </>
+                    ) : (
+                      <>
+                        <option value="Tea">Tea / Coffee Stall</option>
+                        <option value="Juice">Juice / Milkshake Cart</option>
+                        <option value="FastFood">Fast Food / Chinese Stall</option>
+                        <option value="Snacks">Snacks / Chaat Cart</option>
+                        <option value="Other">Other Business</option>
+                      </>
+                    )}
+                  </select>
+                </div>
+
+                {/* Field 4: What do you need Dropdown */}
+                <div className="flex flex-col">
+                  <label htmlFor="need" className="text-sm font-semibold mb-1 block">
+                    <Text en="What do you need? *" ta="உங்களுக்கு என்ன தேவை? *" />
+                  </label>
+                  <select
+                    id="need"
+                    value={formData.need}
+                    onChange={handleInputChange}
+                    className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-sm outline-none transition cursor-pointer"
+                  >
+                    {lang === "ta" ? (
+                      <>
+                        <option value="rent">தள்ளுவண்டி வாடகைக்கு எடுக்க</option>
+                        <option value="publish">என் வண்டியை வாடகைக்கு விட (Publish)</option>
+                        <option value="custom">பிரத்யேக வண்டி தயாரிக்க/வாங்க</option>
+                        <option value="other">பொதுவான கேள்விகள்</option>
+                      </>
+                    ) : (
+                      <>
+                        <option value="rent">Rent a Food Cart</option>
+                        <option value="publish">Publish/List my Cart</option>
+                        <option value="custom">Custom Cart Design/Order</option>
+                        <option value="other">General Question</option>
+                      </>
+                    )}
+                  </select>
+                </div>
+
+                {/* Field 5: Location in Coimbatore */}
+                <div className="flex flex-col">
+                  <label htmlFor="location" className="text-sm font-semibold mb-1 block">
+                    <Text en="Location in Coimbatore *" ta="இடம் (கோவையில்) *" />
+                  </label>
+                  <input
+                    type="text"
+                    id="location"
+                    required
+                    value={formData.location}
+                    onChange={handleInputChange}
+                    placeholder={lang === "ta" ? "எ.கா: ஒண்டிப்புதூர், காந்திபுரம்" : "e.g. Ondipudur, Gandhipuram"}
+                    className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-base outline-none transition"
+                  />
+                </div>
+
+                {/* Field 6: Details Message */}
+                <div className="flex flex-col">
+                  <label htmlFor="details" className="text-sm font-semibold mb-1 block">
+                    <Text en="Enquiry Message (Optional)" ta="விவரங்கள் / கேள்விகள் (விருப்பம்)" />
+                  </label>
+                  <textarea
+                    id="details"
+                    rows={4}
+                    value={formData.details}
+                    onChange={handleInputChange}
+                    placeholder={lang === "ta" ? "வண்டி அளவு, குறிப்பிட்ட தேதி, அல்லது உங்கள் கேள்விகள்..." : "Cart size preference, required dates, or other questions..."}
+                    className="w-full border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl p-4 bg-white text-base outline-none transition resize-none"
+                  />
+                </div>
+
+                {/* Submit button */}
+                <Button
+                  type="submit"
+                  disabled={!isFormValid}
+                  className={`w-full h-14 mt-4 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-2xl font-bold text-base flex items-center justify-center gap-2 transition duration-200 ${
+                    !isFormValid ? "opacity-40 cursor-not-allowed" : ""
+                  }`}
                 >
-                  <MessageCircle size={16} className="mr-1 shrink-0" />
-                  <Text en="💬 Chat on WhatsApp" ta="💬 வாட்ஸ்அப்பில் பேச" />
-                </a>
-              </Button>
+                  <MessageCircle size={20} className="shrink-0" />
+                  <Text en="Continue to WhatsApp →" ta="WhatsApp-ல் அனுப்பவும் →" />
+                </Button>
+
+              </form>
             </div>
 
-            {/* Tight Message Preview Block */}
-            <div className="mt-5 rounded-xl border border-primary/20 bg-[#fff7ed]/50 p-4 text-sm leading-relaxed text-muted-foreground">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">
-                <span className="en">Message Preview</span>
-                <span className="ta tamil-text">செய்தி முன்னோட்டம்</span>
-              </p>
+            {/* Preview Column (Col Span 5) */}
+            <div className="md:col-span-5 md:sticky md:top-28 space-y-4">
+              <div className="rounded-xl border border-primary/20 bg-[#fff7ed]/50 p-5 text-sm leading-relaxed text-muted-foreground flex flex-col gap-3">
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-[#f97316]">
+                    <Text en="Message Preview" ta="செய்தி முன்னோட்டம்" />
+                  </h3>
+                  <p className="text-[10px] text-muted mt-1 leading-normal">
+                    <Text 
+                      en="This formatted message will be compiled in real-time and sent directly when clicking continue." 
+                      ta="நீங்கள் படிவத்தில் உள்ளிடும் விவரங்கள் தானாகவே இங்கு செய்தியாக தொகுக்கப்பட்டு அனுப்பப்படும்."
+                    />
+                  </p>
+                </div>
 
-              <strong className="text-ink text-xs block mb-1">
-                <Text en={selected.label} ta={selected.tamil} />
-              </strong>
-
-              <pre className="max-h-[200px] overflow-y-auto mt-2 text-[11px] font-mono whitespace-pre-wrap leading-relaxed text-muted-foreground bg-white/80 p-3 rounded border border-orange-500/10">
-                {selected.message}
-              </pre>
+                <pre className="max-h-[380px] overflow-y-auto mt-2 text-[11px] font-mono whitespace-pre-wrap leading-relaxed text-muted-foreground bg-white p-4 rounded border border-orange-500/10 shadow-inner">
+                  {compiledMessage}
+                </pre>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Google Maps Embed Section - Spacing optimized */}
+      {/* Google Maps Embed Section */}
       <section className="pb-16 pt-8">
         <div className="site-container">
           <h2 className="text-sm font-bold uppercase tracking-widest text-[#f97316] mb-3 text-center md:text-left">

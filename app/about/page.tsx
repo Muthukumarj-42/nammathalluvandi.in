@@ -50,7 +50,7 @@ export default function AboutPage() {
             </h2>
             <p className="mt-4 max-w-[680px] text-lg leading-8 text-muted">
               <span className="en">
-                Thalluvandi was started by a family that has been in the food cart business for over a decade in Coimbatore. We saw how hard it was for new vendors to afford a cart upfront, so we built a rental system that lets anyone start with minimal investment. Today we manage 66+ carts across Coimbatore and are expanding across Tamil Nadu.
+                Thalluvandi was started by a family that has been in the food cart business for over a decade in Coimbatore. We saw how hard it was for new vendors to afford a cart upfront, so we built a rental system that lets anyone start with minimal investment. Today we manage 66+ carts across Coimbatore, focusing entirely on helping local vendors establish successful businesses.
               </span>
               <span className="ta tamil-text">
                 தள்ளுவண்டி என்பது கோவையில் தள்ளுவண்டி உற்பத்தி மற்றும் வாடகை சேவையில் ஒரு தசாப்த காலமாக ஈடுபட்டுள்ள ஒரு குடும்பத்தினால் தொடங்கப்பட்ட எளிய வாடகை சேவை. புதிய வியாபாரிகள் முதலீடு இன்றி சுலபமாக தொழிலைத் தொடங்க ஒரு நாள் வாடகையில் 66-க்கும் மேற்பட்ட வண்டிகளை வழங்குகிறோம்.
@@ -96,24 +96,24 @@ export default function AboutPage() {
           </div>
           <div className="rounded-2xl border border-primary/20 bg-white p-6 md:p-8">
             <h2 className="font-display text-5xl uppercase leading-none text-ink">
-              <Text en="Expansion roadmap" ta="அடுத்த பயணம்" />
+              <Text en="Get In Touch" ta="தொடர்பு கொள்ள" />
             </h2>
             <p className="mt-4 max-w-[680px] text-lg leading-8 text-muted">
               <Text 
-                en="Currently in Coimbatore. Expanding across all Tamil Nadu districts by 2027. Want us in your city? Contact us." 
-                ta="இப்போ கோவையில். 2027க்குள் தமிழ்நாடு முழுக்க உள்ள அனைத்து மாவட்டங்களுக்கும் விரிவுபடுத்தும் திட்டம் உள்ளது. உங்கள் ஊரிலும் தள்ளுவண்டி சேவை வேண்டுமா? எங்களை வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்!" 
+                en="Ready to start your business or want to know more about our food cart rental options? Contact us today!" 
+                ta="தொழில் தொடங்க தயாரா? அல்லது எங்கள் தள்ளுவண்டி வாடகை சேவைகளைப் பற்றி மேலும் அறிய வேண்டுமா? இன்றே எங்களைத் தொடர்பு கொள்ளுங்கள்!" 
               />
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild className="bg-[#25D366] hover:bg-[#20ba5a] text-white en" size="lg">
-                <a href={buildWAUrl(WA_PUBLISH, "Hi Thalluvandi, I want you to expand to my city!\n\nName:\nPhone:\nCity:\nType of Business:\nComments:")} target="_blank">
+              <Button asChild size="lg" className="bg-[#25D366] hover:bg-[#20ba5a] text-white">
+                <Link href="/contact" className="en">
                   Contact Us
-                </a>
+                </Link>
               </Button>
-              <Button asChild className="bg-[#25D366] hover:bg-[#20ba5a] text-white ta tamil-text" size="lg">
-                <a href={buildWAUrl(WA_PUBLISH, "வணக்கம் தள்ளுவண்டி, உங்கள் சேவை எங்கள் ஊரிலும் தேவை!\n\nபெயர்:\nதொலைபேசி:\nஊர்:\nதொழில் வகை:\nகருத்துக்கள்:")} target="_blank">
+              <Button asChild size="lg" className="bg-[#25D366] hover:bg-[#20ba5a] text-white ta tamil-text">
+                <Link href="/contact">
                   தொடர்பு கொள்ள
-                </a>
+                </Link>
               </Button>
             </div>
           </div>

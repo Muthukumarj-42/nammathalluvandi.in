@@ -15,9 +15,8 @@ const groups = {
     ["How It Works", "எப்படி rent பண்ணுவது?", "/how-it-works"],
     ["Publish Cart", "என் வண்டி சேர்க்க", "/publish"],
   ],
-  Roadmap: [
-    ["Currently in Coimbatore", "இப்போ கோவையில்", "/contact"],
-    ["Expanding across Tamil Nadu", "தமிழ்நாடு முழுக்க விரைவில்", "/contact"],
+  Marketplace: [
+    ["Coimbatore Hub", "கோவை கிளை", "/contact"],
     ["Vendor Dashboard", "Vendor dashboard", "/marketplace"],
     ["Booking System", "Booking system", "/marketplace"],
   ],
@@ -51,12 +50,10 @@ export function Footer() {
             />
             <p className="mt-6 max-w-sm text-sm leading-7 text-[#1a1208]/70">
               <span className="en">
-                Food cart rentals for Coimbatore vendors. Expanding across Tamil
-                Nadu.
+                Food cart rentals for Coimbatore vendors. Start your business with ease and low investment.
               </span>
               <span className="ta tamil-text">
-                கோவையில் தொழில் தொடங்க வண்டி வேண்டுமா? தமிழ்நாடு முழுக்க
-                விரைவில் வரோம்.
+                கோவையில் தொழில் தொடங்க சிறந்த தள்ளுவண்டிகள். குறைந்த முதலீட்டில் எளிய முறையில் ஆரம்பிக்கலாம்.
               </span>
             </p>
             <div className="mt-6 flex gap-3">

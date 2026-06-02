@@ -219,8 +219,8 @@ export default async function CartDetailPage({
                   </span>
                   <span className="text-muted-foreground tamil-text">
                     <Text
-                      en="Coimbatore (Expanding across Tamil Nadu)"
-                      ta="கோயம்புத்தூர் (தமிழ்நாடு முழுவதும் விரிவடைகிறது)"
+                      en="Coimbatore"
+                      ta="கோயம்புத்தூர்"
                     />
                   </span>
                 </div>
