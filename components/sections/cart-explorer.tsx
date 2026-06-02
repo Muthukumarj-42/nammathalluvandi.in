@@ -23,29 +23,34 @@ function Text({ en, ta }: { en: string; ta: string }) {
   );
 }
 
-function CartImage({ src, alt }: { src: string; alt: string }) {
+function CartImage({ src, alt, priority = false }: { src: string; alt: string; priority?: boolean }) {
   const [error, setError] = useState(false);
 
   if (error || !src) {
     return (
       <div className="relative w-full h-full bg-[#1a1208] flex items-center justify-center overflow-hidden z-0">
         <div className="absolute inset-0 bg-black/60 z-0" />
-        <img
-          src="/brand/full-logo-with-background.png"
+        <Image
+          src="/brand/full-logo-with-background.webp"
           alt="Thalluvandi fallback logo"
-          className="object-contain p-6 opacity-40 z-0 absolute inset-0 w-full h-full"
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-contain p-6 opacity-40 z-0"
         />
       </div>
     );
   }
 
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
-      className="object-cover transition duration-500 group-hover:scale-[1.04] z-0 absolute inset-0 w-full h-full"
-      onError={(e) => {
-        e.currentTarget.onerror = null;
+      fill
+      sizes="(max-width: 768px) 100vw, 33vw"
+      priority={priority}
+      loading={priority ? undefined : "lazy"}
+      className="object-cover transition duration-500 group-hover:scale-[1.04] z-0"
+      onError={() => {
         setError(true);
       }}
     />
@@ -300,12 +305,12 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
-              {slideshowCarts.map((cart) => (
+              {slideshowCarts.map((cart, index) => (
                 <div key={cart.id} className="w-full shrink-0 px-4">
                   <article className="relative overflow-hidden rounded-xl bg-white border border-black/10 shadow-lg">
                     {/* Aspect Ratio 16:9 Image Area - FIX 8 */}
                     <div className="relative aspect-video w-full overflow-hidden">
-                      <CartImage src={cart.images[0]} alt={cart.nameEn} />
+                      <CartImage src={cart.images[0]} alt={cart.nameEn} priority={index === 0} />
 
                       {/* Availability badge - z-10 */}
                       <span
@@ -466,7 +471,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                     href={`/carts/${cart.id}`}
                     className="block relative aspect-video overflow-hidden bg-[#fff7ed] z-0"
                   >
-                    <CartImage src={cart.images[0]} alt={cart.nameEn} />
+                    <CartImage src={cart.images[0]} alt={cart.nameEn} priority={index === 0} />
 
                     {/* Absolute badges - z-10 */}
                     <span

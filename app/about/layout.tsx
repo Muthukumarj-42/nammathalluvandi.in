@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Namma Thalluvandi",
     images: [
       {
-        url: "https://nammathalluvandi.in/brand/full-logo-with-background.png",
+        url: "https://nammathalluvandi.in/brand/full-logo-with-background.webp",
         width: 1200,
         height: 630,
         alt: "Namma Thalluvandi logo"
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About Namma Thalluvandi | Coimbatore Food Cart Rental | நம்ம தளவண்டி பற்றி",
     description: "Namma Thalluvandi is a family-run thallu vandi rental business in Ondipudur, Coimbatore. Trusted by street food vendors across Coimbatore and Tiruppur.",
-    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.png"]
+    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.webp"]
   }
 };
 

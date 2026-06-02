@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Namma Thalluvandi",
     images: [
       {
-        url: "https://nammathalluvandi.in/brand/full-logo-with-background.png",
+        url: "https://nammathalluvandi.in/brand/full-logo-with-background.webp",
         width: 1200,
         height: 630,
         alt: "Namma Thalluvandi logo"
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "List Your Thallu Vandi | All Tamil Nadu Districts | Namma Thalluvandi",
     description: "Own a food cart anywhere in Tamil Nadu? List it on Namma Thalluvandi. Reach vendors in Chennai, Madurai, Salem, Trichy, Tiruppur, Coimbatore, Erode, Vellore and all districts.",
-    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.png"]
+    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.webp"]
   }
 };
 

@@ -805,9 +805,8 @@ export default function ContactPage() {
             <iframe
               title="Thalluvandi location - Ondipudur Coimbatore"
               src="https://maps.google.com/maps?q=11.0168,76.9558&z=17&output=embed"
-              className="absolute inset-0 h-full w-full"
+              className="absolute inset-0 h-full w-full rounded-lg"
               loading="lazy"
-              style={{ borderRadius: "8px" }}
             />
           </div>
         </div>

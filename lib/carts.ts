@@ -38,9 +38,9 @@ export const carts: Cart[] = [
       "ஃபாஸ்ட் புட் & சாப்பாட்டிற்கு ஏற்றது",
     ],
     images: [
-      "/carts/premium-fast-food-cart-with-stove/photo-1.png",
-      "/carts/premium-fast-food-cart-with-stove/photo-2.jpg",
-      "/carts/premium-fast-food-cart-with-stove/photo-3.jpg",
+      "/carts/premium-fast-food-cart-with-stove/photo-1.webp",
+      "/carts/premium-fast-food-cart-with-stove/photo-2.webp",
+      "/carts/premium-fast-food-cart-with-stove/photo-3.webp",
     ],
     whatsappMessageTa:
       "வணக்கம், நான் மரத்தாலான வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
@@ -66,8 +66,8 @@ export const carts: Cart[] = [
       "பாரம்பரிய சக்கரம்",
     ],
     images: [
-      "/carts/covered-premium-cart/photo-1.png",
-      "/carts/covered-premium-cart/photo-2.jpg",
+      "/carts/covered-premium-cart/photo-1.webp",
+      "/carts/covered-premium-cart/photo-2.webp",
     ],
     whatsappMessageTa:
       "வணக்கம், நான் அலுமினியம் வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
@@ -97,9 +97,9 @@ export const carts: Cart[] = [
       "வறுக்க & ஸ்நாக்ஸ் விற்க ஏற்றது",
     ],
     images: [
-      "/carts/mobile-snack-cart/photo-1.png",
-      "/carts/mobile-snack-cart/photo-2.jpg",
-      "/carts/mobile-snack-cart/photo-3.jpg",
+      "/carts/mobile-snack-cart/photo-1.webp",
+      "/carts/mobile-snack-cart/photo-2.webp",
+      "/carts/mobile-snack-cart/photo-3.webp",
     ],
     whatsappMessageTa:
       "வணக்கம், நான் அடுப்புடன் கூடிய வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
@@ -129,9 +129,9 @@ export const carts: Cart[] = [
       "வறுக்க & ஸ்நாக்ஸ் விற்க ஏற்றது",
     ],
     images: [
-      "/carts/juice-cart/photo-1.png",
-      "/carts/juice-cart/photo-2.jpg",
-      "/carts/juice-cart/photo-3.jpg",
+      "/carts/juice-cart/photo-1.webp",
+      "/carts/juice-cart/photo-2.webp",
+      "/carts/juice-cart/photo-3.webp",
     ],
     whatsappMessageTa:
       "வணக்கம், நான் பெரிய அடுப்புடன் கூடிய வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
@@ -159,9 +159,9 @@ export const carts: Cart[] = [
       "சிறிய மற்றும் உறுதியான",
     ],
     images: [
-      "/carts/tea-coffee-cart/photo-1.png",
-      "/carts/tea-coffee-cart/photo-2.jpg",
-      "/carts/tea-coffee-cart/photo-3.jpg",
+      "/carts/tea-coffee-cart/photo-1.webp",
+      "/carts/tea-coffee-cart/photo-2.webp",
+      "/carts/tea-coffee-cart/photo-3.webp",
     ],
     whatsappMessageTa:
       "வணக்கம், நான் முழு மூடிய பூட்டு வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
@@ -189,8 +189,8 @@ export const carts: Cart[] = [
       "குறைந்த விலை ஸ்டார்டர் வண்டி",
     ],
     images: [
-      "/carts/starter-cart-without-stove/photo-1.png",
-      "/carts/starter-cart-without-stove/photo-2.jpg",
+      "/carts/starter-cart-without-stove/photo-1.webp",
+      "/carts/starter-cart-without-stove/photo-2.webp",
     ],
     whatsappMessageTa:
       "வணக்கம், நான் சிறிய பச்சை மூடிய வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",
@@ -222,9 +222,9 @@ export const carts: Cart[] = [
       "ஸ்நாக்ஸ், ஜூஸ் & பானங்களுக்கு ஏற்றது",
     ],
     images: [
-      "/carts/arched-roof-open-cart/photo-1.png",
-      "/carts/arched-roof-open-cart/photo-2.jpg",
-      "/carts/arched-roof-open-cart/photo-3.jpg",
+      "/carts/arched-roof-open-cart/photo-1.webp",
+      "/carts/arched-roof-open-cart/photo-2.webp",
+      "/carts/arched-roof-open-cart/photo-3.webp",
     ],
     whatsappMessageTa:
       "வணக்கம், நான் வளைவு கூரை திறந்த வண்டி வாடகைக்கு எடுக்க விரும்புகிறேன்.",

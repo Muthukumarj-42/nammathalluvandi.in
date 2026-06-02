@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: "Namma Thalluvandi",
     images: [
       {
-        url: "https://nammathalluvandi.in/brand/full-logo-with-background.png",
+        url: "https://nammathalluvandi.in/brand/full-logo-with-background.webp",
         width: 1200,
         height: 630,
         alt: "Namma Thalluvandi logo"
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Food Carts for Rent in Coimbatore | Namma Thalluvandi | Thallu Vandi Vadagai",
     description: "Browse 60+ rental thallu vandis in Coimbatore. Tea carts, juice carts, stove carts, covered premium carts. Starting ₹100/day. Also serving Tiruppur. WhatsApp to book instantly.",
-    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.png"]
+    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.webp"]
   }
 };
 

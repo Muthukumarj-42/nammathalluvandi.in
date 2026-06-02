@@ -1,15 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 function GalleryImage({
   src,
   alt,
   isThumbnail = false,
+  priority = false,
 }: {
   src: string;
   alt: string;
   isThumbnail?: boolean;
+  priority?: boolean;
 }) {
   const [error, setError] = useState(false);
 
@@ -21,10 +24,12 @@ function GalleryImage({
         }`}
       >
         <div className="absolute inset-0 bg-black/60 z-10" />
-        <img
-          src="/brand/full-logo-with-background.png"
+        <Image
+          src="/brand/full-logo-with-background.webp"
           alt="Thalluvandi fallback logo"
-          className="object-contain p-8 opacity-40 z-20 absolute inset-0 w-full h-full"
+          fill
+          sizes={isThumbnail ? "80px" : "(max-width: 768px) 100vw, 50vw"}
+          className="object-contain p-8 opacity-40 z-20"
         />
       </div>
     );
@@ -32,12 +37,14 @@ function GalleryImage({
 
   if (isThumbnail) {
     return (
-      <img
+      <Image
         src={src}
         alt={alt}
-        className="object-cover absolute inset-0 w-full h-full"
-        onError={(e) => {
-          e.currentTarget.onerror = null;
+        fill
+        sizes="80px"
+        loading="lazy"
+        className="object-cover"
+        onError={() => {
           setError(true);
         }}
       />
@@ -45,12 +52,16 @@ function GalleryImage({
   }
 
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
+      width={800}
+      height={600}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      priority={priority}
+      loading={priority ? undefined : "lazy"}
       className="object-contain max-h-[550px] w-auto h-auto max-w-full mx-auto rounded-2xl"
-      onError={(e) => {
-        e.currentTarget.onerror = null;
+      onError={() => {
         setError(true);
       }}
     />
@@ -83,6 +94,7 @@ export function CartGallery({ images, nameEn }: { images: string[]; nameEn: stri
             src={images[activeIndex]}
             alt={`${nameEn} - view ${activeIndex + 1}`}
             isThumbnail={false}
+            priority={true}
           />
         </div>
       </div>

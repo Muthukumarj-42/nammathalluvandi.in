@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   description: "Next-gen street food cart ecosystem features and payment gateway roadmap for vendors and custom thallu vandi manufacturing.",
   alternates: {
     canonical: "https://nammathalluvandi.in/marketplace"
+  },
+  robots: {
+    index: false,
+    follow: false
   }
 };
 

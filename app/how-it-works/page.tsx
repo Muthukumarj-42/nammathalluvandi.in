@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: "Namma Thalluvandi",
     images: [
       {
-        url: "https://nammathalluvandi.in/brand/full-logo-with-background.png",
+        url: "https://nammathalluvandi.in/brand/full-logo-with-background.webp",
         width: 1200,
         height: 630,
         alt: "Namma Thalluvandi logo"
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "How It Works | Namma Thalluvandi | Coimbatore Food Cart Rental",
     description: "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore and Tiruppur.",
-    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.png"]
+    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.webp"]
   }
 };
 

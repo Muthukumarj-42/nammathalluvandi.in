@@ -37,7 +37,7 @@ export default function AboutPage() {
           </div>
           <div className="relative rounded-2xl border border-black/10 bg-white p-6 shadow-premium">
             <div className="absolute inset-8 rounded-full bg-primary/15 blur-3xl" />
-            <Image src="/brand/full-logo-with-background.png" alt="Thalluvandi food cart rentals Coimbatore Tamil Nadu" width={640} height={640} className="relative w-full drop-shadow-[0_0_48px_rgba(255,107,0,0.22)]" />
+            <Image src="/brand/full-logo-with-background.webp" alt="Thalluvandi food cart rentals Coimbatore Tamil Nadu" width={640} height={640} className="relative w-full drop-shadow-[0_0_48px_rgba(255,107,0,0.22)]" />
           </div>
         </div>
       </section>

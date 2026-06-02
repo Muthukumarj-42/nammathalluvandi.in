@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Namma Thalluvandi",
     images: [
       {
-        url: "https://nammathalluvandi.in/brand/full-logo-with-background.png",
+        url: "https://nammathalluvandi.in/brand/full-logo-with-background.webp",
         width: 1200,
         height: 630,
         alt: "Namma Thalluvandi logo"
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact Namma Thalluvandi | Ondipudur Coimbatore | WhatsApp & Phone",
     description: "Visit Namma Thalluvandi at Ondipudur, Coimbatore 641016. Serving Coimbatore and Tiruppur. WhatsApp +91 88382 92849. Monday to Saturday 8am to 8pm.",
-    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.png"]
+    images: ["https://nammathalluvandi.in/brand/full-logo-with-background.webp"]
   }
 };
 

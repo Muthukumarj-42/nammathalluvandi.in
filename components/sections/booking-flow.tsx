@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowLeft, MessageCircle, MapPin } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { getCart, type Cart } from "@/lib/carts";
 
@@ -14,6 +15,7 @@ export function BookingFlow() {
 
   const [lang, setLang] = useState<"en" | "ta">("en");
   const [todayDate, setTodayDate] = useState("");
+  const [imgError, setImgError] = useState(false);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -171,11 +173,28 @@ export function BookingFlow() {
             {/* Cart Summary Card */}
             <div className="overflow-hidden rounded-2xl border border-[#f97316]/20 bg-white p-4 shadow-sm flex flex-col gap-4 transition duration-300 hover:shadow-premium">
               <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#fff7ed]">
-                <img
-                  src={cart.images[0]}
-                  alt={cart.nameEn}
-                  className="object-cover absolute inset-0 w-full h-full"
-                />
+                {imgError || !cart.images[0] ? (
+                  <div className="relative w-full h-full bg-[#1a1208] flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-black/60 z-10" />
+                    <Image
+                      src="/brand/full-logo-with-background.webp"
+                      alt="Thalluvandi fallback logo"
+                      fill
+                      sizes="100vw"
+                      className="object-contain p-6 opacity-40 z-20"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    src={cart.images[0]}
+                    alt={cart.nameEn}
+                    fill
+                    sizes="100vw"
+                    loading="lazy"
+                    className="object-cover"
+                    onError={() => setImgError(true)}
+                  />
+                )}
                 {/* Availability Badge */}
                 <span
                   className={`absolute top-2 left-2 z-10 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ${
