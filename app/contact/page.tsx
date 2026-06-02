@@ -20,6 +20,81 @@ function Text({ en, ta }: { en: string; ta: string }) {
   );
 }
 
+// Popular Tamil / Coimbatore Names Transliteration Dictionary
+const NAME_DICT: Record<string, string> = {
+  muthu: "முத்து",
+  kumar: "குமார்",
+  muthukumar: "முத்துக்குமார்",
+  karthi: "கார்த்தி",
+  karthik: "கார்த்திக்",
+  karthikeyan: "கார்த்திகேயன்",
+  ramesh: "ரமேஷ்",
+  suresh: "சுரேஷ்",
+  sathish: "சதீஷ்",
+  satheesh: "சதீஷ்",
+  arun: "அருண்",
+  anand: "ஆனந்த்",
+  vijay: "விஜய்",
+  ajith: "அஜித்",
+  surya: "சூர்யா",
+  sanjay: "சஞ்சய்",
+  selvam: "செல்வம்",
+  selvan: "செல்வன்",
+  selvi: "செல்வி",
+  mani: "மணி",
+  manikandan: "மணிகண்டன்",
+  raja: "ராஜா",
+  ganesh: "கணேஷ்",
+  dinesh: "தினேஷ்",
+  hari: "ஹரி",
+  harish: "ஹரிஷ்",
+  murugan: "முருகன்",
+  bala: "பாலா",
+  balaji: "பாலாஜி",
+  siva: "சிவா",
+  sivam: "சிவம்",
+  devi: "தேவி",
+  radha: "ராதா",
+  lakshmi: "லட்சுமி",
+  priya: "பிரியா",
+  chitra: "சித்ரா",
+  anitha: "அனிதா",
+  kavitha: "கவிதா",
+  divya: "திவ்யா",
+  meena: "மீனா",
+  geetha: "கீதா",
+  sangeetha: "சங்கீதா",
+  malathi: "மாலதி",
+  saranya: "சரண்யா",
+  mohan: "மோகன்",
+  prakash: "பிரகாஷ்",
+  rajesh: "ராஜேஷ்",
+  senthil: "செந்தில்",
+  saravanan: "சரவணன்",
+  rajan: "ராஜன்",
+  naveen: "கவின்",
+  kavin: "கவின்",
+  guna: "குணா",
+  subash: "சுபாஷ்",
+  vignesh: "விக்னேஷ்",
+  gokul: "கோகுல்",
+  madhavan: "மாதவன்",
+  prabhu: "பிரபு",
+  anbu: "அன்பு",
+  sakthi: "சக்தி",
+  vel: "வேல்",
+  velu: "வேலு",
+  vasanth: "வசந்த்",
+  deepak: "தீபக்",
+  shankar: "சங்கர்",
+  sankar: "சங்கர்",
+  ram: "ராம்",
+  raman: "ராமன்",
+  krishnan: "கிருஷ்ணன்",
+  krishna: "கிருஷ்ணா",
+  gopal: "கோபால்",
+};
+
 // Coimbatore Neighborhoods / Locations Dictionary
 const LOCATION_DICT: Record<string, string> = {
   ondipudur: "ஒண்டிப்புதூர்",
@@ -127,6 +202,171 @@ const COMMON_WORDS_DICT: Record<string, string> = {
   old: "பழைய",
 };
 
+// Syllable-by-syllable rule-based phonetic sound transliterator for custom names
+function phoneticTransliteration(word: string): string {
+  if (!word) return "";
+  let t = word.toLowerCase().trim();
+
+  // Suffixes and common patterns
+  t = t.replace(/senthil/g, "செந்தில்");
+  t = t.replace(/prakash/g, "பிரகாஷ்");
+  t = t.replace(/prabhu/g, "பிரபு");
+  t = t.replace(/shankar/g, "சங்கர்");
+  t = t.replace(/krish/g, "கிருஷ்");
+  t = t.replace(/raj/g, "ராஜ்");
+  t = t.replace(/kumar/g, "குமார்");
+  t = t.replace(/selva/g, "செல்வ");
+  
+  t = t.replace(/an$/g, "ன்");
+  t = t.replace(/am$/g, "ம்");
+  t = t.replace(/ar$/g, "ர்");
+  t = t.replace(/al$/g, "ல்");
+  t = t.replace(/as$/g, "ாஸ்");
+  t = t.replace(/esh$/g, "ேஷ்");
+  t = t.replace(/ish$/g, "ிஷ்");
+  t = t.replace(/ith$/g, "ித்");
+  t = t.replace(/anth$/g, "ந்த்");
+
+  // Consonant clusters
+  t = t.replace(/tha/g, "த");
+  t = t.replace(/thi/g, "தி");
+  t = t.replace(/thu/g, "து");
+  t = t.replace(/the/g, "தே");
+  t = t.replace(/tho/g, "தொ");
+  t = t.replace(/thee/g, "தீ");
+  t = t.replace(/th/g, "த்");
+
+  t = t.replace(/ka/g, "க");
+  t = t.replace(/ki/g, "கி");
+  t = t.replace(/ku/g, "கு");
+  t = t.replace(/ke/g, "கே");
+  t = t.replace(/ko/g, "கோ");
+  t = t.replace(/kee/g, "கீ");
+  t = t.replace(/k/g, "க்");
+
+  t = t.replace(/sa/g, "ச");
+  t = t.replace(/si/g, "சி");
+  t = t.replace(/su/g, "சு");
+  t = t.replace(/se/g, "செ");
+  t = t.replace(/so/g, "சொ");
+  t = t.replace(/see/g, "சீ");
+  t = t.replace(/s/g, "ஸ்");
+
+  t = t.replace(/ma/g, "ம");
+  t = t.replace(/mi/g, "மி");
+  t = t.replace(/mu/g, "மு");
+  t = t.replace(/me/g, "மே");
+  t = t.replace(/mo/g, "மோ");
+  t = t.replace(/mee/g, "மீ");
+  t = t.replace(/m/g, "ம்");
+
+  t = t.replace(/va/g, "வ");
+  t = t.replace(/vi/g, "வி");
+  t = t.replace(/vu/g, "வு");
+  t = t.replace(/ve/g, "வெ");
+  t = t.replace(/vo/g, "வொ");
+  t = t.replace(/vee/g, "வீ");
+  t = t.replace(/v/g, "வ்");
+
+  t = t.replace(/ra/g, "ர");
+  t = t.replace(/ri/g, "ரி");
+  t = t.replace(/ru/g, "ரு");
+  t = t.replace(/re/g, "ரே");
+  t = t.replace(/ro/g, "ரோ");
+  t = t.replace(/ree/g, "ரீ");
+  t = t.replace(/r/g, "ர்");
+
+  t = t.replace(/na/g, "ன");
+  t = t.replace(/ni/g, "னி");
+  t = t.replace(/nu/g, "னு");
+  t = t.replace(/ne/g, "னே");
+  t = t.replace(/no/g, "னோ");
+  t = t.replace(/nee/g, "நீ");
+  t = t.replace(/n/g, "ன்");
+
+  t = t.replace(/pa/g, "ப");
+  t = t.replace(/pi/g, "பி");
+  t = t.replace(/pu/g, "பு");
+  t = t.replace(/pe/g, "பெ");
+  t = t.replace(/po/g, "பொ");
+  t = t.replace(/pee/g, "பீ");
+  t = t.replace(/p/g, "ப்");
+
+  t = t.replace(/la/g, "ல");
+  t = t.replace(/li/g, "லி");
+  t = t.replace(/lu/g, "லு");
+  t = t.replace(/le/g, "லெ");
+  t = t.replace(/lo/g, "லொ");
+  t = t.replace(/lee/g, "லீ");
+  t = t.replace(/l/g, "ல்");
+
+  t = t.replace(/ya/g, "ய");
+  t = t.replace(/yi/g, "யி");
+  t = t.replace(/yu/g, "யு");
+  t = t.replace(/ye/g, "யே");
+  t = t.replace(/yo/g, "யோ");
+  t = t.replace(/y/g, "ய்");
+
+  t = t.replace(/ja/g, "ஜ");
+  t = t.replace(/ji/g, "ஜி");
+  t = t.replace(/ju/g, "ஜு");
+  t = t.replace(/je/g, "ஜே");
+  t = t.replace(/jo/g, "ஜோ");
+  t = t.replace(/j/g, "ஜ்");
+
+  t = t.replace(/da/g, "ட");
+  t = t.replace(/di/g, "டி");
+  t = t.replace(/du/g, "டு");
+  t = t.replace(/de/g, "டெ");
+  t = t.replace(/do/g, "டொ");
+  t = t.replace(/d/g, "ட்");
+
+  t = t.replace(/ha/g, "ஹ");
+  t = t.replace(/hi/g, "ஹி");
+  t = t.replace(/hu/g, "ஹு");
+  t = t.replace(/he/g, "ஹெ");
+  t = t.replace(/ho/g, "ஹொ");
+  t = t.replace(/h/g, "ஹ்");
+
+  // Initial vowels
+  t = t.replace(/^a/g, "அ");
+  t = t.replace(/^aa/g, "ஆ");
+  t = t.replace(/^i/g, "இ");
+  t = t.replace(/^ee/g, "ஈ");
+  t = t.replace(/^u/g, "உ");
+  t = t.replace(/^oo/g, "ஊ");
+  t = t.replace(/^e/g, "எ");
+  t = t.replace(/^ae/g, "ஏ");
+  t = t.replace(/^o/g, "ஒ");
+  t = t.replace(/^oo/g, "ஓ");
+
+  // Medial vowel marks
+  t = t.replace(/a/g, "ா");
+  t = t.replace(/i/g, "ி");
+  t = t.replace(/u/g, "ு");
+  t = t.replace(/e/g, "ெ");
+  t = t.replace(/o/g, "ொ");
+
+  return t;
+}
+
+// Phonetically transliterates renter names to Tamil
+function transliterateNameToTamil(nameStr: string): string {
+  const clean = nameStr.trim();
+  if (!clean) return "";
+
+  const parts = clean.split(/\s+/);
+  const translatedParts = parts.map(part => {
+    const lower = part.toLowerCase().replace(/[^a-z]/g, "");
+    if (NAME_DICT[lower]) {
+      return NAME_DICT[lower];
+    }
+    return phoneticTransliteration(lower);
+  });
+
+  return translatedParts.join(" ");
+}
+
 // Translates locations matching dictionary
 function translateLocationToTamil(locationStr: string): string {
   const clean = locationStr.trim().toLowerCase();
@@ -225,11 +465,12 @@ export default function ContactPage() {
     phoneError === "";
 
   // This message goes to 91 88382 92849, which must ALWAYS be in Tamil.
-  // Performs smart keyword conversion if the user enters details in English.
+  // Performs smart name, location, and keyword conversion if the user enters details in English.
   const rentCompiledMessage = useMemo(() => {
     const rawDetails = rentFormData.details.trim() !== "" ? rentFormData.details.trim() : "இல்லை";
     const translatedDetails = rawDetails !== "இல்லை" ? translateTextToTamil(rawDetails) : "இல்லை";
     const translatedLocation = translateLocationToTamil(rentFormData.location);
+    const translatedName = transliterateNameToTamil(rentFormData.name);
     
     const needText = 
       rentFormData.need === "rent" ? "வண்டி வாடகைக்கு எடுக்க" :
@@ -241,7 +482,11 @@ export default function ContactPage() {
       rentFormData.businessType === "FastFood" ? "ஃபாஸ்ட் ஃபுட் / காரசார கடை" :
       rentFormData.businessType === "Snacks" ? "ஸ்நாக்ஸ் / சாட் வண்டி" : "மற்ற உணவு தொழில்";
 
-    // If they typed details, we display translated text along with raw original in brackets for 100% clarity
+    // Show dual clarity for name, location and details
+    const nameDisplay = translatedName.toLowerCase() !== rentFormData.name.toLowerCase()
+      ? `${translatedName} (${rentFormData.name.trim()})`
+      : rentFormData.name.trim();
+
     const detailsDisplay = rawDetails !== "இல்லை" && translatedDetails.toLowerCase() !== rawDetails.toLowerCase()
       ? `${translatedDetails} (${rawDetails})`
       : rawDetails;
@@ -254,7 +499,7 @@ export default function ContactPage() {
 
 நான் ஒரு புதிய வாடகை விசாரணை செய்ய விரும்புகிறேன்:
 
-பெயர்: ${rentFormData.name.trim()}
+பெயர்: ${nameDisplay}
 கைபேசி எண்: ${rentFormData.phone.trim()}
 தொழில் வகை: ${businessText}
 தேவை: ${needText}
@@ -304,7 +549,7 @@ export default function ContactPage() {
       <section className="pb-12 pt-24 md:pb-16 md:pt-0">
         <div className="site-container">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-            <Text en="Contact" ta="தொடர்பu கொள்ள" />
+            <Text en="Contact" ta="தொடர்பு கொள்ள" />
           </p>
           <h1 className="mt-3 max-w-4xl font-display text-5xl uppercase leading-none text-ink md:text-7xl">
             <Text
