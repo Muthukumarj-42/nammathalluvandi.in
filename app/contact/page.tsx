@@ -20,6 +20,150 @@ function Text({ en, ta }: { en: string; ta: string }) {
   );
 }
 
+// Coimbatore Neighborhoods / Locations Dictionary
+const LOCATION_DICT: Record<string, string> = {
+  ondipudur: "ஒண்டிப்புதூர்",
+  singanallur: "சிங்காநல்லூர்",
+  ramanathapuram: "ராமநாதபுரம்",
+  gandhipuram: "காந்திபுரம்",
+  peelamedu: "பீளமேடு",
+  hopes: "ஹோப்ஸ்",
+  saravanampatti: "சரவணம்பட்டி",
+  kalapatti: "கலாப்பட்டி",
+  kovaipudur: "கோவைப்புதூர்",
+  kuniyamuthur: "குனியமுத்தூர்",
+  sundarapuram: "சுந்தராபுரம்",
+  podanur: "போத்தனூர்",
+  ukkadam: "உக்கடம்",
+  townhall: "டவுன் ஹால்",
+  "town hall": "டவுன் ஹால்",
+  rspuram: "ஆர்.எஸ். புரம்",
+  "r.s. puram": "ஆர்.எஸ். புரம்",
+  "rs puram": "ஆர்.எஸ். புரம்",
+  "saibaba colony": "சாய்பாபா காலனி",
+  saibaba: "சாய்பாபா காலனி",
+  ganapathy: "கணபதி",
+  vadavalli: "வடவள்ளி",
+  thudiyalur: "துடியலூர்",
+  periyanaickenpalayam: "பெரியநாயக்கன்பாளையம்",
+  sulur: "சூலூர்",
+  karumathampatti: "கருமத்தம்பட்டி",
+  kurumbapalayam: "குரும்பபாளையம்",
+  chinniampalayam: "சின்னிம்பாளையம்",
+  pappampatti: "பாப்பம்பட்டி",
+  neelambur: "நீலாம்பூர்",
+  goldwins: "கோல்ட்வின்ஸ்",
+  lakshmipuram: "லட்சுமிபுரம்",
+  jallimedu: "ஜல்லிமேடு",
+  aruljothipuram: "அருள்ஜோதிபுரம்",
+  coimbatore: "கோயம்புத்தூர்",
+  kovai: "கோவை",
+};
+
+// Common Rental / Food Cart English-to-Tamil Translation Dictionary
+const COMMON_WORDS_DICT: Record<string, string> = {
+  hello: "வணக்கம்",
+  hi: "வணக்கம்",
+  thanks: "நன்றி",
+  "thank you": "நன்றி",
+  please: "தயவுசெய்து",
+  need: "தேவை",
+  want: "வேண்டும்",
+  rent: "வாடகை",
+  rental: "வாடகைக்கு",
+  cart: "வண்டி",
+  carts: "வண்டிகள்",
+  food: "உணவு",
+  tea: "டீ",
+  coffee: "காபி",
+  juice: "ஜூஸ்",
+  milkshake: "மில்க்ஷேக்",
+  stove: "அடுப்பு",
+  burner: "பர்னர்",
+  burners: "பர்னர்கள்",
+  size: "அளவு",
+  price: "விலை",
+  deposit: "முன்பணம்",
+  location: "இடம்",
+  delivery: "டெலிவரி",
+  steel: "ஸ்டீல்",
+  wheels: "சக்கரங்கள்",
+  light: "லைட்",
+  clean: "சுத்தம்",
+  plate: "தட்டு",
+  plates: "தட்டுகள்",
+  cover: "மேல் கவர்",
+  roof: "மேல் கூரை",
+  custom: "பிரத்யேக",
+  design: "வடிவமைப்பு",
+  order: "ஆர்டர்",
+  days: "நாட்கள்",
+  day: "நாள்",
+  month: "மாதம்",
+  months: "மாதங்கள்",
+  week: "வாரம்",
+  weeks: "வாரங்கள்",
+  business: "தொழில்",
+  shop: "கடை",
+  inquiry: "விசாரணை",
+  details: "விவரங்கள்",
+  message: "செய்தி",
+  expected: "எதிர்பார்க்கும்",
+  available: "கிடைக்கக்கூடியது",
+  "not available": "கிடைக்கவில்லை",
+  yes: "ஆம்",
+  no: "இல்லை",
+  one: "ஒன்று",
+  two: "இரண்டு",
+  three: "மூன்று",
+  four: "நான்கு",
+  five: "ஐந்து",
+  stovecart: "அடுப்பு வண்டி",
+  stove_cart: "அடுப்பு வண்டி",
+  juicecart: "ஜூஸ் வண்டி",
+  teacart: "டீ வண்டி",
+  brand: "பிராண்ட்",
+  new: "புதிய",
+  old: "பழைய",
+};
+
+// Translates locations matching dictionary
+function translateLocationToTamil(locationStr: string): string {
+  const clean = locationStr.trim().toLowerCase();
+  if (!clean) return "";
+
+  if (LOCATION_DICT[clean]) {
+    return LOCATION_DICT[clean];
+  }
+
+  for (const [key, value] of Object.entries(LOCATION_DICT)) {
+    if (clean.includes(key)) {
+      return value;
+    }
+  }
+
+  return locationStr;
+}
+
+// Word-by-word translator for common inquiry terms
+function translateTextToTamil(textStr: string): string {
+  const clean = textStr.trim();
+  if (!clean) return "";
+
+  const words = clean.split(/\s+/);
+  const translatedWords = words.map(word => {
+    const stripped = word.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    if (COMMON_WORDS_DICT[stripped]) {
+      const prefix = word.match(/^[^a-zA-Z]*/) || "";
+      const suffix = word.match(/[^a-zA-Z]*$/) || "";
+      return prefix + COMMON_WORDS_DICT[stripped] + suffix;
+    }
+    return word;
+  });
+
+  return translatedWords.join(" ");
+}
+
 export default function ContactPage() {
   const [lang, setLang] = useState<"en" | "ta">("en");
 
@@ -80,9 +224,12 @@ export default function ContactPage() {
     rentFormData.location.trim() !== "" &&
     phoneError === "";
 
-  // This message goes to 91 88382 92849, which must ALWAYS be in Tamil
+  // This message goes to 91 88382 92849, which must ALWAYS be in Tamil.
+  // Performs smart keyword conversion if the user enters details in English.
   const rentCompiledMessage = useMemo(() => {
-    const extraDetails = rentFormData.details.trim() !== "" ? rentFormData.details.trim() : "இல்லை";
+    const rawDetails = rentFormData.details.trim() !== "" ? rentFormData.details.trim() : "இல்லை";
+    const translatedDetails = rawDetails !== "இல்லை" ? translateTextToTamil(rawDetails) : "இல்லை";
+    const translatedLocation = translateLocationToTamil(rentFormData.location);
     
     const needText = 
       rentFormData.need === "rent" ? "வண்டி வாடகைக்கு எடுக்க" :
@@ -94,16 +241,25 @@ export default function ContactPage() {
       rentFormData.businessType === "FastFood" ? "ஃபாஸ்ட் ஃபுட் / காரசார கடை" :
       rentFormData.businessType === "Snacks" ? "ஸ்நாக்ஸ் / சாட் வண்டி" : "மற்ற உணவு தொழில்";
 
+    // If they typed details, we display translated text along with raw original in brackets for 100% clarity
+    const detailsDisplay = rawDetails !== "இல்லை" && translatedDetails.toLowerCase() !== rawDetails.toLowerCase()
+      ? `${translatedDetails} (${rawDetails})`
+      : rawDetails;
+
+    const locationDisplay = translatedLocation.toLowerCase() !== rentFormData.location.toLowerCase()
+      ? `${translatedLocation} (${rentFormData.location})`
+      : rentFormData.location;
+
     return `வணக்கம் தள்ளுவண்டி குழுவினரே,
 
-நான் ஒரு புதிய விசாரணை செய்ய விரும்புகிறேன்:
+நான் ஒரு புதிய வாடகை விசாரணை செய்ய விரும்புகிறேன்:
 
 பெயர்: ${rentFormData.name.trim()}
 கைபேசி எண்: ${rentFormData.phone.trim()}
 தொழில் வகை: ${businessText}
 தேவை: ${needText}
-இடம் (கோவையில்): ${rentFormData.location.trim()}
-கூடுதல் விவரம் / கேள்வி: ${extraDetails}`;
+இடம் (கோவையில்): ${locationDisplay}
+கூடுதல் விவரம் / கேள்வி: ${detailsDisplay}`;
   }, [rentFormData]);
 
   const handleRentSubmit = (e: React.FormEvent) => {
@@ -148,7 +304,7 @@ export default function ContactPage() {
       <section className="pb-12 pt-24 md:pb-16 md:pt-0">
         <div className="site-container">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-            <Text en="Contact" ta="தொடர்பு கொள்ள" />
+            <Text en="Contact" ta="தொடர்பu கொள்ள" />
           </p>
           <h1 className="mt-3 max-w-4xl font-display text-5xl uppercase leading-none text-ink md:text-7xl">
             <Text
