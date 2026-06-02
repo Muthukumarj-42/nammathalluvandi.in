@@ -1,6 +1,8 @@
-import { CheckCircle2, ClipboardList, MessageCircle } from "lucide-react";
+"use client";
+
+import { useMemo, useState, useEffect } from "react";
+import { CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { publishCartMessage } from "@/lib/utils";
 import { WA_PUBLISH, buildWAUrl } from "@/config/whatsapp";
 
 function Text({ en, ta }: { en: string; ta: string }) {
@@ -12,31 +14,118 @@ function Text({ en, ta }: { en: string; ta: string }) {
   );
 }
 
-const details = [
-  ["Your Name", "உங்கள் பெயர்"],
-  ["Phone Number", "தொலைபேசி எண்"],
-  ["Number of Carts Available", "எத்தனை வண்டிகள் உள்ளன"],
-  ["Cart Type (with stove / without stove / with top / etc.)", "வண்டி வகை (அடுப்பு / மேல் கவர் / அடுப்பு இல்லாதது)"],
-  ["Rental Price You Expect (per day)", "எதிர்பார்க்கும் ஒரு நாள் வாடகை விலை"],
-  ["Location in Coimbatore", "கோவையில் உங்கள் பகுதி"],
-  ["Cart Photos (send on WhatsApp)", "வண்டி படங்கள் (வாட்ஸ்அப்பில் அனுப்பவும்)"]
-];
-
 const benefits = [
   ["Reach more rental customers", "அதிக வாடகை வாடிக்கையாளர்களை அடையுங்கள்"],
   ["Earn from idle carts", "பயன்படாத வண்டிகள் மூலம் வருமானம் ஈட்டுங்கள்"],
   ["Get listed in a premium marketplace", "பிரீமியம் சந்தையில் உங்கள் வண்டியை பதிவு செய்யுங்கள்"],
-  ["Expanding network across Tamil Nadu", "தமிழ்நாடு முழுவதும் விரிவடையும் சேவை"],
   ["Agree platform fee before listing", "பதிவு செய்வதற்கு முன் கட்டணத்தை ஒப்புக்கொள்ளுங்கள்"]
 ];
 
 export default function PublishPage() {
+  const [lang, setLang] = useState<"en" | "ta">("en");
+
+  // Sync language toggle dynamically
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const currentLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+    setLang(currentLang);
+
+    const observer = new MutationObserver(() => {
+      const updatedLang = document.documentElement.dataset.lang === "ta" ? "ta" : "en";
+      setLang(updatedLang);
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-lang"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Publish Form State
+  const [publishFormData, setPublishFormData] = useState({
+    name: "",
+    phone: "",
+    cartType: "Tea", // Tea, Juice, FastFood, Snacks, Empty, Other
+    condition: "excellent", // new, excellent, good, fair
+    expectedRent: "",
+    location: "",
+    details: "",
+  });
+
+  const [phoneError, setPhoneError] = useState("");
+
+  const handlePublishInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { id, value } = e.target;
+    setPublishFormData((prev) => ({ ...prev, [id]: value }));
+
+    if (id === "phone") {
+      const digits = value.replace(/\D/g, "");
+      if (value && digits.length !== 10) {
+        setPhoneError(
+          lang === "ta"
+            ? "தொலைபேசி எண் 10 இலக்கங்களாக இருக்க வேண்டும்"
+            : "Phone number must be exactly 10 digits"
+        );
+      } else {
+        setPhoneError("");
+      }
+    }
+  };
+
+  const isPublishFormValid =
+    publishFormData.name.trim() !== "" &&
+    publishFormData.phone.replace(/\D/g, "").length === 10 &&
+    publishFormData.location.trim() !== "" &&
+    publishFormData.expectedRent.trim() !== "" &&
+    phoneError === "";
+
+  // This message goes to 7305514199, which must ALWAYS be in English
+  const publishCompiledMessage = useMemo(() => {
+    const extraDetails = publishFormData.details.trim() !== "" ? publishFormData.details.trim() : "None";
+    
+    const cartTypeText = 
+      publishFormData.cartType === "Tea" ? "Tea / Coffee Cart" :
+      publishFormData.cartType === "Juice" ? "Juice / Milkshake Cart" :
+      publishFormData.cartType === "FastFood" ? "Fast Food / Chinese Stall" :
+      publishFormData.cartType === "Snacks" ? "Snacks / Chaat Cart" :
+      publishFormData.cartType === "Empty" ? "Empty / General Cart" : "Other Cart Variant";
+      
+    const conditionText =
+      publishFormData.condition === "new" ? "Brand New" :
+      publishFormData.condition === "excellent" ? "Excellent (Under 1 year)" :
+      publishFormData.condition === "good" ? "Good (1-2 years old)" : "Fair (2+ years old)";
+
+    return `Hello Thalluvandi team,
+
+I want to list/publish my cart for rent:
+
+Name: ${publishFormData.name.trim()}
+Phone: ${publishFormData.phone.trim()}
+Cart Type: ${cartTypeText}
+Cart Condition: ${conditionText}
+Expected Monthly Rent: ₹${publishFormData.expectedRent.trim()}
+Location: ${publishFormData.location.trim()}
+Equipment & Description: ${extraDetails}`;
+  }, [publishFormData]);
+
+  const handlePublishSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isPublishFormValid) return;
+    
+    const waUrl = buildWAUrl(WA_PUBLISH, publishCompiledMessage);
+    window.open(waUrl, "_blank");
+  };
+
   return (
     <main className="bg-[#F8F6F2] pt-16 md:pt-28">
       {/* Dynamic SEO Meta Tags are generated by metadata config in layout/page metadata */}
       <section className="pb-20 pt-24 md:pb-24 md:pt-0">
-        <div className="site-container grid gap-6 md:grid-cols-[0.95fr_1.05fr] md:gap-6">
-          <div className="flex flex-col justify-between">
+        <div className="site-container grid gap-12 md:grid-cols-[1fr_1.1fr] md:gap-12 items-start">
+          <div className="flex flex-col justify-between h-full py-4">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 <Text en="Vendor Network" ta="வண்டி உரிமையாளர் நெட்வொர்க்" />
@@ -46,32 +135,200 @@ export default function PublishPage() {
               </h1>
               <p className="mt-6 max-w-[680px] text-lg leading-8 text-muted">
                 <Text 
-                  en="If you own a food cart and want more rental customers, publish it on Thalluvandi. We are rapidly expanding our network across all Tamil Nadu districts!" 
-                  ta="உங்களுக்கு தள்ளுவண்டி இருந்தால் தள்ளுவண்டி தளத்தில் உங்கள் வண்டியை பதிவு செய்யுங்கள் — தமிழ்நாடு முழுவதும் நாங்கள் வேகமாக விரிவடைந்து வருகிறோம், வாடிக்கையாளர்களை நாங்க தர்றோம்!" 
+                  en="If you own a food cart and want more rental customers, publish it on Thalluvandi. We list verified carts on our premium platform for local vendors to hire daily!" 
+                  ta="உங்களுக்கு தள்ளுவண்டி இருந்தால் தள்ளுவண்டி தளத்தில் உங்கள் வண்டியை பதிவு செய்யுங்கள் — உங்கள் பகுதிக்கேற்ப வாடிக்கையாளர்களை நாங்கள் பெற்றுத் தருகிறோம்!" 
                 />
               </p>
             </div>
-            <Button asChild size="lg" className="mt-8 bg-[#25D366] hover:bg-[#20ba5a] text-white">
-              <a href={buildWAUrl(WA_PUBLISH, publishCartMessage)} target="_blank">
-                <MessageCircle size={18} /> <Text en="📋 List My Cart" ta="📋 என் வண்டி சேர்க்க" />
-              </a>
-            </Button>
+            
+            <div className="mt-10 border-t border-black/5 pt-8">
+              <h3 className="font-bold text-sm uppercase tracking-wider text-primary mb-4">
+                <Text en="Need Quick Info?" ta="விரைவான தகவல் தேவையா?" />
+              </h3>
+              <p className="text-sm leading-relaxed text-muted max-w-md">
+                <Text 
+                  en="Filling the listing form on the right compiles a structured email/message instantly to our list coordinator on WhatsApp. We will verify your cart specifications and list it within 24 hours." 
+                  ta="வலதுபுறம் உள்ள படிவத்தை நிரப்பினால், உங்கள் வண்டி வாடகைக்கு விடப்படும் விவரங்கள் உடனடியாக எங்கள் ஒருங்கிணைப்பாளருக்கு வாட்ஸ்அப்பில் அனுப்பப்படும். 24 மணி நேரத்திற்குள் சரிபார்க்கப்பட்டு பதிவு செய்யப்படும்." 
+                />
+              </p>
+            </div>
           </div>
 
-          <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-premium md:p-8">
-            <h2 className="font-display text-5xl uppercase leading-none text-ink">
-              <Text en="To list your cart, share these details on WhatsApp:" ta="பதிவு செய்ய இந்த விவரங்களை வாட்ஸ்அப்பில் பகிரவும்:" />
-            </h2>
-            <div className="mt-8 grid gap-3">
-              {details.map(([detail, tamil]) => (
-                <div key={detail} className="flex items-start gap-3 rounded-xl border border-black/10 bg-[#F8F6F2] p-4 text-left font-bold text-ink">
-                  <ClipboardList className="mt-0.5 shrink-0 text-primary animate-pulse" />
-                  <span>
-                    <Text en={detail} ta={tamil} />
-                  </span>
-                </div>
-              ))}
+          <div className="rounded-2xl border border-black/10 bg-[#fffdf7] p-6 shadow-premium md:p-8 flex flex-col gap-5">
+            <div>
+              <h2 className="font-display text-4xl uppercase leading-none text-ink">
+                <Text en="Publish & List Cart" ta="வண்டி வாடகைக்கு விட" />
+              </h2>
+              <p className="mt-1 text-xs text-[#f97316] font-bold uppercase tracking-wider">
+                <Text en="Interactive WhatsApp Listing" ta="நேரடி வாட்ஸ்அப் பதிவேற்றம்" />
+              </p>
             </div>
+
+            <form onSubmit={handlePublishSubmit} className="space-y-4">
+              
+              {/* Field 1: Name */}
+              <div className="flex flex-col">
+                <label htmlFor="name" className="text-sm font-semibold mb-1 block">
+                  <Text en="Full Name *" ta="பெயர் *" />
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  value={publishFormData.name}
+                  onChange={handlePublishInputChange}
+                  placeholder={lang === "ta" ? "உங்கள் முழு பெயர்" : "Enter your full name"}
+                  className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-base outline-none transition"
+                />
+              </div>
+
+              {/* Field 2: Phone */}
+              <div className="flex flex-col">
+                <label htmlFor="phone" className="text-sm font-semibold mb-1 block">
+                  <Text en="Phone Number *" ta="கைபேசி எண் *" />
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  required
+                  value={publishFormData.phone}
+                  onChange={handlePublishInputChange}
+                  placeholder={lang === "ta" ? "கைபேசி எண் (10 இலக்கங்கள்)" : "Enter your mobile number"}
+                  className={`w-full h-12 border focus:ring-2 rounded-xl px-4 bg-white text-base outline-none transition ${
+                    phoneError
+                      ? "border-red-500 focus:border-red-500 focus:ring-red-500/40"
+                      : "border-[#e5e0d8] focus:border-[#f97316] focus:ring-[#f97316]/40"
+                  }`}
+                />
+                {phoneError && (
+                  <span className="text-xs text-red-500 mt-1 font-semibold">
+                    {phoneError}
+                  </span>
+                )}
+              </div>
+
+              {/* Field 3: Cart Type Dropdown */}
+              <div className="flex flex-col">
+                <label htmlFor="cartType" className="text-sm font-semibold mb-1 block">
+                  <Text en="Cart Type / Variant *" ta="வண்டி வகை *" />
+                </label>
+                <select
+                  id="cartType"
+                  value={publishFormData.cartType}
+                  onChange={handlePublishInputChange}
+                  className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-sm outline-none transition cursor-pointer"
+                >
+                  {lang === "ta" ? (
+                    <>
+                      <option value="Tea">டீ / காபி வண்டி</option>
+                      <option value="Juice">ஜூஸ் / மில்க்ஷேக் வண்டி</option>
+                      <option value="FastFood">ஃபாஸ்ட் ஃபுட் வண்டி</option>
+                      <option value="Snacks">ஸ்நாக்ஸ் / சாட் வண்டி</option>
+                      <option value="Empty">பொதுவான / காலி வண்டி</option>
+                      <option value="Other">இதர வண்டி வகை</option>
+                    </>
+                  ) : (
+                    <>
+                      <option value="Tea">Tea / Coffee Cart</option>
+                      <option value="Juice">Juice / Milkshake Cart</option>
+                      <option value="FastFood">Fast Food / Chinese Stall</option>
+                      <option value="Snacks">Snacks / Chaat Cart</option>
+                      <option value="Empty">Empty / General Cart</option>
+                      <option value="Other">Other Cart Variant</option>
+                    </>
+                  )}
+                </select>
+              </div>
+
+              {/* Field 4: Cart Condition Dropdown */}
+              <div className="flex flex-col">
+                <label htmlFor="condition" className="text-sm font-semibold mb-1 block">
+                  <Text en="Cart Condition *" ta="வண்டியின் நிலை *" />
+                </label>
+                <select
+                  id="condition"
+                  value={publishFormData.condition}
+                  onChange={handlePublishInputChange}
+                  className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-sm outline-none transition cursor-pointer"
+                >
+                  {lang === "ta" ? (
+                    <>
+                      <option value="new">புதிய வண்டி</option>
+                      <option value="excellent">மிக நன்று (1 வருடத்திற்குள்)</option>
+                      <option value="good">நன்று (1-2 வருடங்கள்)</option>
+                      <option value="fair">பயன்படுத்தப்பட்டது (2 வருடங்களுக்கு மேல்)</option>
+                    </>
+                  ) : (
+                    <>
+                      <option value="new">Brand New</option>
+                      <option value="excellent">Excellent (Under 1 year)</option>
+                      <option value="good">Good (1-2 years old)</option>
+                      <option value="fair">Fair (2+ years old)</option>
+                    </>
+                  )}
+                </select>
+              </div>
+
+              {/* Field 5: Expected Rent */}
+              <div className="flex flex-col">
+                <label htmlFor="expectedRent" className="text-sm font-semibold mb-1 block">
+                  <Text en="Expected Monthly Rent (₹) *" ta="எதிர்பார்க்கும் மாத வாடகை (₹) *" />
+                </label>
+                <input
+                  type="number"
+                  id="expectedRent"
+                  required
+                  value={publishFormData.expectedRent}
+                  onChange={handlePublishInputChange}
+                  placeholder={lang === "ta" ? "எ.கா: 3000" : "e.g. 3000"}
+                  className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-base outline-none transition"
+                />
+              </div>
+
+              {/* Field 6: Location (just Location) */}
+              <div className="flex flex-col">
+                <label htmlFor="location" className="text-sm font-semibold mb-1 block">
+                  <Text en="Location *" ta="இடம் *" />
+                </label>
+                <input
+                  type="text"
+                  id="location"
+                  required
+                  value={publishFormData.location}
+                  onChange={handlePublishInputChange}
+                  placeholder={lang === "ta" ? "எ.கா: ஒண்டிப்புதூர், காந்திபுரம்" : "e.g. Ondipudur, Gandhipuram"}
+                  className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-base outline-none transition"
+                />
+              </div>
+
+              {/* Field 7: Equipment / details */}
+              <div className="flex flex-col">
+                <label htmlFor="details" className="text-sm font-semibold mb-1 block">
+                  <Text en="Equipment Included / Details (Optional)" ta="வண்டியில் உள்ள உபகரணங்கள் மற்றும் விவரங்கள் (விருப்பம்)" />
+                </label>
+                <textarea
+                  id="details"
+                  rows={4}
+                  value={publishFormData.details}
+                  onChange={handlePublishInputChange}
+                  placeholder={lang === "ta" ? "வண்டியின் அளவு, அடுப்பு, அலமாரி அல்லது பிற வசதிகள்..." : "Cart size, stove type, shelves, or other features..."}
+                  className="w-full border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl p-4 bg-white text-base outline-none transition resize-none"
+                />
+              </div>
+
+              {/* Submit button */}
+              <Button
+                type="submit"
+                disabled={!isPublishFormValid}
+                className={`w-full h-14 mt-4 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-2xl font-bold text-base flex items-center justify-center gap-2 transition duration-200 ${
+                  !isPublishFormValid ? "opacity-40 cursor-not-allowed" : ""
+                }`}
+              >
+                <MessageCircle size={20} className="shrink-0" />
+                <Text en="Submit Publish Request (WhatsApp) →" ta="பதிவேற்ற கோரிக்கையை அனுப்பவும் (WhatsApp) →" />
+              </Button>
+
+            </form>
           </div>
         </div>
       </section>
@@ -147,8 +404,8 @@ const publishFaqs = [
   [
     "How can I publish my cart on Thalluvandi?",
     "என் வண்டியை தள்ளுவண்டி தளத்தில் எப்படி சேர்ப்பது?",
-    "Simply click the 'List My Cart' button to start a WhatsApp chat with our team. Share your name, phone number, location, cart type, expected daily rent, and clear photos. Once verified, we will list it on our premium platform for customers to book.",
-    "எங்கள் 'என் வண்டி சேர்க்க' பட்டனைக் கிளிக் செய்து எங்களை வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும். உங்கள் பெயர், வண்டியின் படங்கள், இருப்பிடம், எதிர்பார்க்கும் வாடகை விலை மற்றும் வண்டியின் விவரங்களை அனுப்புங்கள். சரிபார்க்கப்பட்ட பின் எங்கள் தளத்தில் பதிவு செய்யப்படும்.",
+    "Simply fill out the interactive 'Publish & List Cart' form on this page to instantly contact our network team on WhatsApp. Share your name, phone, location, expected rent, and cart type. Verification and listing are completed in 24 hours.",
+    "இப்பக்கத்திலுள்ள 'வண்டி வாடகைக்கு விட' படிவத்தை நிரப்பினால் வாட்ஸ்அப் மூலம் உடனடியாக எங்கள் குழுவினரைத் தொடர்பு கொள்ளலாம். உங்கள் பெயர், போன், இடம், எதிர்பார்க்கும் வாடகை விலை மற்றும் வண்டி வகையை அனுப்புங்கள். 24 மணி நேரத்திற்குள் பதிவு செய்யப்படும்.",
   ],
   [
     "What is the commission/platform fee?",

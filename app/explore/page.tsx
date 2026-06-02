@@ -235,8 +235,8 @@ const exploreFaqs = [
   [
     "Are there different cart prices?",
     "வண்டி வாடகை விலைகள் வெவ்வேறா?",
-    "Yes. Daily rentals range from ₹50/day up to ₹100/day depending on the size of the cart, built-in stove burners, roof covers, and premium materials used.",
-    "ஆம். வண்டியின் அளவு, அடுப்பு வசதி, மேல் கவர் மற்றும் பயன்படுத்தப்படும் ஸ்டீல் தரத்தைப் பொறுத்து ஒரு நாள் வாடகை ₹50 முதல் ₹100 வரை மாறுபடும்.",
+    "Yes. Daily rentals range from ₹50/day up to ₹150/day depending on the size of the cart, built-in stove burners, roof covers, and premium materials used.",
+    "ஆம். வண்டியின் அளவு, அடுப்பு வசதி, மேல் கவர் மற்றும் பயன்படுத்தப்படும் ஸ்டீல் தரத்தைப் பொறுத்து ஒரு நாள் வாடகை ₹50 முதல் ₹150 வரை மாறுபடும்.",
   ],
   [
     "Is transport included in the daily rent?",

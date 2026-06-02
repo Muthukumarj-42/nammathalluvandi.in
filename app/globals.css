@@ -165,3 +165,13 @@ html[data-lang="ta"] h1 {
   text-transform: none !important;
   letter-spacing: 0 !important;
 }
+
+/* Change FAQ font for English only */
+html[data-lang="en"] details summary h3,
+html[data-lang="en"] .faq-question-title {
+  font-family: var(--font-dm-sans) !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  font-weight: 700 !important;
+}
+
