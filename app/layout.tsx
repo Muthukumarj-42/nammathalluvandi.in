@@ -84,9 +84,11 @@ export const metadata: Metadata = {
   icons: {
     icon: "/brand/text-logo.webp",
     apple: "/brand/text-logo.webp"
+  },
+  verification: {
+    google: "01461042ed3c0564",
   }
 };
-
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" data-lang="en" className={`${bebasNeue.variable} ${dmSans.variable} ${notoTamil.variable}`}>

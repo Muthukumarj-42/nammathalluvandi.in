@@ -200,13 +200,10 @@ export default function Home() {
                 variant="outline"
                 className="border-primary/45 text-ink cursor-pointer"
               >
-                <a
-                  href={buildWAUrl(WA_NUMBER, rentalTamilMessage)}
-                  target="_blank"
-                >
+                <Link href="/explore">
                   <MessageCircle size={18} />{" "}
                   <Text en="💬 Chat on WhatsApp" ta="💬 WhatsApp-ல பேசலாம்" />
-                </a>
+                </Link>
               </Button>
             </div>
           </Reveal>

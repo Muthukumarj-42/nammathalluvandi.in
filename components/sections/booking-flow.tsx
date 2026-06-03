@@ -23,6 +23,7 @@ export function BookingFlow() {
     phone: "",
     date: "",
     location: "",
+    duration: "",
     details: "",
   });
 
@@ -52,27 +53,15 @@ export function BookingFlow() {
     return () => observer.disconnect();
   }, []);
 
+  // Redirect if cart not found
+  useEffect(() => {
+    if (!cart) {
+      router.replace("/explore");
+    }
+  }, [cart, router]);
+
   if (!cart) {
-    return (
-      <main className="bg-[#fffdf7] min-h-screen py-16 flex items-center justify-center px-4">
-        <div className="text-center max-w-md bg-white border border-[#f97316]/20 p-8 rounded-2xl shadow-sm">
-          <h2 className="font-display text-4xl text-ink uppercase mb-2">
-            Cart Not Found
-          </h2>
-          <p className="text-muted text-sm mb-6">
-            The food cart you are trying to book could not be found or has been
-            removed.
-          </p>
-          <Button
-            onClick={() => router.push("/explore")}
-            size="lg"
-            className="w-full"
-          >
-            <ArrowLeft size={16} className="mr-2" /> Explore Carts
-          </Button>
-        </div>
-      </main>
-    );
+    return null;
   }
 
   const handleInputChange = (
@@ -100,7 +89,9 @@ export function BookingFlow() {
     formData.name.trim() !== "" &&
     formData.phone.replace(/\D/g, "").length === 10 &&
     formData.date !== "" &&
+    formData.date >= todayDate &&
     formData.location.trim() !== "" &&
+    formData.duration.trim() !== "" &&
     agreed &&
     phoneError === "";
 
@@ -118,6 +109,7 @@ export function BookingFlow() {
 தொலைபேசி: ${formData.phone.trim()}
 தேவையான தேதி: ${formData.date}
 இடம் (கோவையில்): ${formData.location.trim()}
+கால அவகாசம்: ${formData.duration.trim()}
 மேலும் விவரம்: ${extraDetails}
 
 அனைத்து வாடகை விதிகளையும் படித்து ஒப்புக்கொண்டேன். ✓`;
@@ -131,6 +123,7 @@ export function BookingFlow() {
     name: lang === "ta" ? "உங்கள் பெயர் உள்ளிடுங்கள்" : "Enter your full name",
     phone: lang === "ta" ? "உங்கள் கைபேசி எண்" : "Enter your mobile number",
     location: lang === "ta" ? "உங்கள் கடை / இடம்" : "Your shop/stall location",
+    duration: lang === "ta" ? "எ.கா: 1 மாதம், 3 மாதங்கள்" : "e.g. 1 month, 3 months",
     details:
       lang === "ta"
         ? "கூடுதல் தேவைகள் அல்லது கேள்விகள்?"
@@ -349,6 +342,26 @@ export function BookingFlow() {
                   value={formData.location}
                   onChange={handleInputChange}
                   placeholder={placeholders.location}
+                  className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-base outline-none transition"
+                />
+              </div>
+
+              {/* Field 5: Duration */}
+              <div className="flex flex-col">
+                <label
+                  htmlFor="duration"
+                  className="text-sm font-semibold mb-1 block"
+                >
+                  <span className="en">Duration *</span>
+                  <span className="ta tamil-text">கால அவகாசம் *</span>
+                </label>
+                <input
+                  type="text"
+                  id="duration"
+                  required
+                  value={formData.duration}
+                  onChange={handleInputChange}
+                  placeholder={placeholders.duration}
                   className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-base outline-none transition"
                 />
               </div>
