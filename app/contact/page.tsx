@@ -633,7 +633,7 @@ export default function ContactPage() {
       </section>
 
       {/* WhatsApp Booking Interactive Form */}
-      <section className="py-12 bg-white border-t border-black/5">
+      <section id="enquiry-form" className="py-12 bg-white border-t border-black/5">
         <div className="site-container max-w-3xl">
           <div className="rounded-2xl border border-black/10 bg-[#fffdf7] p-6 md:p-10 shadow-premium flex flex-col gap-6">
             

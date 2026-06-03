@@ -63,14 +63,13 @@ export function Navbar() {
 
         {/* Right: WhatsApp action */}
         <div className="flex justify-end">
-          <a
-            href={buildWAUrl(WA_NUMBER, rentalTamilMessage)}
-            target="_blank"
+          <Link
+            href="/contact#enquiry-form"
             className="flex h-9 w-9 items-center justify-center rounded-full border border-[#25D366]/20 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 transition shadow-sm"
             aria-label="Chat on WhatsApp"
           >
             <MessageCircle size={18} />
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -93,11 +92,11 @@ export function Navbar() {
           <div className="hidden items-center gap-3 md:flex">
             <LanguageToggle />
             <Button asChild size="default">
-              <a href={buildWAUrl(WA_NUMBER, rentalTamilMessage)} target="_blank">
+              <Link href="/contact#enquiry-form">
                 <MessageCircle size={18} />
                 <span className="en">💬 Chat on WhatsApp</span>
                 <span className="ta tamil-text">💬 WhatsApp</span>
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
