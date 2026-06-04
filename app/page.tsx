@@ -227,8 +227,8 @@ export default function Home() {
               alt="Thalluvandi food cart rentals Coimbatore Tamil Nadu"
               width={720}
               height={720}
-              priority
-              sizes="100vw"
+              priority={true}
+              sizes="(max-width: 390px) 350px, (max-width: 768px) 500px, (max-width: 1024px) 700px, 900px"
               className="relative mx-auto w-full max-w-[520px] drop-shadow-[0_0_40px_rgba(255,107,0,0.2)]"
             />
           </Reveal>

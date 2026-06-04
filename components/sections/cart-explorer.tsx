@@ -23,7 +23,17 @@ function Text({ en, ta }: { en: string; ta: string }) {
   );
 }
 
-function CartImage({ src, alt, priority = false }: { src: string; alt: string; priority?: boolean }) {
+function CartImage({
+  src,
+  alt,
+  priority = false,
+  sizes = "(max-width: 768px) 100vw, 33vw",
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+  sizes?: string;
+}) {
   const [error, setError] = useState(false);
 
   if (error || !src) {
@@ -34,7 +44,7 @@ function CartImage({ src, alt, priority = false }: { src: string; alt: string; p
           src="/brand/full-logo-with-background.webp"
           alt="Thalluvandi fallback logo"
           fill
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes={sizes}
           className="object-contain p-6 opacity-40 z-0"
         />
       </div>
@@ -46,7 +56,7 @@ function CartImage({ src, alt, priority = false }: { src: string; alt: string; p
       src={src}
       alt={alt}
       fill
-      sizes="(max-width: 768px) 100vw, 33vw"
+      sizes={sizes}
       priority={priority}
       loading={priority ? undefined : "lazy"}
       className="object-cover transition duration-500 group-hover:scale-[1.04] z-0"
@@ -310,7 +320,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                   <article className="relative overflow-hidden rounded-xl bg-white border border-black/10 shadow-lg">
                     {/* Aspect Ratio 16:9 Image Area - FIX 8 */}
                     <div className="relative aspect-video w-full overflow-hidden">
-                      <CartImage src={cart.images[0]} alt={cart.nameEn} priority={index === 0} />
+                      <CartImage src={cart.images[0]} alt={cart.nameEn} priority={index === 0} sizes="100vw" />
 
                       {/* Availability badge - z-10 */}
                       <span
@@ -471,7 +481,12 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                     href={`/carts/${cart.id}`}
                     className="block relative aspect-video overflow-hidden bg-[#fff7ed] z-0"
                   >
-                    <CartImage src={cart.images[0]} alt={cart.nameEn} priority={index === 0} />
+                    <CartImage
+                      src={cart.images[0]}
+                      alt={cart.nameEn}
+                      priority={index === 0}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
 
                     {/* Absolute badges - z-10 */}
                     <span

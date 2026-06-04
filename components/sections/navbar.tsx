@@ -50,11 +50,11 @@ export function Navbar() {
             <Image 
               src="/brand/full-logo.webp" 
               alt="Thalluvandi food cart rental Tamil Nadu logo" 
-              width={24} 
-              height={24} 
+              width={48} 
+              height={48} 
               sizes="48px"
               className="h-6 w-auto" 
-              priority
+              priority={true}
             />
             <span className="font-display text-2xl font-black uppercase tracking-[0.12em] text-ink">
               THALLUVANDI
