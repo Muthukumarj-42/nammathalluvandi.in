@@ -8,13 +8,13 @@ import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 export const metadata: Metadata = {
   title: "Food Carts for Rent in Coimbatore | Namma Thalluvandi | Thallu Vandi Vadagai",
   description:
-    "Browse 60+ rental thallu vandis in Coimbatore. Tea carts, juice carts, stove carts, covered premium carts. Starting ₹100/day. Also serving Tiruppur. WhatsApp to book instantly.",
+    "Browse 65+ rental thallu vandis in Coimbatore. Tea carts, juice carts, stove carts, covered premium carts. Starting ₹50/day. WhatsApp to book instantly.",
   alternates: {
     canonical: "https://nammathalluvandi.in/explore"
   },
   openGraph: {
     title: "Food Carts for Rent in Coimbatore | Namma Thalluvandi | Thallu Vandi Vadagai",
-    description: "Browse 60+ rental thallu vandis in Coimbatore. Tea carts, juice carts, stove carts, covered premium carts. Starting ₹100/day. Also serving Tiruppur. WhatsApp to book instantly.",
+    description: "Browse 65+ rental thallu vandis in Coimbatore. Tea carts, juice carts, stove carts, covered premium carts. Starting ₹50/day. WhatsApp to book instantly.",
     url: "https://nammathalluvandi.in/explore",
     siteName: "Namma Thalluvandi",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Food Carts for Rent in Coimbatore | Namma Thalluvandi | Thallu Vandi Vadagai",
-    description: "Browse 60+ rental thallu vandis in Coimbatore. Tea carts, juice carts, stove carts, covered premium carts. Starting ₹100/day. Also serving Tiruppur. WhatsApp to book instantly.",
+    description: "Browse 65+ rental thallu vandis in Coimbatore. Tea carts, juice carts, stove carts, covered premium carts. Starting ₹50/day. WhatsApp to book instantly.",
     images: ["https://nammathalluvandi.in/brand/full-logo-with-background.webp"]
   }
 };

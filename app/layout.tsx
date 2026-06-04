@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://nammathalluvandi.in"),
   title: "Namma Thalluvandi | Thallu Vandi Rental Coimbatore",
   description:
-    "Rent a thallu vandi in Coimbatore from ₹50/day. 66+ carts — stove, roof, premium variants. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை",
+    "Rent a thallu vandi in Coimbatore from ₹50/day. 65+ carts — stove, roof, premium variants. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை",
   keywords: [
     "namma thalluvandi",
     "நம்ம தளவண்டி",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Namma Thalluvandi | Thallu Vandi Rental Coimbatore",
-    description: "Rent a thallu vandi in Coimbatore from ₹50/day. 66+ carts — stove, roof, premium variants. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை",
+    description: "Rent a thallu vandi in Coimbatore from ₹50/day. 65+ carts — stove, roof, premium variants. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை",
     url: "https://nammathalluvandi.in",
     siteName: "Namma Thalluvandi",
     images: [
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Namma Thalluvandi | Thallu Vandi Rental Coimbatore",
-    description: "Rent a thallu vandi in Coimbatore from ₹50/day. 66+ carts — stove, roof, premium variants. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை",
+    description: "Rent a thallu vandi in Coimbatore from ₹50/day. 65+ carts — stove, roof, premium variants. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை",
     images: ["https://nammathalluvandi.in/brand/full-logo-with-background.webp"]
   },
   icons: {

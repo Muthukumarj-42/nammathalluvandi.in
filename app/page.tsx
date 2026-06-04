@@ -31,7 +31,7 @@ function Text({ en, ta }: { en: string; ta: string }) {
 const stats: any[] = [];
 
 const marquee = [
-  ["66+ Carts", "66+ வண்டிகள்"],
+  ["65+ Carts", "65+ வண்டிகள்"],
   ["Coimbatore", "கோவை"],
   ["PREMIUM CARTS", "பிரீமியம் வண்டி"],
   ["SAME DAY BOOKING", "அன்றே புக்கிங்"],
@@ -43,8 +43,8 @@ const featureCards = [
     ShoppingCart,
     "Large cart fleet",
     "வண்டிகளின் பெரிய தொகுப்பு",
-    "66+ carts ready for tea, snacks, juice, and fast food businesses. With over 60 carts maintained and ready at our Coimbatore yard you will always find the right cart for your business type without any waiting period.",
-    "66-க்கும் மேல் வண்டிகள் தயாராக உள்ளது. 60-க்கும் மேல் வண்டிகள் எப்போதும் தயாராக உள்ளன. உங்களுக்கு ஏற்ற வண்டி உடனே கிடைக்கும்.",
+    "65+ carts ready for tea, snacks, juice, and fast food businesses. With over 65 carts maintained and ready at our Coimbatore yard you will always find the right cart for your business type without any waiting period.",
+    "65-க்கும் மேல் வண்டிகள் தயாராக உள்ளது. 65-க்கும் மேல் வண்டிகள் எப்போதும் தயாராக உள்ளன. உங்களுக்கு ஏற்ற வண்டி உடனே கிடைக்கும்.",
   ],
   [
     PanelsTopLeft,
@@ -126,7 +126,7 @@ export default function Home() {
       "Thallu Vandi Coimbatore",
       "Namma Thallu Vandi"
     ],
-    description: "Premium thallu vandi food cart rentals in Coimbatore and Tiruppur Tamil Nadu. 60 plus carts with stove roof cover and premium variants available for daily and monthly rental.",
+    description: "Premium thallu vandi food cart rentals in Coimbatore, Tamil Nadu. 65+ carts with stove, roof cover, and premium variants available for daily and monthly rental.",
     url: "https://nammathalluvandi.in",
     telephone: "+919442763940",
     address: {
@@ -143,8 +143,8 @@ export default function Home() {
       longitude: 76.9558,
     },
     openingHours: "Mo-Sa 08:00-20:00",
-    priceRange: "₹100 to ₹200 per day",
-    areaServed: ["Coimbatore", "Tiruppur", "Tamil Nadu"],
+    priceRange: "₹50 to ₹200 per day",
+    areaServed: ["Coimbatore", "Tamil Nadu"],
     serviceType: [
       "Food Cart Rental",
       "Thallu Vandi Rental",
@@ -516,7 +516,7 @@ export default function Home() {
       <section className="py-6 border-t border-black/5">
         <div className="site-container">
           <p className="text-xs text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
-            Namma Thalluvandi provides thallu vandi vadagai in Coimbatore Tamil Nadu. Our push carts are available for rent for tea stalls juice counters fast food businesses and street food vendors. Thallu vandi rental Coimbatore from 100 rupees per day. Monthly and weekly rental available. Refundable deposit. WhatsApp booking. நம்ம தளவண்டி வாடகை கோவை. தள்ளு வண்டி வாடகை திருப்பூர். உணவு வண்டி வாடகை கோயம்புத்தூர்.
+            Namma Thalluvandi provides thallu vandi vadagai in Coimbatore Tamil Nadu. Our push carts are available for rent for tea stalls juice counters fast food businesses and street food vendors. Thallu vandi rental Coimbatore from 50 rupees per day. Monthly and weekly rental available. Refundable deposit. WhatsApp booking. நம்ம தளவண்டி வாடகை கோவை. உணவு வண்டி வாடகை கோயம்புத்தூர்.
           </p>
         </div>
       </section>

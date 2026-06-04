@@ -5,13 +5,13 @@ import { Reveal } from "@/components/sections/reveal";
 export const metadata: Metadata = {
   title: "How It Works | Namma Thalluvandi | Coimbatore Food Cart Rental",
   description:
-    "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore and Tiruppur.",
+    "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore.",
   alternates: {
     canonical: "https://nammathalluvandi.in/how-it-works"
   },
   openGraph: {
     title: "How It Works | Namma Thalluvandi | Coimbatore Food Cart Rental",
-    description: "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore and Tiruppur.",
+    description: "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore.",
     url: "https://nammathalluvandi.in/how-it-works",
     siteName: "Namma Thalluvandi",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "How It Works | Namma Thalluvandi | Coimbatore Food Cart Rental",
-    description: "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore and Tiruppur.",
+    description: "Learn how to rent a food cart in Coimbatore. Fast WhatsApp booking, transparent deposit of ₹2,000 – ₹10,000, and weekly Saturday rent collection. We serve Coimbatore.",
     images: ["https://nammathalluvandi.in/brand/full-logo-with-background.webp"]
   }
 };
@@ -68,7 +68,7 @@ export default function HowItWorksPage() {
         "name": "How much does it cost to rent a food cart in Tamil Nadu?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Thalluvandi food cart rentals start from ₹100/day for basic carts and go up to ₹200/day for premium covered carts with stove. Deposit is refundable."
+          "text": "Thalluvandi food cart rentals start from ₹50/day for basic carts and go up to ₹200/day for premium covered carts with stove. Deposit is refundable."
         }
       },
       {
