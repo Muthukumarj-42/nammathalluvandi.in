@@ -53,7 +53,16 @@ export const metadata: Metadata = {
     "தள்ளு வண்டி வாடகை திருப்பூர்",
     "நம்ம தளவண்டி கோவை",
     "food cart rental near me coimbatore",
-    "push cart vadagai coimbatore"
+    "push cart vadagai coimbatore",
+    "d nagaraj thalluvandi ondipudur",
+    "d nagaraj thallu vandi ondipudur coimbatore",
+    "thalluvandi ondipudur",
+    "thallu vandi ondipudur coimbatore",
+    "ondipudur thallu vandi rental",
+    "ondipudur food cart rental",
+    "D நாகராஜ் தளவண்டி ஒண்டிப்புதூர்",
+    "ஒண்டிப்புதூர் தளவண்டி வாடகை",
+    "nagaraj thalluvandi ondipudur coimbatore"
   ],
   alternates: {
     canonical: "https://nammathalluvandi.in"

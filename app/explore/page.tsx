@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   title: "Food Carts for Rent in Coimbatore | Namma Thalluvandi | Thallu Vandi Vadagai",
   description:
     "Browse 65+ rental thallu vandis in Coimbatore. Tea carts, juice carts, stove carts, covered premium carts. Starting ₹50/day. WhatsApp to book instantly.",
+  keywords: [
+    "d nagaraj thalluvandi ondipudur",
+    "ondipudur thallu vandi rental",
+    "thallu vandi ondipudur coimbatore",
+    "D நாகராஜ் தளவண்டி ஒண்டிப்புதூர்"
+  ],
   alternates: {
     canonical: "https://nammathalluvandi.in/explore"
   },

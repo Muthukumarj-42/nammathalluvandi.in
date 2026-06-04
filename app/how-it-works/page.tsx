@@ -47,7 +47,7 @@ const steps = [
   ["Tap “Book This Cart” and WhatsApp opens", "“புக் செய்ய” என்பதை அழுத்தவும் — வாட்ஸ்அப் திறக்கும்"],
   ["Share your date and Coimbatore location", "வண்டி தேவைப்படும் தேதி, கோவையில் உங்கள் இடம் மற்றும் எத்தனை நாட்கள் என்பதைப் பகிரவும்"],
   ["Confirm deposit by Cash or UPI", "ரொக்கம் அல்லது UPI மூலம் முன்பணத்தை உறுதிப்படுத்தவும்"],
-  ["We deliver the cart to your spot", "உங்களுக்குத் தேவையான இடத்தில் தள்ளுவண்டியை நாங்களே டெலிவரி செய்வோம்"]
+  ["Come to D. Nagaraj Thalluvandi at Ondipudur, Coimbatore to pick up your cart", "ஒண்டிப்புதூரில் உள்ள D. நாகராஜ் தளவண்டியில் நேரடியாக வந்து வண்டி எடுத்துச் செல்லலாம்"]
 ];
 
 const faqs = [

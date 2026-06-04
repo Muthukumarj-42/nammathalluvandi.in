@@ -93,8 +93,8 @@ const faqs = [
   [
     "Where is your branch located?",
     "உங்கள் கிளை எங்குள்ளது?",
-    "Our physical hub is based at Ondipudur, Coimbatore. Renter pickup, returns, and physical inspection of carts take place here.",
-    "எங்கள் கிளை ஒண்டிப்புதூர், கோயம்புத்தூரில் அமைந்துள்ளது. இங்கிருந்து நீங்கள் வண்டிகளை நேரடியாகப் பெற்றுக்கொள்ளலாம் அல்லது திரும்ப ஒப்படைக்கலாம்.",
+    "D. Nagaraj Thalluvandi is located at Ondipudur, Coimbatore. Renter pickup, returns, and physical inspection of carts take place here.",
+    "D. நாகராஜ் தளவண்டி ஒண்டிப்புதூர், கோயம்புத்தூரில் அமைந்துள்ளது. இங்கிருந்து நீங்கள் வண்டிகளை நேரடியாகப் பெற்றுக்கொள்ளலாம் அல்லது திரும்ப ஒப்படைக்கலாம்.",
   ],
   [
     "How do I book a food cart?",
@@ -138,7 +138,11 @@ export default function Home() {
       "நம்ம தளவண்டி",
       "தளவண்டி",
       "Thallu Vandi Coimbatore",
-      "Namma Thallu Vandi"
+      "Namma Thallu Vandi",
+      "D. Nagaraj Thalluvandi Ondipudur",
+      "D. Nagaraj Thallu Vandi Ondipudur Coimbatore",
+      "Thalluvandi Ondipudur",
+      "நாகராஜ் தளவண்டி ஒண்டிப்புதூர்"
     ],
     description: "Premium thallu vandi food cart rentals in Coimbatore, Tamil Nadu. 65+ carts with stove, roof cover, and premium variants available for daily and monthly rental.",
     url: "https://nammathalluvandi.in",
@@ -531,7 +535,7 @@ export default function Home() {
       <section className="py-6 border-t border-black/5">
         <div className="site-container">
           <p className="text-xs text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
-            Namma Thalluvandi provides thallu vandi vadagai in Coimbatore Tamil Nadu. Our push carts are available for rent for tea stalls juice counters fast food businesses and street food vendors. Thallu vandi rental Coimbatore from 50 rupees per day. Monthly and weekly rental available. Refundable deposit. WhatsApp booking. நம்ம தளவண்டி வாடகை கோவை. உணவு வண்டி வாடகை கோயம்புத்தூர்.
+            Namma Thalluvandi provides thallu vandi vadagai in Coimbatore Tamil Nadu. Our push carts are available for rent for tea stalls juice counters fast food businesses and street food vendors. Thallu vandi rental Coimbatore from 50 rupees per day. Monthly and weekly rental available. Refundable deposit. WhatsApp booking. நம்ம தளவண்டி வாடகை கோவை. உணவு வண்டி வாடகை கோயம்புத்தூர். D. Nagaraj Thalluvandi Ondipudur — Coimbatore's trusted thallu vandi rental at Ondipudur. D நாகராஜ் தளவண்டி ஒண்டிப்புதூர் கோவை. Ondipudur thallu vandi vadagai. ஒண்டிப்புதூர் தளவண்டி வாடகை கோவை.
           </p>
         </div>
       </section>

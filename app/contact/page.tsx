@@ -591,8 +591,8 @@ export default function ContactPage() {
             <div>
               <MapPin className="text-primary" size={24} />
               <h2 className="mt-4 font-display text-3xl uppercase text-ink">
-                <span className="en">VISIT US</span>
-                <span className="ta tamil-text">எங்களை சந்திக்க</span>
+                <span className="en">D. Nagaraj Thalluvandi — Ondipudur</span>
+                <span className="ta tamil-text">D. நாகராஜ் தளவண்டி — ஒண்டிப்புதூர்</span>
               </h2>
               <div className="mt-2 text-sm leading-6 text-muted-foreground">
                 <div className="en">
@@ -602,6 +602,7 @@ export default function ContactPage() {
                   <br />
                   Tamil Nadu — 641016
                   <br />
+                  D. Nagaraj Thallu Vandi — 30+ Years
                 </div>
                 <div className="ta tamil-text">
                   6 A, அருள்ஜோதிபுரம் ஜல்லிமேடு,
@@ -610,6 +611,7 @@ export default function ContactPage() {
                   <br />
                   தமிழ்நாடு — 641016
                   <br />
+                  D. நாகராஜ் தளவண்டி — 30+ ஆண்டுகள்
                 </div>
               </div>
             </div>
