@@ -5,3 +5,6 @@ tsconfig.tsbuildinfo
 *.log
 .env*
 !.env.example
+
+.vercel
+.env*

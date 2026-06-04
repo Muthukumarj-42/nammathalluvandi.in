@@ -15,10 +15,8 @@ const groups = {
     ["How It Works", "எப்படி rent பண்ணுவது?", "/how-it-works"],
     ["Publish Cart", "என் வண்டி சேர்க்க", "/publish"],
   ],
-  Marketplace: [
+  Branch: [
     ["Coimbatore Hub", "கோவை கிளை", "/contact"],
-    ["Vendor Dashboard", "Vendor dashboard", "/marketplace"],
-    ["Booking System", "Booking system", "/marketplace"],
   ],
   Contact: [
     [DISPLAY_CALL_PHONE, DISPLAY_CALL_PHONE, "tel:+919442763940"],

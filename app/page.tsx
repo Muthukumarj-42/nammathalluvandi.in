@@ -17,19 +17,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/sections/reveal";
-import dynamic from "next/dynamic";
-
-const CartExplorer = dynamic(
-  () => import("@/components/sections/cart-explorer").then((mod) => mod.CartExplorer),
-  {
-    ssr: true,
-    loading: () => (
-      <div className="min-h-[400px] flex items-center justify-center text-muted font-semibold">
-        Loading Carts...
-      </div>
-    ),
-  }
-);
+import { CartExplorer } from "@/components/sections/cart-explorer";
 import { rentalTamilMessage } from "@/lib/utils";
 import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 import { CartCounter } from "@/components/sections/cart-counter";
