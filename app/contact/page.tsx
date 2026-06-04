@@ -620,7 +620,7 @@ export default function ContactPage() {
                 className="border-primary text-primary hover:bg-orange-50 w-full text-xs font-bold uppercase tracking-wider h-10"
               >
                 <a
-                  href="https://maps.app.goo.gl/DmC3SGgNqnovtL6m8"
+                  href="https://maps.app.goo.gl/mdeWyjcpqBQRVzR46"
                   target="_blank"
                 >
                   <span className="en">Get Directions →</span>
@@ -804,7 +804,7 @@ export default function ContactPage() {
           <div className="relative w-full overflow-hidden rounded-2xl border border-[rgba(249,115,22,0.3)] bg-white h-[260px] md:h-[420px]">
             <iframe
               title="Thalluvandi location - Ondipudur Coimbatore"
-              src="https://maps.google.com/maps?q=11.0168,76.9558&z=17&output=embed"
+              src="https://maps.google.com/maps?q=11.0072893,77.057818&z=17&output=embed"
               className="absolute inset-0 h-full w-full rounded-lg"
               loading="lazy"
             />

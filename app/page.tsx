@@ -151,7 +151,7 @@ export default function Home() {
       "Push Cart Rental",
       "Street Food Cart Rental"
     ],
-    hasMap: "https://maps.app.goo.gl/DmC3SGgNqnovtL6m8",
+    hasMap: "https://maps.app.goo.gl/mdeWyjcpqBQRVzR46",
     sameAs: ["https://www.instagram.com/nammathalluvandi.in"]
   };
 
