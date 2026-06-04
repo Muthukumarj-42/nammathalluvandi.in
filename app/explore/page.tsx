@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import type { Metadata } from "next";
 import { MessageCircle, PenTool, Truck, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";

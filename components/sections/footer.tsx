@@ -46,6 +46,7 @@ export function Footer() {
               alt="Thalluvandi food cart rental Tamil Nadu logo"
               width={168}
               height={82}
+              sizes="168px"
               className="h-20 w-auto transition hover:scale-105"
             />
             <p className="mt-6 max-w-sm text-sm leading-7 text-[#1a1208]/70">

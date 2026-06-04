@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -13,8 +15,20 @@ import {
   Truck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CartExplorer } from "@/components/sections/cart-explorer";
 import { Reveal } from "@/components/sections/reveal";
+import dynamic from "next/dynamic";
+
+const CartExplorer = dynamic(
+  () => import("@/components/sections/cart-explorer").then((mod) => mod.CartExplorer),
+  {
+    ssr: true,
+    loading: () => (
+      <div className="min-h-[400px] flex items-center justify-center text-muted font-semibold">
+        Loading Carts...
+      </div>
+    ),
+  }
+);
 import { rentalTamilMessage } from "@/lib/utils";
 import { WA_NUMBER, buildWAUrl } from "@/config/whatsapp";
 import { CartCounter } from "@/components/sections/cart-counter";
@@ -216,6 +230,7 @@ export default function Home() {
               width={720}
               height={720}
               priority
+              sizes="100vw"
               className="relative mx-auto w-full max-w-[520px] drop-shadow-[0_0_40px_rgba(255,107,0,0.2)]"
             />
           </Reveal>

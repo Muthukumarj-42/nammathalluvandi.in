@@ -52,6 +52,7 @@ export function Navbar() {
               alt="Thalluvandi food cart rental Tamil Nadu logo" 
               width={24} 
               height={24} 
+              sizes="48px"
               className="h-6 w-auto" 
               priority
             />
@@ -77,7 +78,7 @@ export function Navbar() {
       <header className={`fixed inset-x-0 top-0 z-50 hidden border-b border-black/10 bg-[#F8F6F2] text-ink transition-all duration-300 md:block ${scrolled ? "shadow-sm backdrop-blur-xl" : ""}`}>
         <div className="site-container flex h-20 items-center justify-between">
           <Link href="/" className="group flex items-center gap-3" aria-label="Thalluvandi home">
-            <Image src="/brand/text-logo.webp" alt="Thalluvandi food cart rental Tamil Nadu logo" width={230} height={88} priority className="h-14 w-auto transition-transform duration-300 group-hover:scale-105" />
+            <Image src="/brand/text-logo.webp" alt="Thalluvandi food cart rental Tamil Nadu logo" width={230} height={88} priority sizes="230px" className="h-14 w-auto transition-transform duration-300 group-hover:scale-105" />
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">

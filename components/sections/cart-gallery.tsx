@@ -28,7 +28,7 @@ function GalleryImage({
           src="/brand/full-logo-with-background.webp"
           alt="Thalluvandi fallback logo"
           fill
-          sizes={isThumbnail ? "80px" : "(max-width: 768px) 100vw, 50vw"}
+          sizes={isThumbnail ? "80px" : "(max-width: 768px) 100vw, 60vw"}
           className="object-contain p-8 opacity-40 z-20"
         />
       </div>
@@ -57,7 +57,7 @@ function GalleryImage({
       alt={alt}
       width={800}
       height={600}
-      sizes="(max-width: 768px) 100vw, 50vw"
+      sizes="(max-width: 768px) 100vw, 60vw"
       priority={priority}
       loading={priority ? undefined : "lazy"}
       className="object-contain max-h-[550px] w-auto h-auto max-w-full mx-auto rounded-2xl"
