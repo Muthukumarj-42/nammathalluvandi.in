@@ -1,3 +1,4 @@
+// Updated: D. Nagaraj trust signals added
 export const runtime = "edge";
 
 import Link from "next/link";
@@ -45,9 +46,11 @@ function Text({ en, ta }: { en: string; ta: string }) {
 const stats: any[] = [];
 
 const marquee = [
-  ["65+ Carts", "65+ வண்டிகள்"],
+  ["70+ Carts", "70+ வண்டிகள்"],
   ["Coimbatore", "கோவை"],
+  ["30+ YEARS OF TRUST", "30+ ஆண்டுகள் நம்பிக்கை"],
   ["PREMIUM CARTS", "பிரீமியம் வண்டி"],
+  ["D. NAGARAJ THALLUVANDI", "D. நாகராஜ் தளவண்டி"],
   ["SAME DAY BOOKING", "அன்றே புக்கிங்"],
   ["EXPANDING ACROSS TAMIL NADU", "தமிழ்நாடு முழுக்க விரைவில்"],
 ];
@@ -57,8 +60,8 @@ const featureCards = [
     ShoppingCart,
     "Large cart fleet",
     "வண்டிகளின் பெரிய தொகுப்பு",
-    "65+ carts ready for tea, snacks, juice, and fast food businesses. With over 65 carts maintained and ready at our Coimbatore yard you will always find the right cart for your business type without any waiting period.",
-    "65-க்கும் மேல் வண்டிகள் தயாராக உள்ளது. 65-க்கும் மேல் வண்டிகள் எப்போதும் தயாராக உள்ளன. உங்களுக்கு ஏற்ற வண்டி உடனே கிடைக்கும்.",
+    "D. Nagaraj's fleet of 70+ carts ready at Ondipudur, Coimbatore. Tea, snacks, juice, fast food — every type available. Always maintained and ready with no waiting period.",
+    "D. நாகராஜ் அவர்களின் 70+ வண்டிகள் ஒண்டிப்புதூர், கோவையில் தயாராக உள்ளன. டீ, ஸ்நாக்ஸ், ஜூஸ், ஃபாஸ்ட் ஃபுட் — அனைத்து வகையும் உடனே கிடைக்கும்.",
   ],
   [
     PanelsTopLeft,
@@ -78,8 +81,8 @@ const featureCards = [
     CalendarCheck,
     "Trusted by Vendors",
     "வியாபாரிகள் நம்பிக்கை",
-    "Local support trusted by vendors starting small food businesses. Street food vendors across Coimbatore trust us for reliable carts, fair pricing, and honest service with full refundable deposit.",
-    "கோவையில் நூறுக்கும் மேற்பட்ட வியாபாரிகள் நம்பி பயன்படுத்துகிறார்கள். கோவையில் நூற்றுக்கும் மேற்பட்ட வியாபாரிகள் நம்மை நம்பி பயன்படுத்துகிறார்கள்.",
+    "D. Nagaraj thallu vandi — trusted by Coimbatore street food vendors for 30+ years. Ondipudur's most reliable cart rental. Fair pricing and fully refundable deposit.",
+    "D. நாகராஜ் தளவண்டி — 30+ ஆண்டுகளாக கோவை வியாபாரிகளின் நம்பிக்கை. ஒண்டிப்புதூரின் நம்பகமான வண்டி வாடகை. நியாயமான விலை, முழு திரும்பப் பெறும் டெபாசிட்.",
   ],
 ];
 
@@ -87,14 +90,14 @@ const faqs = [
   [
     "What is Thalluvandi?",
     "தள்ளுவண்டி என்றால் என்ன?",
-    "Thalluvandi is Coimbatore's premier food cart rental marketplace. We help aspiring entrepreneurs and street vendors easily start small food businesses by offering food carts on a flexible daily rental plan with minimal investment.",
-    "தள்ளுவண்டி என்பது கோவையில் எளிய முறையில் உணவுத் தொழில் தொடங்க தள்ளுவண்டிகளை வாடகைக்கு வழங்கும் ஒரு தளமாகும். பெரிய முதலீடு இன்றி சுலபமாக தொழிலைத் தொடங்க நாங்கள் உதவுகிறோம்.",
+    "Namma Thalluvandi is D. Nagaraj's thallu vandi rental service — Coimbatore's most trusted food cart rental with 30+ years of experience at Ondipudur. We offer 70+ carts for daily and monthly rental to help vendors start their business with minimal investment.",
+    "நம்ம தளவண்டி என்பது D. நாகராஜ் அவர்களின் தளவண்டி வாடகை சேவை. 30+ ஆண்டுகளாக ஒண்டிப்புதூர், கோயம்பத்தூரில் நம்பகமான உணவு வண்டி வாடகை. 70+ வண்டிகள் தினசரி மற்றும் மாதாந்திர வாடகைக்கு தயாராக உள்ளன.",
   ],
   [
     "Where is your branch located?",
     "உங்கள் கிளை எங்குள்ளது?",
-    "D. Nagaraj Thalluvandi is located at Ondipudur, Coimbatore. Renter pickup, returns, and physical inspection of carts take place here.",
-    "D. நாகராஜ் தளவண்டி ஒண்டிப்புதூர், கோயம்புத்தூரில் அமைந்துள்ளது. இங்கிருந்து நீங்கள் வண்டிகளை நேரடியாகப் பெற்றுக்கொள்ளலாம் அல்லது திரும்ப ஒப்படைக்கலாம்.",
+    "D. Nagaraj Thalluvandi is located at Ondipudur, Coimbatore. Our yard has served Coimbatore vendors for 30+ years. Cart pickup, returns, and inspection all happen at our Ondipudur location.",
+    "D. நாகராஜ் தளவண்டி ஒண்டிப்புதூர், கோயம்புத்தூரில் அமைந்துள்ளது. 30+ ஆண்டுகளாக இங்கிருந்து கோவை வியாபாரிகளுக்கு சேவை. வண்டி எடுக்கவும் திரும்ப கொடுக்கவும் நேரடியாக ஒண்டிப்புதூர் வரலாம்.",
   ],
   [
     "How do I book a food cart?",
@@ -137,14 +140,17 @@ export default function Home() {
       "Thalluvandi",
       "நம்ம தளவண்டி",
       "தளவண்டி",
-      "Thallu Vandi Coimbatore",
-      "Namma Thallu Vandi",
+      "D. Nagaraj Thallu Vandi",
+      "D. Nagaraj Thalluvandi Coimbatore",
       "D. Nagaraj Thalluvandi Ondipudur",
-      "D. Nagaraj Thallu Vandi Ondipudur Coimbatore",
+      "D Nagaraj Thallu Vandi Ondipudur Coimbatore",
+      "D. Nagaraj Food Cart Rental Coimbatore",
       "Thalluvandi Ondipudur",
+      "நாகராஜ் தளவண்டி",
+      "D நாகராஜ் தளவண்டி",
       "நாகராஜ் தளவண்டி ஒண்டிப்புதூர்"
     ],
-    description: "Premium thallu vandi food cart rentals in Coimbatore, Tamil Nadu. 65+ carts with stove, roof cover, and premium variants available for daily and monthly rental.",
+    description: "Operated by D. Nagaraj with 30+ years of trusted thallu vandi rental experience at Ondipudur Coimbatore Tamil Nadu.",
     url: "https://nammathalluvandi.in",
     telephone: "+919442763940",
     address: {
@@ -161,7 +167,7 @@ export default function Home() {
       longitude: 76.9558,
     },
     openingHours: "Mo-Sa 08:00-20:00",
-    priceRange: "₹50 to ₹200 per day",
+    priceRange: "₹100 to ₹200 per day",
     areaServed: ["Coimbatore", "Tamil Nadu"],
     serviceType: [
       "Food Cart Rental",
@@ -201,8 +207,8 @@ export default function Home() {
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-muted md:mx-0 md:text-lg md:leading-8">
               <Text
-                en="Start your food business in Coimbatore without heavy investment."
-                ta="அதிக முதலீடு இல்லாமல், கோவையில் உங்கள் தொழில் ஆரம்பியுங்கள்."
+                en="D. Nagaraj's thallu vandi fleet — now online. 30+ years of trust in Coimbatore. 70+ carts ready for your business."
+                ta="D. நாகராஜ் தளவண்டி வண்டிகள் — இப்போது online-ல். கோவையில் 30+ ஆண்டுகள் நம்பகமான சேவை. 70+ வண்டிகள் உங்கள் தொழிலுக்கு தயார்."
               />
             </p>
             <div className="mt-8 grid gap-3 sm:flex md:justify-start">
@@ -271,6 +277,50 @@ export default function Home() {
               ))}
             </span>
           ))}
+        </div>
+      </section>
+
+      {/* Trust Banner Section */}
+      <section className="py-12 bg-[#F8F6F2]">
+        <div className="site-container">
+          <div className="rounded-2xl border-l-4 border-primary bg-[#1a1208] p-8 text-white shadow-xl">
+            <div className="grid gap-8 md:grid-cols-[0.45fr_0.55fr] items-center">
+              {/* Left side — founder identity block */}
+              <div className="space-y-2">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                  <Text en="FOUNDED BY" ta="நிறுவனர்" />
+                </p>
+                <h3 className="font-display text-5xl uppercase leading-none text-[#F8F6F2] font-black">
+                  <Text en="D. Nagaraj" ta="D. நாகராஜ்" />
+                </h3>
+                <p className="text-sm text-[#F8F6F2]/80">
+                  <Text en="Thallu Vandi Ondipudur, Coimbatore" ta="தளவண்டி ஒண்டிப்புதூர், கோவை" />
+                </p>
+              </div>
+
+              {/* Right side — three trust stat cards in a row */}
+              <div className="grid grid-cols-3 gap-4">
+                <div className="text-center border-r border-white/10 pr-2 last:border-r-0 last:pr-0">
+                  <p className="font-display text-4xl md:text-5xl text-primary font-black">30+</p>
+                  <p className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[#F8F6F2]/70 mt-2">
+                    <Text en="Years of Trust" ta="ஆண்டுகள் நம்பிக்கை" />
+                  </p>
+                </div>
+                <div className="text-center border-r border-white/10 pr-2 last:border-r-0 last:pr-0">
+                  <p className="font-display text-4xl md:text-5xl text-primary font-black">70+</p>
+                  <p className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[#F8F6F2]/70 mt-2">
+                    <Text en="Carts in Fleet" ta="வண்டிகள் தயார்" />
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="font-display text-4xl md:text-5xl text-primary font-black">100+</p>
+                  <p className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[#F8F6F2]/70 mt-2">
+                    <Text en="Vendors Served" ta="வியாபாரிகள் சேவை" />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -535,7 +585,7 @@ export default function Home() {
       <section className="py-6 border-t border-black/5">
         <div className="site-container">
           <p className="text-xs text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
-            Namma Thalluvandi provides thallu vandi vadagai in Coimbatore Tamil Nadu. Our push carts are available for rent for tea stalls juice counters fast food businesses and street food vendors. Thallu vandi rental Coimbatore from 50 rupees per day. Monthly and weekly rental available. Refundable deposit. WhatsApp booking. நம்ம தளவண்டி வாடகை கோவை. உணவு வண்டி வாடகை கோயம்புத்தூர். D. Nagaraj Thalluvandi Ondipudur — Coimbatore's trusted thallu vandi rental at Ondipudur. D நாகராஜ் தளவண்டி ஒண்டிப்புதூர் கோவை. Ondipudur thallu vandi vadagai. ஒண்டிப்புதூர் தளவண்டி வாடகை கோவை.
+            Namma Thalluvandi provides thallu vandi vadagai in Coimbatore Tamil Nadu. Our push carts are available for rent for tea stalls juice counters fast food businesses and street food vendors. Thallu vandi rental Coimbatore from 100 rupees per day. Monthly and weekly rental available. Refundable deposit. WhatsApp booking. நம்ம தளவண்டி வாடகை கோவை. உணவு வண்டி வாடகை கோயம்புத்தூர். Namma Thalluvandi is operated by D. Nagaraj — Coimbatore's most trusted thallu vandi rental with 30+ years of experience at Ondipudur. D. Nagaraj thallu vandi has served hundreds of street food vendors across Coimbatore. D. Nagaraj Thalluvandi Ondipudur Coimbatore. D நாகராஜ் தளவண்டி ஒண்டிப்புதூர் கோவை. நாகராஜ் தளவண்டி வாடகை கோயம்புத்தூர். Ondipudur thallu vandi vadagai. ஒண்டிப்புதூர் தளவண்டி வாடகை கோவை. D Nagaraj thalluvandi ondipudur coimbatore.
           </p>
         </div>
       </section>

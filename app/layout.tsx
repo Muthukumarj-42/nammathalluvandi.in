@@ -1,3 +1,4 @@
+// Updated: D. Nagaraj SEO keywords added
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
@@ -30,46 +31,45 @@ const notoTamil = Noto_Sans_Tamil({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nammathalluvandi.in"),
-  title: "Namma Thalluvandi | Thallu Vandi Rental Coimbatore",
+  title: "Namma Thalluvandi | D. Nagaraj Thallu Vandi Coimbatore",
   description:
-    "Rent a thallu vandi in Coimbatore from ₹50/day. 65+ carts — stove, roof, premium variants. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை",
+    "D. Nagaraj thallu vandi rental Coimbatore. 30+ years of trust. 70+ carts from ₹100/day. Ondipudur. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை.",
   keywords: [
     "namma thalluvandi",
     "நம்ம தளவண்டி",
     "nammathalluvandi.in",
+    "D Nagaraj thalluvandi",
+    "D Nagaraj thallu vandi coimbatore",
+    "D Nagaraj thalluvandi ondipudur",
+    "D நாகராஜ் தளவண்டி கோவை",
+    "D நாகராஜ் தளவண்டி ஒண்டிப்புதூர்",
+    "nagaraj thalluvandi ondipudur coimbatore",
+    "nagaraj cart rental coimbatore",
+    "d nagaraj food cart coimbatore",
+    "நாகராஜ் வண்டி வாடகை கோவை",
     "thallu vandi rental coimbatore",
-    "thallu vandi rental tiruppur",
     "thallu vandi vadagai coimbatore",
-    "thallu vandi vadagai tiruppur",
     "food cart rental coimbatore",
-    "food cart rental tiruppur",
     "thalluvandi rent coimbatore",
-    "thalluvandi rent tiruppur",
     "push cart rental coimbatore",
     "street food cart coimbatore",
-    "உணவு வண்டி வாடகை கோயம்புத்தூர்",
-    "தளவண்டி வாடகை திருப்பூர்",
-    "தள்ளு வண்டி வாடகை கோவை",
-    "தள்ளு வண்டி வாடகை திருப்பூர்",
-    "நம்ம தளவண்டி கோவை",
-    "food cart rental near me coimbatore",
-    "push cart vadagai coimbatore",
-    "d nagaraj thalluvandi ondipudur",
-    "d nagaraj thallu vandi ondipudur coimbatore",
-    "thalluvandi ondipudur",
-    "thallu vandi ondipudur coimbatore",
     "ondipudur thallu vandi rental",
     "ondipudur food cart rental",
-    "D நாகராஜ் தளவண்டி ஒண்டிப்புதூர்",
+    "thallu vandi ondipudur coimbatore",
     "ஒண்டிப்புதூர் தளவண்டி வாடகை",
-    "nagaraj thalluvandi ondipudur coimbatore"
+    "உணவு வண்டி வாடகை கோயம்புத்தூர்",
+    "தளவண்டி வாடகை கோவை",
+    "தள்ளு வண்டி வாடகை கோவை",
+    "நம்ம தளவண்டி கோவை",
+    "food cart rental near me coimbatore",
+    "push cart vadagai coimbatore"
   ],
   alternates: {
     canonical: "https://nammathalluvandi.in"
   },
   openGraph: {
-    title: "Namma Thalluvandi | Thallu Vandi Rental Coimbatore",
-    description: "Rent a thallu vandi in Coimbatore from ₹50/day. 65+ carts — stove, roof, premium variants. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை",
+    title: "Namma Thalluvandi | D. Nagaraj Thallu Vandi Coimbatore",
+    description: "D. Nagaraj thallu vandi rental Coimbatore. 30+ years of trust. 70+ carts from ₹100/day. Ondipudur. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை.",
     url: "https://nammathalluvandi.in",
     siteName: "Namma Thalluvandi",
     images: [
@@ -86,8 +86,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Namma Thalluvandi | Thallu Vandi Rental Coimbatore",
-    description: "Rent a thallu vandi in Coimbatore from ₹50/day. 65+ carts — stove, roof, premium variants. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை",
+    title: "Namma Thalluvandi | D. Nagaraj Thallu Vandi Coimbatore",
+    description: "D. Nagaraj thallu vandi rental Coimbatore. 30+ years of trust. 70+ carts from ₹100/day. Ondipudur. WhatsApp booking, same day response. தளவண்டி வாடகை கோவை.",
     images: ["https://nammathalluvandi.in/brand/full-logo-with-background.webp"]
   },
   icons: {

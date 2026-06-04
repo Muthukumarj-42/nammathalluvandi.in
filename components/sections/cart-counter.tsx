@@ -7,7 +7,7 @@ export function CartCounter() {
 
   useEffect(() => {
     let start = 0;
-    const end = 65;
+    const end = 70;
     const duration = 1200; // 1.2 seconds
     const stepTime = 16; // ~60fps
     const steps = duration / stepTime;

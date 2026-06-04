@@ -114,7 +114,11 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-14 flex flex-col gap-3 border-t border-primary/15 pt-6 text-xs uppercase tracking-[0.14em] text-[#1a1208]/50 md:flex-row md:justify-between">
-          <span>© 2026 NammaThalluvandi.in</span>
+          <div className="flex flex-col gap-1 normal-case tracking-normal">
+            <span className="uppercase tracking-[0.14em]">© 2026 Namma Thalluvandi</span>
+            <span>D. Nagaraj Thallu Vandi — 30+ Years of Trust</span>
+            <span>Ondipudur, Coimbatore</span>
+          </div>
           <span>
             <span className="en"></span>
             <span className="ta tamil-text"></span>
