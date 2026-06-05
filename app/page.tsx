@@ -136,9 +136,10 @@ export default function Home() {
       "Thalluvandi Ondipudur",
       "நாகராஜ் தளவண்டி",
       "D நாகராஜ் தளவண்டி",
-      "நாகராஜ் தளவண்டி ஒண்டிப்புதூர்"
+      "நாகராஜ் தளவண்டி ஒண்டிப்புதூர்",
     ],
-    description: "Operated by D. Nagaraj with 30+ years of trusted thallu vandi rental experience at Ondipudur Coimbatore Tamil Nadu.",
+    description:
+      "Operated by D. Nagaraj with 30+ years of trusted thallu vandi rental experience at Ondipudur Coimbatore Tamil Nadu.",
     url: "https://nammathalluvandi.in",
     telephone: "+919442763940",
     address: {
@@ -161,10 +162,10 @@ export default function Home() {
       "Food Cart Rental",
       "Thallu Vandi Rental",
       "Push Cart Rental",
-      "Street Food Cart Rental"
+      "Street Food Cart Rental",
     ],
     hasMap: "https://maps.app.goo.gl/mdeWyjcpqBQRVzR46",
-    sameAs: ["https://www.instagram.com/nammathalluvandi.in"]
+    sameAs: ["https://www.instagram.com/nammathalluvandi.in"],
   };
 
   return (
@@ -282,26 +283,35 @@ export default function Home() {
                   <Text en="D. Nagaraj" ta="D. நாகராஜ்" />
                 </h3>
                 <p className="text-sm text-[#F8F6F2]/80">
-                  <Text en="Thallu Vandi Ondipudur, Coimbatore" ta="தளவண்டி ஒண்டிப்புதூர், கோவை" />
+                  <Text
+                    en="Thallu Vandi Ondipudur, Coimbatore"
+                    ta="தளவண்டி ஒண்டிப்புதூர், கோவை"
+                  />
                 </p>
               </div>
 
               {/* Right side — three trust stat cards in a row */}
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center border-r border-white/10 pr-2 last:border-r-0 last:pr-0">
-                  <p className="font-display text-4xl md:text-5xl text-primary font-black">30+</p>
+                  <p className="font-display text-4xl md:text-5xl text-primary font-black">
+                    30+
+                  </p>
                   <p className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[#F8F6F2]/70 mt-2">
                     <Text en="Years of Trust" ta="ஆண்டுகள் நம்பிக்கை" />
                   </p>
                 </div>
                 <div className="text-center border-r border-white/10 pr-2 last:border-r-0 last:pr-0">
-                  <p className="font-display text-4xl md:text-5xl text-primary font-black">70+</p>
+                  <p className="font-display text-4xl md:text-5xl text-primary font-black">
+                    70+
+                  </p>
                   <p className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[#F8F6F2]/70 mt-2">
                     <Text en="Carts in Fleet" ta="வண்டிகள் தயார்" />
                   </p>
                 </div>
                 <div className="text-center">
-                  <p className="font-display text-4xl md:text-5xl text-primary font-black">100+</p>
+                  <p className="font-display text-4xl md:text-5xl text-primary font-black">
+                    500+
+                  </p>
                   <p className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[#F8F6F2]/70 mt-2">
                     <Text en="Vendors Served" ta="வியாபாரிகள் சேவை" />
                   </p>
@@ -573,7 +583,19 @@ export default function Home() {
       <section className="py-6 border-t border-black/5">
         <div className="site-container">
           <p className="text-xs text-muted-foreground text-center max-w-4xl mx-auto leading-relaxed">
-            Namma Thalluvandi provides thallu vandi vadagai in Coimbatore Tamil Nadu. Our push carts are available for rent for tea stalls juice counters fast food businesses and street food vendors. Thallu vandi rental Coimbatore from 100 rupees per day. Monthly and weekly rental available. Refundable deposit. WhatsApp booking. நம்ம தளவண்டி வாடகை கோவை. உணவு வண்டி வாடகை கோயம்புத்தூர். Namma Thalluvandi is operated by D. Nagaraj — Coimbatore's most trusted thallu vandi rental with 30+ years of experience at Ondipudur. D. Nagaraj thallu vandi has served hundreds of street food vendors across Coimbatore. D. Nagaraj Thalluvandi Ondipudur Coimbatore. D நாகராஜ் தளவண்டி ஒண்டிப்புதூர் கோவை. நாகராஜ் தளவண்டி வாடகை கோயம்புத்தூர். Ondipudur thallu vandi vadagai. ஒண்டிப்புதூர் தளவண்டி வாடகை கோவை. D Nagaraj thalluvandi ondipudur coimbatore.
+            Namma Thalluvandi provides thallu vandi vadagai in Coimbatore Tamil
+            Nadu. Our push carts are available for rent for tea stalls juice
+            counters fast food businesses and street food vendors. Thallu vandi
+            rental Coimbatore from 100 rupees per day. Monthly and weekly rental
+            available. Refundable deposit. WhatsApp booking. நம்ம தளவண்டி வாடகை
+            கோவை. உணவு வண்டி வாடகை கோயம்புத்தூர். Namma Thalluvandi is operated
+            by D. Nagaraj — Coimbatore's most trusted thallu vandi rental with
+            30+ years of experience at Ondipudur. D. Nagaraj thallu vandi has
+            served hundreds of street food vendors across Coimbatore. D. Nagaraj
+            Thalluvandi Ondipudur Coimbatore. D நாகராஜ் தளவண்டி ஒண்டிப்புதூர்
+            கோவை. நாகராஜ் தளவண்டி வாடகை கோயம்புத்தூர். Ondipudur thallu vandi
+            vadagai. ஒண்டிப்புதூர் தளவண்டி வாடகை கோவை. D Nagaraj thalluvandi
+            ondipudur coimbatore.
           </p>
         </div>
       </section>
