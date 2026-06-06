@@ -38,6 +38,7 @@ const marquee = [
   ["Coimbatore", "கோவை"],
   ["30+ YEARS OF TRUST", "30+ ஆண்டுகள் நம்பிக்கை"],
   ["PREMIUM CARTS", "பிரீமியம் வண்டி"],
+  ["OLD STYLE & NEW MODEL", "பழைய வகை & புதிய மாடல்"],
   ["D. NAGARAJ THALLUVANDI", "D. நாகராஜ் தளவண்டி"],
   ["SAME DAY BOOKING", "அன்றே புக்கிங்"],
   ["EXPANDING ACROSS TAMIL NADU", "தமிழ்நாடு முழுக்க விரைவில்"],
@@ -48,8 +49,8 @@ const featureCards = [
     ShoppingCart,
     "Large cart fleet",
     "வண்டிகளின் பெரிய தொகுப்பு",
-    "D. Nagaraj's fleet of 70+ carts ready at Ondipudur, Coimbatore. Tea, snacks, juice, fast food — every type available. Always maintained and ready with no waiting period.",
-    "D. நாகராஜ் அவர்களின் 70+ வண்டிகள் ஒண்டிப்புதூர், கோவையில் தயாராக உள்ளன. டீ, ஸ்நாக்ஸ், ஜூஸ், ஃபாஸ்ட் ஃபுட் — அனைத்து வகையும் உடனே கிடைக்கும்.",
+    "D. Nagaraj's fleet of 70+ carts ready at Ondipudur, Coimbatore. Tea, snacks, juice, fast food — every type available. Always maintained and ready with no waiting period. Our 70+ cart fleet includes both traditional old-style thallu vandis and new modern model carts — so you can pick the style that suits your business and location.",
+    "D. நாகராஜ் அவர்களின் 70+ வண்டிகள் ஒண்டிப்புதூர், கோவையில் தயாராக உள்ளன. டீ, ஸ்நாக்ஸ், ஜூஸ், ஃபாஸ்ட் ஃபுட் — அனைத்து வகையும் உடனே கிடைக்கும். எங்கள் 70+ வண்டிகளில் பாரம்பரிய பழைய வகை தளவண்டிகளும் புதிய நவீன மாடல் வண்டிகளும் உள்ளன. உங்கள் தொழிலுக்கு ஏற்ற வகையை தேர்வு செய்யலாம்.",
   ],
   [
     PanelsTopLeft,
@@ -78,8 +79,8 @@ const faqs = [
   [
     "What is Thalluvandi?",
     "தள்ளுவண்டி என்றால் என்ன?",
-    "Namma Thalluvandi is D. Nagaraj's thallu vandi rental service — Coimbatore's most trusted food cart rental with 30+ years of experience at Ondipudur. We offer 70+ carts for daily and monthly rental to help vendors start their business with minimal investment.",
-    "நம்ம தளவண்டி என்பது D. நாகராஜ் அவர்களின் தளவண்டி வாடகை சேவை. 30+ ஆண்டுகளாக ஒண்டிப்புதூர், கோயம்பத்தூரில் நம்பகமான உணவு வண்டி வாடகை. 70+ வண்டிகள் தினசரி மற்றும் மாதாந்திர வாடகைக்கு தயாராக உள்ளன.",
+    "Namma Thalluvandi is D. Nagaraj's thallu vandi rental service — Coimbatore's most trusted food cart rental with 30+ years of experience at Ondipudur. We offer 70+ carts for daily and monthly rental to help vendors start their business with minimal investment. Our fleet includes both traditional old-style push carts and new modern model carts to suit every type of street food business.",
+    "நம்ம தளவண்டி என்பது D. நாகராஜ் அவர்களின் தளவண்டி வாடகை சேவை. 30+ ஆண்டுகளாக ஒண்டிப்புதூர், கோயம்பத்தூரில் நம்பகமான உணவு வண்டி வாடகை. 70+ வண்டிகள் தினசரி மற்றும் மாதாந்திர வாடகைக்கு தயாராக உள்ளன. எங்கள் வண்டிகளில் பாரம்பரிய தளவண்டிகளும் புதிய நவீன மாடல் வண்டிகளும் இரண்டும் உள்ளன.",
   ],
   [
     "Where is your branch located?",
@@ -196,8 +197,8 @@ export default function Home() {
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-muted md:mx-0 md:text-lg md:leading-8">
               <Text
-                en="D. Nagaraj's thallu vandi fleet — now online. 30+ years of trust in Coimbatore. 70+ carts ready for your business."
-                ta="D. நாகராஜ் தளவண்டி வண்டிகள் — இப்போது online-ல். கோவையில் 30+ ஆண்டுகள் நம்பகமான சேவை. 70+ வண்டிகள் உங்கள் தொழிலுக்கு தயார்."
+                en="D. Nagaraj's thallu vandi fleet — now online. 30+ years of trust in Coimbatore. 70+ carts ready — old style and new model both available. Choose what fits your business."
+                ta="D. நாகராஜ் தளவண்டி வண்டிகள் — இப்போது online-ல். கோவையில் 30+ ஆண்டுகள் நம்பகமான சேவை. 70+ வண்டிகள் தயார் — பழைய வகை மற்றும் புதிய மாடல் இரண்டும் உள்ளன. உங்கள் தொழிலுக்கு ஏற்றதை தேர்வு செய்யுங்கள்."
               />
             </p>
             <div className="mt-8 grid gap-3 sm:flex md:justify-start">
@@ -318,6 +319,13 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            {/* Subtitle line below stats grid */}
+            <div className="mt-6 pt-6 border-t border-white/10 text-center md:text-left text-xs md:text-sm text-[#F8F6F2]/80">
+              <Text 
+                en="Traditional & modern carts — all maintained and ready at Ondipudur, Coimbatore." 
+                ta="பாரம்பரிய மற்றும் நவீன வண்டிகள் — அனைத்தும் ஒண்டிப்புதூர், கோவையில் தயார்." 
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -396,7 +404,7 @@ export default function Home() {
                   <span className="en">ESTIMATED RANGE</span>
                   <span className="ta tamil-text">மதிப்பிடப்பட்ட விலை</span>
                 </p>
-                <p className="mt-1 font-display text-3xl font-bold text-ink">
+                <p className="mt-1 font-display text-3xl font-bold text-ink whitespace-nowrap">
                   ₹30,000 – ₹70,000+
                 </p>
               </div>

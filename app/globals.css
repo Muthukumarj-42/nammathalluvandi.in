@@ -175,3 +175,9 @@ html[data-lang="en"] .faq-question-title {
   font-weight: 700 !important;
 }
 
+html[data-lang="ta"] .always-bebas, .always-bebas {
+  font-family: var(--font-bebas), Impact, sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+}
+

@@ -32,45 +32,26 @@ export function Navbar() {
   return (
     <>
       {/* Mobile Header (below 768px) */}
-      <header className="fixed inset-x-0 top-0 z-50 grid grid-cols-[60px_1fr_60px] h-14 items-center border-b border-black/10 bg-[#F8F6F2]/90 backdrop-blur-md px-4 md:hidden">
-        {/* Left: Call action */}
-        <div className="flex justify-start">
-          <a
-            href={`tel:${CALL_PHONE}`}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-black/5 bg-white/50 text-ink hover:text-primary transition shadow-sm"
-            aria-label="Call Thalluvandi"
-          >
-            <PhoneCall size={15} />
-          </a>
-        </div>
+      <header className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-black/10 bg-[#F8F6F2]/90 backdrop-blur-md px-4 md:hidden">
+        {/* Left: Brand Logo & Text */}
+        <Link href="/" className="flex items-center gap-1.5" aria-label="Thalluvandi home">
+          <Image 
+            src="/brand/full-logo.webp" 
+            alt="Thalluvandi food cart rental Tamil Nadu logo" 
+            width={48} 
+            height={48} 
+            sizes="48px"
+            className="h-6 w-auto" 
+            priority={true}
+          />
+          <span className="font-display text-2xl font-black uppercase tracking-[0.12em] text-ink always-bebas">
+            THALLUVANDI
+          </span>
+        </Link>
 
-        {/* Center: Brand Logo & Text */}
-        <div className="flex justify-center">
-          <Link href="/" className="flex items-center gap-1.5" aria-label="Thalluvandi home">
-            <Image 
-              src="/brand/full-logo.webp" 
-              alt="Thalluvandi food cart rental Tamil Nadu logo" 
-              width={48} 
-              height={48} 
-              sizes="48px"
-              className="h-6 w-auto" 
-              priority={true}
-            />
-            <span className="font-display text-2xl font-black uppercase tracking-[0.12em] text-ink">
-              THALLUVANDI
-            </span>
-          </Link>
-        </div>
-
-        {/* Right: WhatsApp action */}
-        <div className="flex justify-end">
-          <Link
-            href="/contact#enquiry-form"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#25D366]/20 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 transition shadow-sm"
-            aria-label="Chat on WhatsApp"
-          >
-            <MessageCircle size={18} />
-          </Link>
+        {/* Right: Language toggle */}
+        <div className="flex items-center">
+          <LanguageToggle compact={true} />
         </div>
       </header>
 

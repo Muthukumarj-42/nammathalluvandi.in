@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, Phone, Search, Send } from "lucide-react";
-import { LanguageToggle } from "@/components/sections/language-toggle";
 
 const items = [
   ["Home", "முகப்பு", "/", Home],
@@ -20,9 +19,6 @@ export function MobileBottomNav() {
       className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-white/95 px-2 pb-[env(safe-area-inset-bottom)] shadow-premium backdrop-blur-xl md:hidden"
       aria-label="Mobile navigation"
     >
-      <div className="fixed bottom-[72px] right-5 z-40 md:hidden">
-        <LanguageToggle compact />
-      </div>
       <div className="flex h-16 items-stretch">
         {items.map(([label, tamil, href, Icon]) => {
           const active = pathname === href;

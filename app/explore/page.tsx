@@ -84,7 +84,7 @@ export default function ExplorePage() {
                   <span className="en">ESTIMATED RANGE</span>
                   <span className="ta tamil-text">மதிப்பிடப்பட்ட விலை</span>
                 </p>
-                <p className="mt-1 font-display text-3xl font-bold text-ink">₹30,000 – ₹70,000</p>
+                <p className="mt-1 font-display text-3xl font-bold text-ink whitespace-nowrap">₹30,000 – ₹70,000+</p>
               </div>
 
               <Button asChild size="lg" className="mt-6 w-full bg-[#25D366] hover:bg-[#20ba5a] text-white">
