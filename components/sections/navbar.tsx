@@ -32,8 +32,8 @@ export function Navbar() {
   return (
     <>
       {/* Mobile Header (below 768px) */}
-      <header className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-between border-b border-black/10 bg-[#F8F6F2]/90 backdrop-blur-md px-4 md:hidden">
-        {/* Left: Brand Logo & Text */}
+      <header className="fixed inset-x-0 top-0 z-50 flex h-14 items-center justify-center border-b border-black/10 bg-[#F8F6F2]/90 backdrop-blur-md px-4 md:hidden">
+        {/* Center: Brand Logo & Text */}
         <Link href="/" className="flex items-center gap-1.5" aria-label="Thalluvandi home">
           <Image 
             src="/brand/full-logo.webp" 
@@ -48,11 +48,6 @@ export function Navbar() {
             THALLUVANDI
           </span>
         </Link>
-
-        {/* Right: Language toggle */}
-        <div className="flex items-center">
-          <LanguageToggle compact={true} />
-        </div>
       </header>
 
       {/* Desktop Header (768px+) */}
