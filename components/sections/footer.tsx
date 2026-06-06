@@ -28,7 +28,7 @@ const groups = {
     [
       "WhatsApp Enquiry",
       "வாட்ஸ்அப் விசாரணை",
-      "https://wa.me/918838292849",
+      "/contact#enquiry-form",
     ],
   ],
 };
