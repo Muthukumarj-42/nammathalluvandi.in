@@ -7,6 +7,242 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { getCart, type Cart } from "@/lib/carts";
 
+const TAMIL_DICTIONARY: Record<string, string> = {
+  // Pronouns / Particles
+  "i": "நான்",
+  "we": "நாங்கள்",
+  "my": "என்",
+  "our": "எங்கள்",
+  "a": "ஒரு",
+  "an": "ஒரு",
+  "the": "அந்த",
+  "and": "மற்றும்",
+  "with": "உடன்",
+  "for": "வழியாக",
+  "to": "உக்கு",
+  "in": "இல்",
+  "at": "இல்",
+  "of": "இன்",
+  
+  // Names
+  "nagaraj": "நாகராஜ்",
+  "nagarajan": "நாகராஜ்",
+  "muthu": "முத்து",
+  "kumar": "குமார்",
+  "muthukumar": "முத்துக்குமார்",
+  "raja": "ராஜா",
+  "ramesh": "ரமேஷ்",
+  "suresh": "சுரேஷ்",
+  "ganesh": "கணேஷ்",
+  "dinesh": "தினேஷ்",
+  "murugan": "முருகன்",
+  "karthik": "கார்த்திக்",
+  "karthi": "கார்த்தி",
+  "senthil": "செந்தில்",
+  "mani": "மணி",
+  "selvam": "செல்வம்",
+  "annadurai": "அண்ணாதுரை",
+  "durai": "துரை",
+
+  // Locations
+  "coimbatore": "கோயம்புத்தூர்",
+  "kovai": "கோவை",
+  "ondipudur": "ஒண்டிப்புதூர்",
+  "singanallur": "சிங்காநல்லூர்",
+  "ramanathapuram": "இராமநாதபுரம்",
+  "gandhipuram": "காந்திபுரம்",
+  "townhall": "டவுன்ஹால்",
+  "town hall": "டவுன் ஹால்",
+  "peelamedu": "பீளமேடு",
+  "saravanampatti": "சரவணம்பட்டி",
+  "sundarapuram": "சுந்தராபுரம்",
+  "kuniyamuthur": "குனியமுத்தூர்",
+  "kovaipudur": "கோவைப்புதூர்",
+  "thudiyalur": "துடியலூர்",
+  "vadavalli": "வடவள்ளி",
+  "sulur": "சூலூர்",
+  "saibaba colony": "சாய்பாபா காலனி",
+  "rs puram": "ஆர்.எஸ். புரம்",
+  "race course": "ரேஸ் கோர்ஸ்",
+  "sowripalayam": "சௌரிபாளையம்",
+  "puliakulam": "புலியகுளம்",
+  "hopes": "ஹோப்ஸ்",
+  "hope college": "ஹோப் காலேஜ்",
+  "jallimedu": "ஜல்லிமேடு",
+  "aruljothipuram": "அருள்ஜோதிபுரம்",
+
+  // Business / Carts / Features
+  "tea": "டீ",
+  "coffee": "காபி",
+  "juice": "ஜூஸ்",
+  "fast food": "ஃபாஸ்ட் ஃபுட்",
+  "fastfood": "ஃபாஸ்ட் ஃபுட்",
+  "snacks": "ஸ்நாக்ஸ்",
+  "snack": "ஸ்நாக்ஸ்",
+  "momo": "மோமோ",
+  "momos": "மோமோஸ்",
+  "biryani": "பிரியாணி",
+  "stove": "அடுப்பு",
+  "cart": "வண்டி",
+  "carts": "வண்டிகள்",
+  "rent": "வாடகை",
+  "rental": "வாடகை",
+  "need": "வேண்டும்",
+  "want": "வேண்டும்",
+  "please": "தயவுசெய்து",
+  "yes": "ஆம்",
+  "no": "இல்லை",
+  "none": "இல்லை",
+  "nil": "இல்லை",
+  "nothing": "இல்லை",
+  "good": "நல்லது",
+  "shop": "கடை",
+  "stall": "கடை",
+  "hotel": "உணவகம்",
+  "restaurant": "உணவகம்",
+  "food": "உணவு",
+  "catering": "கேட்டரிங்",
+};
+
+function transliterateWordToTamil(word: string): string {
+  const cleanWord = word.toLowerCase().replace(/[^a-z]/g, "").trim();
+  if (!cleanWord) return word;
+
+  if (TAMIL_DICTIONARY[cleanWord]) {
+    return TAMIL_DICTIONARY[cleanWord];
+  }
+
+  if (/^[a-z]+$/.test(cleanWord)) {
+    let result = "";
+    let i = 0;
+
+    const vowels = new Set(["a", "e", "i", "o", "u", "y"]);
+
+    const consonantMap: Record<string, string> = {
+      "ch": "ச",
+      "sh": "ஷ",
+      "th": "த",
+      "dh": "த",
+      "ph": "ப",
+      "bh": "ப",
+      "kh": "க",
+      "gh": "க",
+      "nj": "ஞ",
+      "ng": "ங",
+      "k": "க",
+      "g": "க",
+      "c": "ச",
+      "j": "ஜ",
+      "t": "ட",
+      "d": "ட",
+      "n": "ன",
+      "p": "ப",
+      "b": "ப",
+      "m": "ம",
+      "y": "ய",
+      "r": "ர",
+      "l": "ல",
+      "v": "வ",
+      "w": "வ",
+      "s": "ஸ",
+      "h": "ஹ",
+    };
+
+    const vowelSignMap: Record<string, string> = {
+      "aa": "ா",
+      "ee": "ீ",
+      "oo": "ூ",
+      "ai": "ை",
+      "ou": "ௌ",
+      "a": "",
+      "e": "ே",
+      "i": "ி",
+      "o": "ோ",
+      "u": "ு",
+      "y": "ி",
+    };
+
+    const independentVowelMap: Record<string, string> = {
+      "aa": "ஆ",
+      "ee": "ஈ",
+      "oo": "ஊ",
+      "ai": "ஐ",
+      "ou": "ஔ",
+      "a": "அ",
+      "e": "எ",
+      "i": "இ",
+      "o": "ஒ",
+      "u": "உ",
+      "y": "இ",
+    };
+
+    while (i < cleanWord.length) {
+      let char = cleanWord[i];
+
+      if (vowels.has(char)) {
+        let vGroup = char;
+        if (i + 1 < cleanWord.length && vowels.has(cleanWord[i + 1]) && (char + cleanWord[i + 1]) in independentVowelMap) {
+          vGroup = char + cleanWord[i + 1];
+          i += 2;
+        } else {
+          i += 1;
+        }
+        result += independentVowelMap[vGroup] || "";
+        continue;
+      }
+
+      let cGroup = char;
+      if (i + 1 < cleanWord.length && (char + cleanWord[i + 1]) in consonantMap) {
+        cGroup = char + cleanWord[i + 1];
+      }
+
+      let tamilConsonant = consonantMap[cGroup];
+      if (!tamilConsonant) {
+        result += char;
+        i += 1;
+        continue;
+      }
+
+      i += cGroup.length;
+
+      if (i < cleanWord.length && vowels.has(cleanWord[i])) {
+        let vChar = cleanWord[i];
+        let vGroup = vChar;
+        if (i + 1 < cleanWord.length && vowels.has(cleanWord[i + 1]) && (vChar + cleanWord[i + 1]) in vowelSignMap) {
+          vGroup = vChar + cleanWord[i + 1];
+          i += 2;
+        } else {
+          i += 1;
+        }
+
+        let vowelSign = vowelSignMap[vGroup];
+        if (vGroup === "a" && i === cleanWord.length && cleanWord.length > 3) {
+          vowelSign = "ா";
+        }
+
+        result += tamilConsonant + vowelSign;
+      } else {
+        result += tamilConsonant + "்";
+      }
+    }
+    return result;
+  }
+
+  return word;
+}
+
+function translateSentenceToTamil(text: string): string {
+  if (!text) return "";
+  const tokens = text.split(/(\s+|[,.!?;:()\"\'\-]+)/);
+  const translatedTokens = tokens.map((token) => {
+    if (/^[\s+,.!?;:()\"\'\-]+$/.test(token)) {
+      return token;
+    }
+    return transliterateWordToTamil(token);
+  });
+  return translatedTokens.join("");
+}
+
 export function BookingFlow() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -23,7 +259,6 @@ export function BookingFlow() {
     phone: "",
     date: "",
     location: "",
-    duration: "",
     details: "",
   });
 
@@ -91,7 +326,6 @@ export function BookingFlow() {
     formData.date !== "" &&
     formData.date >= todayDate &&
     formData.location.trim() !== "" &&
-    formData.duration.trim() !== "" &&
     agreed &&
     phoneError === "";
 
@@ -99,18 +333,20 @@ export function BookingFlow() {
     e.preventDefault();
     if (!isFormValid) return;
 
-    const extraDetails =
-      formData.details.trim() !== "" ? formData.details.trim() : "இல்லை";
+    const translatedName = translateSentenceToTamil(formData.name.trim());
+    const translatedLocation = translateSentenceToTamil(formData.location.trim());
+    const translatedDetails = formData.details.trim() !== "" 
+      ? translateSentenceToTamil(formData.details.trim()) 
+      : "இல்லை";
 
     // Build message dynamically strictly in Tamil as required
     const message = `வணக்கம், நான் ${cart.nameTa} வாடகைக்கு எடுக்க விரும்புகிறேன்.
 
-பெயர்: ${formData.name.trim()}
+பெயர்: ${translatedName}
 தொலைபேசி: ${formData.phone.trim()}
 தேவையான தேதி: ${formData.date}
-இடம் (கோவையில்): ${formData.location.trim()}
-கால அவகாசம்: ${formData.duration.trim()}
-மேலும் விவரம்: ${extraDetails}
+இடம் (கோவையில்): ${translatedLocation}
+மேலும் விவரம்: ${translatedDetails}
 
 அனைத்து வாடகை விதிகளையும் படித்து ஒப்புக்கொண்டேன். ✓`;
 
@@ -123,7 +359,6 @@ export function BookingFlow() {
     name: lang === "ta" ? "உங்கள் பெயர் உள்ளிடுங்கள்" : "Enter your full name",
     phone: lang === "ta" ? "உங்கள் கைபேசி எண்" : "Enter your mobile number",
     location: lang === "ta" ? "உங்கள் கடை / இடம்" : "Your shop/stall location",
-    duration: lang === "ta" ? "எ.கா: 1 மாதம், 3 மாதங்கள்" : "e.g. 1 month, 3 months",
     details:
       lang === "ta"
         ? "கூடுதல் தேவைகள் அல்லது கேள்விகள்?"
@@ -346,25 +581,7 @@ export function BookingFlow() {
                 />
               </div>
 
-              {/* Field 5: Duration */}
-              <div className="flex flex-col">
-                <label
-                  htmlFor="duration"
-                  className="text-sm font-semibold mb-1 block"
-                >
-                  <span className="en">Duration *</span>
-                  <span className="ta tamil-text">கால அவகாசம் *</span>
-                </label>
-                <input
-                  type="text"
-                  id="duration"
-                  required
-                  value={formData.duration}
-                  onChange={handleInputChange}
-                  placeholder={placeholders.duration}
-                  className="w-full h-12 border border-[#e5e0d8] focus:border-[#f97316] focus:ring-2 focus:ring-[#f97316]/40 rounded-xl px-4 bg-white text-base outline-none transition"
-                />
-              </div>
+
 
               {/* Field 6: Details */}
               <div className="flex flex-col">
