@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Footer } from "@/components/sections/footer";
 import { MobileBottomNav } from "@/components/sections/mobile-bottom-nav";
@@ -125,6 +126,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <Footer />
         <WhatsAppFloat />
         <MobileBottomNav />
+        <Analytics />
       </body>
     </html>
   );
