@@ -168,11 +168,102 @@ export default function Home() {
     sameAs: ["https://www.instagram.com/nammathalluvandi.in"],
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(([question, , answer]) => ({
+      "@type": "Question",
+      "name": question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": answer,
+      },
+    })),
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Food Cart Rental & Sales Service",
+    "serviceType": "Food Cart Rental, Push Cart Sales, Commercial Food Cart Vending Startup Support",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Namma Thalluvandi",
+      "image": "https://nammathalluvandi.in/brand/full-logo-with-background.webp",
+      "telephone": "+919442763940",
+      "priceRange": "₹50 to ₹200 per day",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "6A Aruljothipuram Jallimedu Ondipudur",
+        "addressLocality": "Coimbatore",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "641016",
+        "addressCountry": "IN"
+      }
+    },
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Coimbatore"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Tamil Nadu"
+      }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Food Cart Rental and Custom Manufacturing Catalog",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fast Food Cart Rental",
+            "description": "Fast food cart rental services in Coimbatore for street vendors starting fast food business startups."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tea Cart Rental",
+            "description": "Tea cart rental options in Coimbatore for mobile tea stalls and vending setups."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Juice Cart Rental",
+            "description": "Juice cart and street vendor push cart rental setups in Coimbatore."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Custom Food Cart Sales & Manufacturing",
+            "description": "Custom commercial food cart manufacturing and vendor cart sales in Coimbatore, Tamil Nadu."
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <main>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
 
       {/* Hero Section */}
@@ -596,6 +687,31 @@ export default function Home() {
             vadagai. ஒண்டிப்புதூர் தளவண்டி வாடகை கோவை. D Nagaraj thalluvandi
             ondipudur coimbatore.
           </p>
+          <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-[10px] text-muted-foreground/60 border-t border-black/5 pt-4">
+            <Link href="/explore?type=FastFood" className="hover:underline">Fast Food Cart Rental Coimbatore</Link>
+            <span>•</span>
+            <Link href="/explore?type=Tea" className="hover:underline">Tea Cart Rental Near Me</Link>
+            <span>•</span>
+            <Link href="/explore?type=Juice" className="hover:underline">Juice Cart Rental Tamil Nadu</Link>
+            <span>•</span>
+            <Link href="/explore" className="hover:underline">Street Food Cart Rental</Link>
+            <span>•</span>
+            <Link href="/explore" className="hover:underline">Push Food Cart Rental</Link>
+            <span>•</span>
+            <Link href="/explore" className="hover:underline">Mobile Food Cart Marketplace</Link>
+            <span>•</span>
+            <Link href="/explore" className="hover:underline">Commercial Food Cart Booking</Link>
+            <span>•</span>
+            <Link href="/contact" className="hover:underline">Food Business Startup Coimbatore</Link>
+            <span>•</span>
+            <Link href="/explore" className="hover:underline">Business Cart Rental Tamil Nadu</Link>
+            <span>•</span>
+            <Link href="/explore" className="hover:underline">Push Cart Rental Coimbatore</Link>
+            <span>•</span>
+            <Link href="/explore" className="hover:underline">Food Stall Rental Coimbatore</Link>
+            <span>•</span>
+            <Link href="/explore" className="hover:underline">Mobile Food Cart Tamil Nadu</Link>
+          </div>
         </div>
       </section>
     </main>

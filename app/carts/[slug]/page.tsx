@@ -74,7 +74,7 @@ export async function generateMetadata({
   return {
     title: titleText,
     description: descText,
-    keywords: `food cart rental coimbatore, push cart rental tamil nadu, thalluvandi, thallu vandi, ${cart.nameEn} rent`,
+    keywords: `food cart rental coimbatore, push cart rental tamil nadu, thalluvandi, thallu vandi, ${cart.nameEn} rent, Push Cart Coimbatore, Mobile Food Cart Tamil Nadu, Tea Cart Rental, Juice Cart Rental, Fast Food Cart Rental, Street Vendor Cart`,
     alternates: {
       canonical: `https://nammathalluvandi.in/carts/${cart.id}`,
     },
@@ -107,8 +107,29 @@ export default async function CartDetailPage({
   const related = carts.filter((item) => item.id !== cart.id).slice(0, 3);
 
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${cart.nameEn} (Food Cart Rental)`,
+    "description": `Rent the premium ${cart.nameEn} (தளவண்டி) in Coimbatore, Tamil Nadu. Features: ${cart.featuresEn.join(", ")}.`,
+    "image": `https://nammathalluvandi.in${cart.images[0]}`,
+    "offers": {
+      "@type": "Offer",
+      "price": `${cart.pricePerDay}`,
+      "priceCurrency": "INR",
+      "priceValidUntil": "2030-12-31",
+      "availability": cart.available ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      "url": `https://nammathalluvandi.in/carts/${cart.id}`,
+      "description": "Daily food cart rental in Coimbatore, Tamil Nadu"
+    }
+  };
+
   return (
     <main className="bg-[#F8F6F2] pt-14 md:pt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <section className="py-10">
         <div className="site-container grid gap-6 md:grid-cols-[1fr_360px]">
           <div>
@@ -182,6 +203,22 @@ export default async function CartDetailPage({
             <div className="mt-8 block md:hidden rounded-2xl border border-black/10 bg-white p-5 shadow-premium">
               <BookingCard cart={cart} />
             </div>
+
+            {/* Semantic description section targeting keywords */}
+            <section className="mt-8 rounded-xl bg-white p-6 shadow-sm border border-black/10">
+              <h2 className="font-display text-2xl uppercase tracking-wide text-ink">
+                <Text
+                  en="Commercial Push Cart Rental Details"
+                  ta="உணவு வண்டி வாடகை விவரங்கள்"
+                />
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                <Text
+                  en={`Looking for a reliable street food cart rental in Coimbatore? The ${cart.nameEn} is ideal for tea stalls, juice vending, and fast food business startups. Fully maintained and ready to roll from Ondipudur, Coimbatore.`}
+                  ta={`கோவையில் தள்ளுவண்டி வாடகை தேடுகிறீர்களா? இந்த ${cart.nameTa} டீக்கடை, ஜூஸ் கடை மற்றும் ஃபாஸ்ட் ஃபுட் தொழில் தொடங்க மிகச் சிறந்தது.`}
+                />
+              </p>
+            </section>
 
             {/* Features list */}
             <section className="mt-12">

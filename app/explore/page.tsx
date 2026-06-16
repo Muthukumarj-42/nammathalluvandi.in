@@ -15,7 +15,37 @@ export const metadata: Metadata = {
     "d nagaraj thalluvandi ondipudur",
     "ondipudur thallu vandi rental",
     "thallu vandi ondipudur coimbatore",
-    "D நாகராஜ் தளவண்டி ஒண்டிப்புதூர்"
+    "D நாகராஜ் தளவண்டி ஒண்டிப்புதூர்",
+    "Food Cart Rental",
+    "Food Cart Rental Coimbatore",
+    "Push Cart Rental",
+    "Push Food Cart Rental",
+    "Rental Push Cart",
+    "Street Food Cart Rental",
+    "Food Stall Rental",
+    "Food Truck Rental",
+    "Mobile Food Cart",
+    "Fast Food Cart Rental",
+    "Tea Cart Rental",
+    "Juice Cart Rental",
+    "Commercial Food Cart",
+    "Food Vending Cart",
+    "Food Cart Business",
+    "Food Cart Marketplace",
+    "Food Cart Booking",
+    "Food Cart Near Me",
+    "Food Cart Tamil Nadu",
+    "Push Cart Tamil Nadu",
+    "Push Cart Coimbatore",
+    "Street Vendor Cart",
+    "Business Cart Rental",
+    "Thallu Vandi Rental",
+    "Thallu Vandi Rental Coimbatore",
+    "Food Business Startup",
+    "Start Food Business",
+    "Food Cart Entrepreneur",
+    "Food Cart for Rent",
+    "Food Cart Rental Near Me"
   ],
   alternates: {
     canonical: "https://nammathalluvandi.in/explore"
@@ -54,8 +84,25 @@ function Text({ en, ta }: { en: string; ta: string }) {
 }
 
 export default function ExplorePage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": exploreFaqs.map(([question, , answer]) => ({
+      "@type": "Question",
+      "name": question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": answer,
+      },
+    })),
+  };
+
   return (
     <main className="pt-0 md:pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <CartExplorer />
 
       {/* Redesigned Custom Manufacturing teaser section */}

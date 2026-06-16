@@ -320,7 +320,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                   <article className="relative overflow-hidden rounded-xl bg-white border border-black/10 shadow-lg">
                     {/* Aspect Ratio 16:9 Image Area - FIX 8 */}
                     <div className="relative aspect-video w-full overflow-hidden">
-                      <CartImage src={cart.images[0]} alt={cart.nameEn} priority={index === 0} sizes="100vw" />
+                      <CartImage src={cart.images[0]} alt={`${cart.nameEn} - Food Cart for Rent in Coimbatore, Tamil Nadu`} priority={index === 0} sizes="100vw" />
 
                       {/* Availability badge - z-10 */}
                       <span
@@ -483,7 +483,7 @@ export function CartExplorer({ compact = false }: { compact?: boolean }) {
                   >
                     <CartImage
                       src={cart.images[0]}
-                      alt={cart.nameEn}
+                      alt={`${cart.nameEn} - Push Cart Rental Coimbatore`}
                       priority={index === 0}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />

@@ -92,7 +92,7 @@ export function CartGallery({ images, nameEn }: { images: string[]; nameEn: stri
         >
           <GalleryImage
             src={images[activeIndex]}
-            alt={`${nameEn} - view ${activeIndex + 1}`}
+            alt={`${nameEn} - Food Cart for Rent in Coimbatore, Tamil Nadu (View ${activeIndex + 1})`}
             isThumbnail={false}
             priority={true}
           />
@@ -112,7 +112,7 @@ export function CartGallery({ images, nameEn }: { images: string[]; nameEn: stri
             }`}
             aria-label={`View image ${idx + 1}`}
           >
-            <GalleryImage src={img} alt={`${nameEn} thumbnail ${idx + 1}`} isThumbnail={true} />
+            <GalleryImage src={img} alt={`${nameEn} - Push Cart Rental (Thumbnail ${idx + 1})`} isThumbnail={true} />
           </button>
         ))}
       </div>
